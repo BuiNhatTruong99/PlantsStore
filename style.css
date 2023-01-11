@@ -979,7 +979,7 @@ img {
 .home-analysis__wrapper_left {
     opacity: 0;
     transition: 1s all ease;
-    transform: translateY(150px);
+    transform: translateX(-150px);
 }
 .home-analysis__wrapper_right {
     opacity: 0;
@@ -989,13 +989,13 @@ img {
 
 .analysis_container .fadein_left {
     position: absolute;
-    top: 20px;
-    left: 50px;
+    top: 20%;
+    left: 70px;
 }
 .analysis_container .fadein_right {
     position: absolute;
     right: 50px;
-    top: 30%;
+    top: 20%;
 }
 .analysis_container .fadeIn {
     transform: translateX(0);
