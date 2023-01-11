@@ -145,6 +145,37 @@ function reveal() {
     }
 }
 
+window.addEventListener('scroll', gooey);
+function gooey() {
+    var gooeys = document.querySelectorAll('.gooey');
+    for (var i = 0; i < gooeys.length; i++) {
+        var windowheight = window.innerHeight;
+        var gooeytop = gooeys[i].getBoundingClientRect().top;
+        var gooeypoint = 120;
+
+        if (gooeytop < windowheight - gooeypoint) {
+            gooeys[i].classList.add('active');
+        } else {
+            gooeys[i].classList.remove('active');
+        }
+    }
+}
+
+window.addEventListener('scroll', content);
+function content() {
+    var contents = document.querySelectorAll('.content');
+    for (var i = 0; i < contents.length; i++) {
+        var windowheight = window.innerHeight;
+        var gooeytop = contents[i].getBoundingClientRect().top;
+        var gooeypoint = 120;
+
+        if (gooeytop < windowheight - gooeypoint) {
+            contents[i].classList.add('content_hover');
+        } else {
+            contents[i].classList.remove('content_hover');
+        }
+    }
+}
 
 
 
