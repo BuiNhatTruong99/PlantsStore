@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.tab-content {
+    width: 100%;
+    padding: 20px;
+}
+
+.tab-content>.tab-pane .active {
+    display: block;
+    height: auto;
+    opacity: 1;
+    overflow: visible;
+}
+
+.tab-content h3 {
+    font-size: 22px;
+    text-transform: capitalize;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.table-responsive table thead {
+    background: #e1e1e1;
+}
+
+.table-responsive table thead tr th {
+    text-align: center;
+}
+
+.table-responsive table tbody tr td {
+    border-right: 1px solid #e1e1e1;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: 14px;
+    text-align: center;
+    min-width: 150px;
+}
+
+.table-responsive table tbody tr td:last-child a {
+    color: #79a206;
+    text-decoration: none;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #79a206;
+}
+
+.nav-link {
+    color: black;
+    font-weight: 700;
+}
+
+.nav-link:hover {
+    color: #79a206;
+}
+
+.login p a {
+    color: #79a206;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.input-radio span {
+    font-weight: 500;
+    padding-right: 10px;
+}
+
+.input-radio span input[type="radio"],
+.account_login_form form span input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    margin-right: 2px;
+    position: relative;
+    top: 2px;
+}
+
+.account_login_form form input {
+    border: 1px solid #ddd;
+    background: none;
+    height: 40px;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 0 20px;
+    color: #222222;
+}
+
+.save_button button {
+    width: 100px;
+    height: 40px;
+    border-radius: 8px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border: none;
+    background-color: black;
+    color: #fff;
+}
+
+.save_button button:hover {
+    background-color: #79a206;
+    color: #fff;
+}
+
+
+#file-input {
+    display: none;
+}
+
+.preview {
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 350px;
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 20px rgba(170, 170, 170, 0.2);
+}
+
+.preview img {
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.preview label {
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 20px;
+    background-color: rgb(101, 101, 255);
+}

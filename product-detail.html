@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="animation.css">
+    <link rel="stylesheet" href="fontawesome-free-6.1.1/css/all.min.css">
+    <title>Index</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="main-header">
+                <div class="header-top">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3 col-md-3 col-4">
+                                <div class="logo">
+                                    <a href="index.html"><img src="images/Slide/logo.jpg" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-6 col-6">
+                                <div class="header_right_info">
+                                    <div class="search_container">
+                                        <div class="search_box">
+                                            <input placeholder="Search product..." type="text">
+                                            <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                                    height="20" fill="currentColor" class="bi bi-search"
+                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                                </svg></button>
+                                        </div>
+                                    </div>
+                                    <div class="header_account_area">
+                                        <div class="header_account-list top_links">
+                                            <a href="login.html"><svg xmlns="http://www.w3.org/2000/svg" width="25"
+                                                    height="25" fill="currentColor" class="bi bi-people"
+                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
+                                                </svg></a>
+                                        </div>
+                                        <div class="header_account-list header_wishlist">
+                                            <a href="wishlist.html"><svg xmlns="http://www.w3.org/2000/svg" width="25"
+                                                    height="25" fill="currentColor" class="bi bi-heart"
+                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                                </svg></a>
+                                        </div>
+                                        <div class="header_account-list  mini_cart_wrapper">
+                                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                                    fill="currentColor" class="bi bi-bag-check" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd"
+                                                        d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                                                    <path
+                                                        d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                                                </svg><span class="item_count">2</span></a>
+                                            <div class="mini_cart">
+                                                <div class="cart_gallery">
+                                                    <div class="cart_close">
+                                                        <div class="cart_text">
+                                                            <h3>cart</h3>
+                                                        </div>
+                                                        <div class="mini_cart_close">
+                                                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="16" height="16" fill="currentColor"
+                                                                    class="bi bi-x-square" viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                                    <path
+                                                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                                                </svg></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cart_item">
+                                                        <div class="cart_img">
+                                                            <a href="#"><img src="images/product/1.jpg" alt=""></a>
+                                                        </div>
+                                                        <div class="cart_info">
+                                                            <a href="#">Primis In Faucibus</a>
+                                                            <p>1 x <span> $65.00 </span></p>
+                                                        </div>
+                                                        <div class="cart_remove">
+                                                            <a href="#"><i class="icon-x"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mini_cart_table">
+                                                    <div class="cart_table_border">
+                                                        <div class="cart_total">
+                                                            <span>Sub total:</span>
+                                                            <span class="price">$125.00</span>
+                                                        </div>
+                                                        <div class="cart_total mt-10">
+                                                            <span>total:</span>
+                                                            <span class="price">$125.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mini_cart_footer">
+                                                    <div class="cart_button">
+                                                        <a href="cart.html"><i class="fa fa-shopping-cart"></i> View
+                                                            cart</a>
+                                                    </div>
+                                                    <div class="cart_button">
+                                                        <a class="active" href="checkout.html"><i
+                                                                class="fa fa-sign-in"></i>
+                                                            Checkout</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header_bottom sticky-header">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3">
+                                <div class="categories_menu">
+                                    <div class="categories_title">
+                                        <i class="fas fa-bars"></i>
+                                        <h2 class="categori_toggle">Categories</h2>
+                                    </div>
+                                    <!-- <div class="icon-categori_toggle"></div> -->
+                                    <input type="checkbox" class="nav-input d-none" id="nav-res-input">
+                                    <label for="nav-res-input" class="checkbtn">
+                                        <i class="fas fa-bars"></i>
+                                    </label>
+                                    <label for="nav-res-input" class="nav-overlay" target=""></label>
+                                    <div class="main_menu_res">
+                                        <div class="search_box_res">
+                                            <input placeholder="Search product..." type="text">
+                                            <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                    height="16" fill="currentColor" class="bi bi-search"
+                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                                </svg></button>
+                                        </div>
+                                        <nav>
+                                            <ul class="offcanvas_main_menu">
+                                                <div class="canvas_close">
+                                                    <label for="nav-res-input" class="nav-res-close"><i
+                                                            class="fas fa-xmark"></i></label>
+                                                </div>
+                                                <li class="menu-item-has-children"><a class="active"
+                                                        href="index.html">home</a>
+                                                </li>
+                                                <!-- <input type="checkbox" class="nav-input-sub" id="nav-res-sub"> -->
+                                                <li for="nav-res-sub" class="menu-item-has-children"><span
+                                                        class="menu-expand"><i class="fa fa-angle-down"></i></span>
+                                                    <a class="shop-btn" href="#">Shop</a>
+                                                    <ul class="sub_menu shop-show">
+                                                        <li class="menu-item-has-children"><span class="menu-expand"><i
+                                                                    class="fa fa-angle-down"></i></span>
+                                                            <a class="shop-lay-btn" href="#">Shop Layouts</a>
+                                                            <ul class="sub_sub_menu lay-show">
+                                                                <li><a href="shop.html">shop</a></li>
+                                                                <li><a href="shop-fullwidth.html">Full Width</a></li>
+                                                                <li><a href="shop-fullwidth-list.html">Full Width
+                                                                        list</a></li>
+                                                                <li><a href="shop-right-sidebar.html">Right Sidebar </a>
+                                                                </li>
+                                                                <li><a href="shop-right-sidebar-list.html"> Right
+                                                                        Sidebar list</a></li>
+                                                                <li><a href="shop-list.html">List View</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="menu-item-has-children"><span class="menu-expand"><i
+                                                                    class="fa fa-angle-down"></i></span>
+                                                            <a class="shop-other-btn" href="#">other Pages</a>
+                                                            <ul class="sub_sub_menu other-show">
+                                                                <li><a href="cart.html">cart</a></li>
+                                                                <li><a href="wishlist.html">Wishlist</a></li>
+                                                                <li><a href="checkout.html">Checkout</a></li>
+                                                                <li><a href="my-account.html">my account</a></li>
+                                                                <li><a href="404.html">Error 404</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="menu-item-has-children"><span class="menu-expand"><i
+                                                                    class="fa fa-angle-down"></i></span>
+                                                            <a class="shop-pro-btn" href="#">Product Types</a>
+                                                            <ul class="sub_sub_menu pro-show">
+                                                                <li><a href="product-details.html">product details</a>
+                                                                </li>
+                                                                <li><a href="product-sidebar.html">product sidebar</a>
+                                                                </li>
+                                                                <li><a href="product-grouped.html">product grouped</a>
+                                                                </li>
+                                                                <li><a href="variable-product.html">product variable</a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu-item-has-children"><a class="blog-btn"
+                                                        href="#">blog<span class="menu-expand"><i
+                                                                class="fa fa-angle-down"></i></span></a>
+                                                    <ul class="sub_menu pages blog-show">
+                                                        <li><a href="#">blog details</a></li>
+                                                        <li><a href="#">blog fullwidth</a></li>
+                                                        <li><a href="#">blog sidebar</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu-item-has-children"><a class="pages-btn"
+                                                        href="#">pages<span class="menu-expand"><i
+                                                                class="fa fa-angle-down"></i></span></a>
+                                                    <ul class="sub_menu pages pages-show">
+                                                        <li><a href="#">About Us</a></li>
+                                                        <li><a href="#">services</a></li>
+                                                        <li><a href="#">Frequently Questions</a></li>
+                                                        <li><a href="#">contact</a></li>
+                                                        <li><a href="#">login</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu-item-has-children"><a href="contact.html"> Contact
+                                                        Us</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <!--main menu start-->
+                                <div class="main_menu menu_position">
+                                    <nav>
+                                        <ul>
+                                            <li><a class="active" href="index.html">home</a>
+                                            </li>
+                                            <li class="mega_items"><a href="shop.html">shop<i
+                                                        class="fa fa-angle-down"></i></a>
+                                                <div class="mega_menu">
+                                                    <ul class="mega_menu_inner">
+                                                        <li><a href="#">Shop Layouts</a>
+                                                            <ul>
+                                                                <li><a href="shop-fullwidth.html">Full Width</a></li>
+                                                                <li><a href="shop-fullwidth-list.html">Full Width
+                                                                        list</a>
+                                                                </li>
+                                                                <li><a href="shop-right-sidebar.html">Right Sidebar </a>
+                                                                </li>
+                                                                <li><a href="shop-right-sidebar-list.html"> Right
+                                                                        Sidebar
+                                                                        list</a></li>
+                                                                <li><a href="shop-list.html">List View</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><a href="#">other Pages</a>
+                                                            <ul>
+                                                                <li><a href="cart.html">cart</a></li>
+                                                                <li><a href="wishlist.html">Wishlist</a></li>
+                                                                <li><a href="checkout.html">Checkout</a></li>
+                                                                <li><a href="my-account.html">my account</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><a href="#">Product Types</a>
+                                                            <ul>
+                                                                <li><a href="product-details.html">product details</a>
+                                                                </li>
+                                                                <li><a href="product-sidebar.html">product sidebar</a>
+                                                                </li>
+                                                                <li><a href="product-grouped.html">product grouped</a>
+                                                                </li>
+                                                                <li><a href="variable-product.html">product variable</a>
+                                                                </li>
+
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li><a href="blog.html">blog<i class="fa fa-angle-down"></i></a>
+                                                <ul class="sub_menu pages">
+                                                    <li><a href="blog-details.html">blog details</a></li>
+                                                    <li><a href="blog-fullwidth.html">blog fullwidth</a></li>
+                                                    <li><a href="blog-sidebar.html">blog sidebar</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
+                                                <ul class="sub_menu pages">
+                                                    <li><a href="about.html">About Us</a></li>
+                                                    <li><a href="services.html">services</a></li>
+                                                    <li><a href="faq.html">Frequently Questions</a></li>
+                                                    <li><a href="contact.html">contact</a></li>
+                                                    <li><a href="login.html">login</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="contact.html"> Contact Us</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!--main menu end-->
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="call-support">
+                                    <p>Call Support: <a href="tel:0123456789">0123456789</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div class="container">
+        <div class="row m-3">
+            <div class="bwp-single-image col-lg-6 col-md-12 col-12 text-center">
+                <div class="left-detail col-md-10 col-lg-12 m-auto p-0">
+                    <div class="img-size">
+                        <img src="images/products/5.jpg" alt="">
+                    </div>
+                </div>
+                <div class="same-products">
+                    <div class="owl-carousel owl-same-products">
+                        <div class="item"><a href=""><img src="images/products/5.jpg" alt=""></a></div>
+                        <div class="item"><a href=""><img src="images/products/6.jpg" alt=""></a></div>
+                        <div class="item"><a href=""><img src="images/products/7.jpg" alt=""></a></div>
+                        <div class="item"><a href=""><img src="images/products/8.jpg" alt=""></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bwp-single-infor col-lg-6 col-md-12 col-12">
+                <div class="right-detail">
+                    <h1 itemprop="name" class="product_title entry-title">Aloe</h1>
+                    <div class="product_ratting">
+                        <ul>
+                            <li><a href=""><i class="fas fa-star"></i></a></li>
+                            <li><a href=""><i class="fas fa-star"></i></a></li>
+                            <li><a href=""><i class="fas fa-star"></i></a></li>
+                            <li><a href=""><i class="fas fa-star"></i></a></li>
+                            <li><a href=""><i class="fas fa-star"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="price"><span class="woocommerce-Price-amount amount"><span
+                                class="woocommerce-Price-currencySymbol">$</span>350.00</span></div>
+
+                    <div itemprop="description" class="description col-10">
+                        <p>The EcoSmart Fleece Hoodie full-zip hooded jacket provides medium weight fleece comfort all
+                            year
+                            around. Feel better in this sweatshirt because Hanes keeps plastic bottles of landfills by
+                            using
+                            recycled polyester.7.8 ounce fleece sweatshirt made with up to 5 percent polyester created
+                            from
+                            recycled plastic.</p>
+                    </div>
+                    <div class="products-size">
+                        <label for=""><strong>Size</strong></label>
+                        <div class="size-swap">
+                            <div class="n-sd size_item" data-value="s">
+                                <input type="radio" class="size_radio" id="size_s" name="option" value="S" checked>
+                                <label for="size_s"><span id="size_pro">S</span></label>
+                            </div>
+                            <div class="n-sd size_item" data-value="l">
+                                <input type="radio" class="size_radio" id="size_l" name="option" value="L">
+                                <label for="size_l"><span id="size_pro">L</span></label>
+                            </div>
+                            <div class="n-sd size_item" data-value="xl">
+                                <input type="radio" class="size_radio" id="size_xl" name="option" value="XL">
+                                <label for="size_xl"><span id="size_pro">XL</span></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart">
+                        <div class="quantity-button">
+                            <span>Quantity</span>
+                            <div class="quantity">
+                                <input type="number" id="quantity_6333fa0a4b0d4" class="input-text qty text" step="1"
+                                    min="1" max="" name="quantity" value="1" title="Qty" size="4" placeholder=""
+                                    inputmode="numeric" autocomplete="off">
+                            </div>
+                            <button type="submit" class="single_add_to_cart_button button alt" onclick="searchURL()">Add to cart</button>
+                        </div>
+                        <div class="like-button">
+                            <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-heart" viewBox="0 0 16 16">
+                                    <path
+                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                </svg></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="product_review">
+            <div class="review-wrapper">
+                <div class="rev_title">
+                    <h2>2 Review For <span class="name_pro_rev">Crab Pool Security</span></h2>
+                </div>
+                <div class="rev_comment_box">
+                    <div class="comment_avt">
+                        <img src="images/logo.png" alt="">
+                    </div>
+                    <div class="comment_text">
+                        <div class="review_layout">
+                            <div class="star_rating">
+                                <ul>
+                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                </ul>
+                            </div>
+                            <p><span class="author_cmt">admin</span> - <span class="date_cmt">September 12, 2018</span> </p>
+                            <p>roadthemes</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rev_product_ratting mb-10">
+                    <h3>Your rating</h3>
+                    <div class="star_widget">
+                        <input type="radio" name="rate" id="rate-5">
+                        <label for="rate-5" class="fas fa-star" ></label>
+                        <input type="radio" name="rate" id="rate-4">
+                        <label for="rate-4" class="fas fa-star" ></label>
+                        <input type="radio" name="rate" id="rate-3">
+                        <label for="rate-3" class="fas fa-star" ></label>
+                        <input type="radio" name="rate" id="rate-2">
+                        <label for="rate-2" class="fas fa-star" ></label>
+                        <input type="radio" name="rate" id="rate-1">
+                        <label for="rate-1" class="fas fa-star" ></label>
+                        <div class="status_rating"><span id="status_rating"></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="product_review_form">
+                <form action="#">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="review_comment"><strong>Your review</strong></label>
+                            <textarea name="comment" id="review_comment"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer_widgets">
+        <div class="footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="widgets_container contact_us">
+                            <h3>Opening Time</h3>
+                            <p><span>Mon - Fri:</span> 8AM - 10PM</p>
+                            <p><span>Sat:</span> 9AM-8PM</p>
+                            <p><span>Suns:</span> 14hPM-18hPM</p>
+                            <p><b>We Work All The Holidays</b></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-6">
+                        <div class="widgets_container widget_menu">
+                            <h3>Information</h3>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="checkout.html">Checkout</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="faq.html">Frequently Questions</a></li>
+                                    <li><a href="wishlist.html">Wishlist</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-5">
+                        <div class="widgets_container widget_app">
+                            <div class="footer_logo">
+                                <a href="index.html"><img src="images/Slide/logo.jpg" alt=""></a>
+                            </div>
+                            <div class="footer_widgetnav_menu">
+                                <ul>
+                                    <li><a href="#">Payment</a></li>
+                                    <li><a href="#">Affiliates</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="#">Internet</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer_social">
+                                <ul>
+                                    <li><a href="#"><i class="fa-brands fa-facebook"></i></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-google-plus" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="footer_app">
+                                <ul>
+                                    <li><img src="images/Slide/appstore.png" alt=""></li>
+                                    <li><img src="images/Slide/ggplay.png" alt=""></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="widgets_container widget_menu">
+                            <h3>My Account</h3>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li><a href="my-account.html">My Account</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="cart.html">Shopping cart</a></li>
+                                    <li><a href="checkout.html">Checkout</a></li>
+                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="#">Order History</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="widgets_container widget_menu">
+                            <h3>Customer Service</h3>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="#">Terms of use</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="contact.html">Site Map</a></li>
+                                    <li><a href="my-account.html">My Account</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
