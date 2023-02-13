@@ -30,7 +30,7 @@ public class Discount implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date create_date = new Date();
 	@Temporal(TemporalType.DATE)
-	private Date end_date = new Date();
+	private Date update_date = new Date();
 
 	// staff_id
 	@ManyToOne

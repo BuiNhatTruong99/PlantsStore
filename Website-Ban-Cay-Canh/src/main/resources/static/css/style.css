@@ -1637,26 +1637,32 @@ ul {
     width: 30px;
 }
 
-.products-size .size-swap .n-sd input {
-    display: none;
+.products-size .size-swap .n-sd input{
+    width: 20px;
+    height: 20px;
+    border-radius: 15px;
+    top: 3px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
 }
 
-.products-size .size-swap .n-sd label {
+.products-size .size-swap .n-sd input[type='radio']:checked:after {
+    width: 20px;
+    height: 20px;
+    border-radius: 15px;
+    top: 0px;
+    left: 0px;
     position: relative;
-    display: flex;
-    margin: 0;
-    padding: 10px;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    border: 1px solid #e9ecef;
-    color: #000;
-    font-size: 14px;
-    text-align: center;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s;
+    background-color: #79a206;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
 }
 
 .products-size .size-swap .n-sd input:checked~label {
@@ -2100,6 +2106,12 @@ ul {
     font-size: 16px;
 }
 
+.menu-products a {
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+}
+
 .menu-products span {
     transition: all 0.4s;
 }
@@ -2227,7 +2239,7 @@ ul {
 }
 
 .popup-card .info p {
-    font-size: 15px;
+    font-size: 13px;
     margin: 10px;
 }
 

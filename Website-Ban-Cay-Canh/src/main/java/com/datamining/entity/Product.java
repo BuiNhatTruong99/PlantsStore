@@ -49,8 +49,8 @@ public class Product implements Serializable {
 
 	// material_id
 	@ManyToOne
-	@JoinColumn(name = "material_id")
-	private ProductMaterial material;
+	@JoinColumn(name = "prod_material_id")
+	ProductMaterial material;
 
 	// categories_id
 	@ManyToOne

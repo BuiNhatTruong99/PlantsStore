@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../lib/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="../lib/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
@@ -20,7 +22,7 @@
     <link rel="icon" type="image/x-icon" href="../images/title_logo.png">
 </head>
 
-<body>
+<body ng-app="appUser" ng-controller="appUser-ctrl">
     <div class="wrapper" id="top">
         <header>
            <div th:replace="user/layout/_menu.html"></div>
@@ -325,11 +327,8 @@
                         <h2>Featured Product</h2>
                     </div>
                     <div class="featured__controls">
-                        <ul>
-                            <li class="active mixitup-control-active menu-products" data-filter=""><span>All</span></li>
-                            <li data-filter="" class="menu-products"><span>Plants</span></li>
-                            <li data-filter="" class="menu-products"><span>Pots</span></li>
-                            <li data-filter="" class="menu-products"><span>Fertilizer</span></li>
+                        <ul class="category">
+                            <li class="menu-products" th:each="c:${cates}"><a th:href="@{|/product/list?cid=${c.id}|}"><span>[[${c.name}]]</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -402,281 +401,52 @@
                     </div>
                 </div>
                 <div class="row featured__right col-xl-10 col-lg-10 col-md-12 col-12">
-                    <div class="col-lg-3 col-md-4 col-sm-6 mix">
+                    <div class="col-lg-3 col-md-4 col-sm-6 mix" th:each="p:${items}">
                         <div class="featured__item">
                             <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg">
-                                <img src="../images/products/7.jpg" alt="">
+                                <a th:href="@{|/product/detail/${p.id}|}"><img  src="../img/product/1.jpg"></a>
+<!--                                <img  alt=""> th:src="@{|/static/img/product/${p.image}|}"-->
+
                                 <ul class="featured__item__pic__hover">
 
                                     <li><a class="popup-btn"><i class="fa fa-retweet"></i></a></li>
                                 </ul>
                             </div>
                             <div class="featured__item__text">
-                                <h6><a href="#">Crab Pool Security</a></h6>
-                                <h5>$30.00</h5>
+                                <h6><a href="#">[[${p.name}]]</a></h6>
+                                <h5>$ [[${p.price}]]</h5>
                             </div>
                         </div>
                         <div class="popup-view">
                             <div class="popup-card">
                                 <a><i class="fas fa-times close-btn"></i></a>
                                 <div class="product-featured-image">
-                                    <img src="../images/products/5.jpg" alt="">
+                                    <img th:src="@{|/static/img/product/${p.image}|}" alt="">
                                 </div>
                                 <div class="info">
-                                    <h2>Tree</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero suscipit aliquid
-                                        ipsum
-                                        temporibus, natus, excepturi corrupti tempore ad totam ab blanditiis similique
-                                        cumque debitis, labore culpa nisi atque. Quia, provident?</p>
-                                    <span class="price">$100.00</span>
+                                    <h2>[[${p.name}]]</h2>
+                                    <p>[[${p.description}]]</p>
+                                    <span class="price">$ [[${p.price}]]</span>
                                     <div class="products-size">
                                         <label for=""><strong>Size</strong></label>
                                         <div class="size-swap">
                                             <div class="n-sd size_item" data-value="s">
                                                 <input type="radio" class="size_radio" id="size_s" name="option"
-                                                    value="S" checked>
-                                                <label for="size_s"><span id="size_pro">S</span></label>
+                                                    value="S"> S
                                             </div>
                                             <div class="n-sd size_item" data-value="l">
                                                 <input type="radio" class="size_radio" id="size_l" name="option"
-                                                    value="L">
-                                                <label for="size_l"><span id="size_pro">L</span></label>
+                                                    value="L"> L
                                             </div>
                                             <div class="n-sd size_item" data-value="xl">
                                                 <input type="radio" class="size_radio" id="size_xl" name="option"
-                                                    value="XL">
-                                                <label for="size_xl"><span id="size_pro">XL</span></label>
+                                                    value="XL"> XL
                                             </div>
                                         </div>
-
                                     </div>
                                     <a href="#" class="add-cart-btn">ADD TO CART</a>
                                     <a href="#" class="add-wish">ADD TO WISHLIST</a>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mix">
-                        <div class="featured__item">
-                            <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg">
-                                <img src="../images/products/7.jpg" alt="">
-                                <ul class="featured__item__pic__hover">
-
-                                    <li><a class="popup-btn"><i class="fa fa-retweet"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="featured__item__text">
-                                <h6><a href="#">Crab Pool Security</a></h6>
-                                <h5>$30.00</h5>
-                            </div>
-                        </div>
-                        <div class="popup-view">
-                            <div class="popup-card">
-                                <a><i class="fas fa-times close-btn"></i></a>
-                                <div class="product-featured-image">
-                                    <img src="../images/products/5.jpg" alt="">
-                                </div>
-                                <div class="info">
-                                    <h2>Tree</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero suscipit aliquid
-                                        ipsum
-                                        temporibus, natus, excepturi corrupti tempore ad totam ab blanditiis similique
-                                        cumque debitis, labore culpa nisi atque. Quia, provident?</p>
-                                    <span class="price">$100.00</span>
-                                    <div class="products-size">
-                                        <label for=""><strong>Size</strong></label>
-                                        <div class="size-swap">
-                                            <div class="n-sd size_item" data-value="s">
-                                                <input type="radio" class="size_radio" id="size_s" name="option"
-                                                    value="S" >
-                                                <label for="size_s"><span id="size_pro">S</span></label>
-                                            </div>
-                                            <div class="n-sd size_item" data-value="l">
-                                                <input type="radio" class="size_radio" id="size_l" name="option"
-                                                    value="L">
-                                                <label for="size_l"><span id="size_pro">L</span></label>
-                                            </div>
-                                            <div class="n-sd size_item" data-value="xl">
-                                                <input type="radio" class="size_radio" id="size_xl" name="option"
-                                                    value="XL">
-                                                <label for="size_xl"><span id="size_pro">XL</span></label>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <a href="#" class="add-cart-btn">ADD TO CART</a>
-                                    <a href="#" class="add-wish">ADD TO WISHLIST</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mix">
-                        <div class="featured__item">
-                            <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg">
-                                <img src="../images/products/7.jpg" alt="">
-                                <ul class="featured__item__pic__hover">
-
-                                    <li><a class="popup-btn"><i class="fa fa-retweet"></i></a></li>
-                            </div>
-                            <div class="featured__item__text">
-                                <h6><a href="#">Crab Pool Security</a></h6>
-                                <h5>$30.00</h5>
-                            </div>
-                        </div>
-                        <div class="popup-view">
-                            <div class="popup-card">
-                                <a><i class="fas fa-times close-btn"></i></a>
-                                <div class="product-featured-image">
-                                    <img src="../images/products/5.jpg" alt="">
-                                </div>
-                                <div class="info">
-                                    <h2>Tree</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero suscipit aliquid
-                                        ipsum
-                                        temporibus, natus, excepturi corrupti tempore ad totam ab blanditiis similique
-                                        cumque debitis, labore culpa nisi atque. Quia, provident?</p>
-                                    <span class="price">$100.00</span>
-                                    <div class="products-size">
-                                        <label for=""><strong>Size</strong></label>
-                                        <div class="size-swap">
-                                            <div class="n-sd size_item" data-value="s">
-                                                <input type="radio" class="size_radio" id="size_s" name="option"
-                                                    value="S" checked>
-                                                <label for="size_s"><span id="size_pro">S</span></label>
-                                            </div>
-                                            <div class="n-sd size_item" data-value="l">
-                                                <input type="radio" class="size_radio" id="size_l" name="option"
-                                                    value="L">
-                                                <label for="size_l"><span id="size_pro">L</span></label>
-                                            </div>
-                                            <div class="n-sd size_item" data-value="xl">
-                                                <input type="radio" class="size_radio" id="size_xl" name="option"
-                                                    value="XL">
-                                                <label for="size_xl"><span id="size_pro">XL</span></label>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <a href="#" class="add-cart-btn">ADD TO CART</a>
-                                    <a href="#" class="add-wish">ADD TO WISHLIST</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mix">
-                        <div class="featured__item">
-                            <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg">
-                                <img src="../images/products/7.jpg" alt="">
-                                <ul class="featured__item__pic__hover">
-
-                                    <li><a class="popup-btn"><i class="fa fa-retweet"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="featured__item__text">
-                                <h6><a href="#">Crab Pool Security</a></h6>
-                                <h5>$30.00</h5>
-                            </div>
-                        </div>
-                        <div class="popup-view">
-                            <div class="popup-card">
-                                <a><i class="fas fa-times close-btn"></i></a>
-                                <div class="product-featured-image">
-                                    <img src="../images/products/5.jpg" alt="">
-                                </div>
-                                <div class="info">
-                                    <h2>Tree</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero suscipit aliquid
-                                        ipsum
-                                        temporibus, natus, excepturi corrupti tempore ad totam ab blanditiis similique
-                                        cumque debitis, labore culpa nisi atque. Quia, provident?</p>
-                                    <span class="price">$100.00</span>
-                                    <div class="products-size">
-                                        <label for=""><strong>Size</strong></label>
-                                        <div class="size-swap">
-                                            <div class="n-sd size_item" data-value="s">
-                                                <input type="radio" class="size_radio" id="size_s" name="option"
-                                                    value="S" checked>
-                                                <label for="size_s"><span id="size_pro">S</span></label>
-                                            </div>
-                                            <div class="n-sd size_item" data-value="l">
-                                                <input type="radio" class="size_radio" id="size_l" name="option"
-                                                    value="L">
-                                                <label for="size_l"><span id="size_pro">L</span></label>
-                                            </div>
-                                            <div class="n-sd size_item" data-value="xl">
-                                                <input type="radio" class="size_radio" id="size_xl" name="option"
-                                                    value="XL">
-                                                <label for="size_xl"><span id="size_pro">XL</span></label>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <a href="#" class="add-cart-btn">ADD TO CART</a>
-                                    <a href="#" class="add-wish">ADD TO WISHLIST</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
-                        <div class="featured__item">
-                            <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-5.jpg"
-                                style="background-image: url('../images/products/4.jpg');">
-                                <ul class="featured__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="featured__item__text">
-                                <h6><a href="#">Crab Pool Security</a></h6>
-                                <h5>$30.00</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood">
-                        <div class="featured__item">
-                            <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-6.jpg"
-                                style="background-image: url('../images/products/5.jpg');">
-                                <ul class="featured__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="featured__item__text">
-                                <h6><a href="#">Crab Pool Security</a></h6>
-                                <h5>$30.00</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables" >
-                        <div class="featured__item">
-                            <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-7.jpg"
-                                style="background-image: url('../images/products/6.jpg');">
-                                <ul class="featured__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="featured__item__text">
-                                <h6><a href="#">Crab Pool Security</a></h6>
-                                <h5>$30.00</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood vegetables">
-                        <div class="featured__item">
-                            <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-8.jpg"
-                                style="background-image: url('../images/products/7.jpg');">
-                                <ul class="featured__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="featured__item__text">
-                                <h6><a href="#">Crab Pool Security</a></h6>
-                                <h5>$30.00</h5>
                             </div>
                         </div>
                     </div>
@@ -778,9 +548,9 @@
         </div>
     </footer>
 
-	
+
 	<div th:replace="user/layout/_script.html"></div>
-   
+
 </body>
 
 </html>

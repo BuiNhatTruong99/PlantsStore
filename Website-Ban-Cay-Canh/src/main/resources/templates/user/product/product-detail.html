@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+
     <link rel="stylesheet" href="../lib/fontawesome-free-6.1.1/css/all.min.css">
     <title>Index</title>
 </head>
@@ -19,15 +19,15 @@
 <body>
     <div class="wrapper">
         <header>
-             <div th:replace="user/layout/_menu.html"></div>
+            <div th:replace="user/layout/_menu.html"></div>
         </header>
     </div>
     <div class="container">
-        <div class="row m-3">
+        <div class="row m-3" th:each="d:${item}">
             <div class="bwp-single-image col-lg-6 col-md-12 col-12 text-center">
                 <div class="left-detail col-md-10 col-lg-12 m-auto p-0">
                     <div class="img-size">
-                        <img src="../images/products/5.jpg" alt="">
+                        <img th:src="@{|/static/img/product/${d.id}|}" alt="">
                     </div>
                 </div>
                 <div class="same-products">
@@ -41,7 +41,7 @@
             </div>
             <div class="bwp-single-infor col-lg-6 col-md-12 col-12">
                 <div class="right-detail">
-                    <h1 itemprop="name" class="product_title entry-title">Aloe</h1>
+                    <h1 itemprop="name" class="product_title entry-title">[[${d.name}]]</h1>
                     <div class="product_ratting">
                         <ul>
                             <li><a href=""><i class="fas fa-star"></i></a></li>
@@ -52,16 +52,10 @@
                         </ul>
                     </div>
                     <div class="price"><span class="woocommerce-Price-amount amount"><span
-                                class="woocommerce-Price-currencySymbol">$</span>350.00</span></div>
+                                class="woocommerce-Price-currencySymbol">$</span>[[${d.price}]]</span></div>
 
                     <div itemprop="description" class="description col-10">
-                        <p>The EcoSmart Fleece Hoodie full-zip hooded jacket provides medium weight fleece comfort all
-                            year
-                            around. Feel better in this sweatshirt because Hanes keeps plastic bottles of landfills by
-                            using
-                            recycled polyester.7.8 ounce fleece sweatshirt made with up to 5 percent polyester created
-                            from
-                            recycled plastic.</p>
+                        <p>[[${d.description}]]</p>
                     </div>
                     <div class="products-size">
                         <label for=""><strong>Size</strong></label>
