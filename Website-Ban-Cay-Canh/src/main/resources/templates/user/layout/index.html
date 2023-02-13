@@ -22,6 +22,7 @@
 
 <body>
     <div class="wrapper" id="top">
+    	<!-- Menu -->
         <header>
            <div th:replace="user/layout/_menu.html"></div>
         </header>
@@ -319,6 +320,7 @@
     </section>
     <section class="featured spad" id="featured">
         <div class="container">
+<<<<<<< Updated upstream
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
@@ -333,74 +335,21 @@
                         </ul>
                     </div>
                 </div>
+=======
+        
+        	<!-- Catergory -->
+            <div th:replace="user/layout/_catergory.html">
+               
+>>>>>>> Stashed changes
             </div>
+            
             <div class="row featured__filter">
-                <div class="featured__left col-xl-2 col-lg-2 col-md-12 col-12">
-                    <div class="bwp-sidebar sidebar-product">
-                        <h2 class="filters_products_price">Price</h2>
-                        <form id="bwp_form_filter_product">
-                            <div class="bwp-filter bwp-filter-category">
-                                <div id="pa_category" class="filter_category_product">
-                                    <div data-id_category="5" class="item-category "><label class="name">Under
-                                            $50</label>
-                                        <div class="count"><input type="radio" name="count" id=""></div>
-                                    </div>
-                                    <div data-id_category="510" class="item-category "><label class="name">$50 to
-                                            $100</label>
-                                        <div class="count"><input type="radio" name="count" id=""></div>
-                                    </div>
-                                    <div data-id_category="1030" class="item-category "><label class="name">$100 to
-                                            $300</label>
-                                        <div class="count"><input type="radio" name="count" id=""></div>
-                                    </div>
-                                    <div data-id_category="30" class="item-category "><label class="name">Above
-                                            $300</label>
-                                        <div class="count"><input type="radio" name="count" id=""></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="bwp-sidebar sidebar-product">
-                        <h2 class="filters_products_price">Rate</h2>
-                        <form id="bwp_form_filter_product">
-                            <div class="bwp-filter bwp-filter-category">
-                                <div id="pa_category" class="filter_category_product">
-                                    <div class="shop-filters__stars">
-                                        <div class="starts">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <div class="check_5rate"><input type="radio" name="check_rate" id=""></div>
-                                    </div>
-                                    <div class="shop-filters__stars">
-                                        <div class="starts">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star start-white"></i>
-                                        </div>
-                                        <div class="check_4rate"><input type="radio" name="check_rate" id=""></div>
-                                    </div>
-                                    <div class="shop-filters__stars">
-                                        <div class="starts">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star start-white"></i>
-                                            <i class="fas fa-star start-white"></i>
-                                        </div>
-                                        <div class="check_3rate"><input type="radio" name="check_rate" id=""></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+            
+            	<!-- Filter -->
+                <div th:replace="user/layout/_filter.html">
+                    
                 </div>
+<<<<<<< Updated upstream
                 <div class="row featured__right col-xl-10 col-lg-10 col-md-12 col-12">
                     <div class="col-lg-3 col-md-4 col-sm-6 mix">
                         <div class="featured__item">
@@ -680,6 +629,12 @@
                             </div>
                         </div>
                     </div>
+=======
+                
+                <!--  Product  -->
+                <div th:replace="user/layout/_list-product.html">
+                    
+>>>>>>> Stashed changes
                 </div>
             </div>
         </div>

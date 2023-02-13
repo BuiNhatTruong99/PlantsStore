@@ -33,7 +33,7 @@ public class HomeController {
 	@RequestMapping("/contact")
 	public String contact()
 	{
-		return "user/layout/contact";
+		return "user/side/contact";
 	}
 	
 	@RequestMapping("/login")
@@ -45,7 +45,7 @@ public class HomeController {
 	@RequestMapping("/cart/detail")
 	public String cart_detail()
 	{
-		return "user/layout/cart-detail";
+		return "user/cart/cart-detail";
 	}
 	
 	@RequestMapping("/account/info")
