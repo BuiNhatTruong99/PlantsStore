@@ -3,7 +3,7 @@
 		<div class="featured__item">
 			<div class="featured__item__pic set-bg"
 				data-setbg="img/featured/feature-1.jpg">
-				<a th:href="@{|/product/detail/${p.id}|}"><img
+				<a th:href="@{|/product/detail/${p.url}|}"><img
 					src="../img/product/1.jpg"></a>
 				<!--                                <img  alt=""> th:src="@{|/static/img/product/${p.image}|}"-->
 
@@ -46,7 +46,7 @@
 							</div>
 						</div>
 					</div>
-					<a href="#" class="add-cart-btn">ADD TO CART</a> <a href="#"
+					<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="add-cart-btn">ADD TO CART</a> <a href="#"
 						class="add-wish">ADD TO WISHLIST</a>
 				</div>
 			</div>

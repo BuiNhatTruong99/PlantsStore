@@ -25,4 +25,16 @@ public class Revenue implements Serializable {
 	private String categoryName;
 	@JoinColumn(name = "product_name")
 	private String productName;
+
+
+//	public static void main(String[] args) {
+//		String urlStr = "Cây Phong Lá Đỏ";
+//
+//		//Chuyển urlStr thành chữ không dấu và thay khoảng trắng bằng dấu -
+//		String slug = urlStr.toLowerCase().replaceAll("\\s+", "-").replaceAll("[^a-z0-9-]", "");
+//		System.out.println(slug);
+//
+//
+//
+//	}
 }

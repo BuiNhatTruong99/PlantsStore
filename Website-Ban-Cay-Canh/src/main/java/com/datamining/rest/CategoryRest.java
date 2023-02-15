@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-//@RestController
-//@RequestMapping("/api/category")
-//public class CategoryRest {
-//    @Autowired
-//    CategoryService categoryService;
-//
-//    @GetMapping()
-//    public List<Category> getAllCategory(){
-//        return categoryService.findAll();
-//    }
-//}
+@RestController
+@RequestMapping("/api/category")
+public class CategoryRest {
+    @Autowired
+    CategoryService categoryService;
+
+    @GetMapping()
+    public List<Category> getAllCategory(){
+        return categoryService.findAll();
+    }
+}

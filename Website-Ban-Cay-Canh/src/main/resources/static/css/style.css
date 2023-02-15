@@ -1666,7 +1666,6 @@ ul {
 }
 
 .products-size .size-swap .n-sd input:checked~label {
-    background-color: #79a206;
     color: #fff;
     font-weight: bold;
 }
@@ -1836,6 +1835,7 @@ ul {
 
 /******************* CART *************/
 .mini_cart {
+    overflow: scroll;
     position: fixed;
     min-width: 355px;
     height: 100%;

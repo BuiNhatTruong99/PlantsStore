@@ -22,7 +22,7 @@
     <link rel="icon" type="image/x-icon" href="../images/title_logo.png">
 </head>
 
-<body ng-app="appUser" ng-controller="appUser-ctrl">
+<body ng-app="shoppingCart" ng-controller="shoppingCart-ctrl">
     <div class="wrapper" id="top">
         <!-- Menu -->
         <header>
@@ -326,21 +326,9 @@
     <section class="featured spad" id="featured">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Featured Product</h2>
-                    </div>
-                    <div class="featured__controls">
-                        <ul class="category">
-                            <li class="menu-products" th:each="c:${cates}"><a
-                                    th:href="@{|/product/list?cid=${c.id}|}"><span>[[${c.name}]]</span></a></li>
-                        </ul>
-                    </div>
-                </div>
-
-
                 <!-- Catergory -->
                 <div th:replace="user/layout/_catergory.html">
+
                 </div>
 
                 <div class="row featured__filter">
@@ -349,56 +337,10 @@
                     <div th:replace="user/layout/_filter.html">
 
                     </div>
-                    <div class="row featured__right col-xl-10 col-lg-10 col-md-12 col-12">
-                        <div class="col-lg-3 col-md-4 col-sm-6 mix" th:each="p:${items}">
-                            <div class="featured__item">
-                                <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg">
-                                    <a th:href="@{|/product/detail/${p.id}|}"><img src="../img/product/1.jpg"></a>
-                                    <!--                                <img  alt=""> th:src="@{|/static/img/product/${p.image}|}"-->
+                    <!--  Product  -->
+                    <div th:replace="user/layout/_list-product.html">
 
-                                    <ul class="featured__item__pic__hover">
 
-                                        <li><a class="popup-btn"><i class="fa fa-retweet"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="featured__item__text">
-                                    <h6><a href="#">[[${p.name}]]</a></h6>
-                                    <h5>$ [[${p.price}]]</h5>
-                                </div>
-                            </div>
-                            <div class="popup-view">
-                                <div class="popup-card">
-                                    <a><i class="fas fa-times close-btn"></i></a>
-                                    <div class="product-featured-image">
-                                        <img th:src="@{|/static/img/product/${p.image}|}" alt="">
-                                    </div>
-                                    <div class="info">
-                                        <h2>[[${p.name}]]</h2>
-                                        <p>[[${p.description}]]</p>
-                                        <span class="price">$ [[${p.price}]]</span>
-                                        <div class="products-size">
-                                            <label for=""><strong>Size</strong></label>
-                                            <div class="size-swap">
-                                                <div class="n-sd size_item" data-value="s">
-                                                    <input type="radio" class="size_radio" id="size_s" name="option"
-                                                        value="S"> S
-                                                </div>
-                                                <div class="n-sd size_item" data-value="l">
-                                                    <input type="radio" class="size_radio" id="size_l" name="option"
-                                                        value="L"> L
-                                                </div>
-                                                <div class="n-sd size_item" data-value="xl">
-                                                    <input type="radio" class="size_radio" id="size_xl" name="option"
-                                                        value="XL"> XL
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="add-cart-btn">ADD TO CART</a>
-                                        <a href="#" class="add-wish">ADD TO WISHLIST</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

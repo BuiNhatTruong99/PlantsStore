@@ -5,8 +5,8 @@
 		</div>
 		<div class="featured__controls">
 			<ul class="category">
-				<li class="menu-products" th:each="c:${cates}"><a
-					th:href="@{|/product/list?cid=${c.id}|}"><span>[[${c.name}]]</span></a></li>
+				<li class="menu-products" ng-repeat="cate in cates"><a
+					th:href="@{|/product/list?cid={{cate.id}}|}"><span>{{cate.name}}</span></a></li>
 			</ul>
 		</div>
 	</div>

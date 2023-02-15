@@ -48,7 +48,7 @@
 											d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
                                                     <path
 											d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                                                </svg><span class="item_count">2</span></a>
+                                                </svg><span class="item_count">{{cart.count}}</span></a>
 
 							</div>
 							<div class="mini_cart" id="mini_cart">
@@ -68,19 +68,19 @@
                                                             </svg></a>
 										</div>
 									</div>
-									<div class="cart_item">
+									<div class="cart_item" ng-repeat="item in cart.items">
 										<div class="cart_img">
-											<a href="#"><img src="/images/products/4.jpg" alt=""></a>
+											<a href="#"><img src="../img/product/{{item.image}}" alt=""></a>
 										</div>
 										<div class="cart_info">
-											<a href="#">Primis In Faucibus</a>
+											<a href="#">{{item.name}}</a>
 											<p>
-												Quantity: <input type="number"><span> $65.00
+												Quantity: <input type="number" min="1" ng-model="item.qty" ng-change="cart.saveToLocalStorage()"><span class="price_item"> {{item.price * item.qty | number:0}} $
 												</span>
 											</p>
 										</div>
 										<div class="cart_remove">
-											<a href="#"><svg xmlns="http://www.w3.org/2000/svg"
+											<a ng-click="cart.remove(item.id)"><svg xmlns="http://www.w3.org/2000/svg"
 													width="20" height="20" fill="currentColor"
 													class="bi bi-trash" viewBox="0 0 16 16">
                                                                 <path
@@ -95,10 +95,10 @@
 								<div class="mini_cart_table">
 									<div class="cart_table_border">
 										<div class="cart_total">
-											<span>Sub total:</span> <span class="price">$125.00</span>
+											<span>Sub total:</span> <span class="price">{{cart.amount}} $</span>
 										</div>
 										<div class="cart_total mt-10">
-											<span>total:</span> <span class="price">$125.00</span>
+											<span>total:</span> <span class="price">{{cart.amount}} $</span>
 										</div>
 									</div>
 								</div>
@@ -111,7 +111,10 @@
 										<a class="active" href="checkout.html"><i
 											class="fa fa-sign-in"></i> Checkout</a>
 									</div>
-
+									<div class="cart_button mt-3">
+										<a ng-click="cart.clear()"><i
+												class="fa fa-sign-in"></i> Clear Cart</a>
+									</div>
 								</div>
 							</div>
 						</div>

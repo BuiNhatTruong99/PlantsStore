@@ -30,9 +30,9 @@ public class ProductController {
         return "user/layout/index";
     }
 
-    @RequestMapping("/product/detail/{id}")
-    public String detail(Model model, @PathVariable("id") Integer id) {
-        Product item = pService.findById(id);
+    @RequestMapping("/product/detail/{url}")
+    public String detail(Model model, @PathVariable("url") String url) {
+        Product item = pService.findByUrlEquals(url);
         model.addAttribute("item", item);
         return "user/product/product-detail";
     }

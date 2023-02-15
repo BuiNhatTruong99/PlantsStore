@@ -11,4 +11,7 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
 
     @Query(value="SELECT * FROM products WHERE categories_id=?1", nativeQuery = true)
     List<Product> findByCategoryId(String cid);
+
+
+    Product findByUrlEquals(String url);
 }

@@ -51,6 +51,7 @@ public class Account implements Serializable {
 
 	// Discounts
 	@OneToMany(mappedBy = "staff")
+	@JsonIgnore
 	private List<Discount> discounts;
 
 	// Profile
@@ -64,5 +65,6 @@ public class Account implements Serializable {
 			  joinColumns = @JoinColumn(name = "user_id"),
 			  inverseJoinColumns = @JoinColumn(name = "product_id"))
 	@JsonManagedReference
+	@JsonIgnore
 	Set<Product> product_like;
 }

@@ -14,6 +14,11 @@ public class ProductServiceImpl implements ProductService {
     ProductDao pdao;
 
     @Override
+    public Product save(Product product) {
+        return pdao.save(product);
+    }
+
+    @Override
     public List<Product> findAll() {
         return pdao.findAll();
     }
@@ -22,6 +27,11 @@ public class ProductServiceImpl implements ProductService {
     public Product findById(Integer id) {
         // TODO Auto-generated method stub
         return pdao.findById(id).get();
+    }
+
+    @Override
+    public Product findByUrlEquals(String url) {
+        return pdao.findByUrlEquals(url);
     }
 
     @Override
