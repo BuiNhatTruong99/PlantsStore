@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+
     <link rel="stylesheet" href="../lib/fontawesome-free-6.1.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
@@ -24,8 +24,9 @@
 
 <body ng-app="appUser" ng-controller="appUser-ctrl">
     <div class="wrapper" id="top">
+        <!-- Menu -->
         <header>
-           <div th:replace="user/layout/_menu.html"></div>
+            <div th:replace="user/layout/_menu.html"></div>
         </header>
     </div>
     <section class="slider owl-carousel owl-theme" id="owl-trans">
@@ -233,7 +234,8 @@
                                     <article class="single_blog">
                                         <figure>
                                             <div class="blog_thumb">
-                                                <a href="blog-details.html"><img src="../images/products/8.jpg" alt=""></a>
+                                                <a href="blog-details.html"><img src="../images/products/8.jpg"
+                                                        alt=""></a>
                                             </div>
                                             <figcaption class="blog_content">
                                                 <h4 class="post_title"><a href="blog-details.html">Blog image post</a>
@@ -253,7 +255,8 @@
                                     <article class="single_blog">
                                         <figure>
                                             <div class="blog_thumb">
-                                                <a href="blog-details.html"><img src="../images/products/8.jpg" alt=""></a>
+                                                <a href="blog-details.html"><img src="../images/products/8.jpg"
+                                                        alt=""></a>
                                             </div>
                                             <figcaption class="blog_content">
                                                 <h4 class="post_title"><a href="blog-details.html">Blog image post</a>
@@ -293,7 +296,8 @@
                                     <article class="single_blog">
                                         <figure>
                                             <div class="blog_thumb">
-                                                <a href="blog-details.html"><img src="../images/products/8.jpg" alt=""></a>
+                                                <a href="blog-details.html"><img src="../images/products/8.jpg"
+                                                        alt=""></a>
                                                 <ul class="blog__item__pic__hover">
                                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                                     <li><a class=""><i class="fa fa-retweet"></i></a></li>
@@ -328,131 +332,76 @@
                     </div>
                     <div class="featured__controls">
                         <ul class="category">
-                            <li class="menu-products" th:each="c:${cates}"><a th:href="@{|/product/list?cid=${c.id}|}"><span>[[${c.name}]]</span></a></li>
+                            <li class="menu-products" th:each="c:${cates}"><a
+                                    th:href="@{|/product/list?cid=${c.id}|}"><span>[[${c.name}]]</span></a></li>
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="row featured__filter">
-                <div class="featured__left col-xl-2 col-lg-2 col-md-12 col-12">
-                    <div class="bwp-sidebar sidebar-product">
-                        <h2 class="filters_products_price">Price</h2>
-                        <form id="bwp_form_filter_product">
-                            <div class="bwp-filter bwp-filter-category">
-                                <div id="pa_category" class="filter_category_product">
-                                    <div data-id_category="5" class="item-category "><label class="name">Under
-                                            $50</label>
-                                        <div class="count"><input type="radio" name="count" id=""></div>
-                                    </div>
-                                    <div data-id_category="510" class="item-category "><label class="name">$50 to
-                                            $100</label>
-                                        <div class="count"><input type="radio" name="count" id=""></div>
-                                    </div>
-                                    <div data-id_category="1030" class="item-category "><label class="name">$100 to
-                                            $300</label>
-                                        <div class="count"><input type="radio" name="count" id=""></div>
-                                    </div>
-                                    <div data-id_category="30" class="item-category "><label class="name">Above
-                                            $300</label>
-                                        <div class="count"><input type="radio" name="count" id=""></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="bwp-sidebar sidebar-product">
-                        <h2 class="filters_products_price">Rate</h2>
-                        <form id="bwp_form_filter_product">
-                            <div class="bwp-filter bwp-filter-category">
-                                <div id="pa_category" class="filter_category_product">
-                                    <div class="shop-filters__stars">
-                                        <div class="starts">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <div class="check_5rate"><input type="radio" name="check_rate" id=""></div>
-                                    </div>
-                                    <div class="shop-filters__stars">
-                                        <div class="starts">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star start-white"></i>
-                                        </div>
-                                        <div class="check_4rate"><input type="radio" name="check_rate" id=""></div>
-                                    </div>
-                                    <div class="shop-filters__stars">
-                                        <div class="starts">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star start-white"></i>
-                                            <i class="fas fa-star start-white"></i>
-                                        </div>
-                                        <div class="check_3rate"><input type="radio" name="check_rate" id=""></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+
+
+                <!-- Catergory -->
+                <div th:replace="user/layout/_catergory.html">
                 </div>
-                <div class="row featured__right col-xl-10 col-lg-10 col-md-12 col-12">
-                    <div class="col-lg-3 col-md-4 col-sm-6 mix" th:each="p:${items}">
-                        <div class="featured__item">
-                            <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg">
-                                <a th:href="@{|/product/detail/${p.id}|}"><img  src="../img/product/1.jpg"></a>
-<!--                                <img  alt=""> th:src="@{|/static/img/product/${p.image}|}"-->
 
-                                <ul class="featured__item__pic__hover">
+                <div class="row featured__filter">
 
-                                    <li><a class="popup-btn"><i class="fa fa-retweet"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="featured__item__text">
-                                <h6><a href="#">[[${p.name}]]</a></h6>
-                                <h5>$ [[${p.price}]]</h5>
-                            </div>
-                        </div>
-                        <div class="popup-view">
-                            <div class="popup-card">
-                                <a><i class="fas fa-times close-btn"></i></a>
-                                <div class="product-featured-image">
-                                    <img th:src="@{|/static/img/product/${p.image}|}" alt="">
+                    <!-- Filter -->
+                    <div th:replace="user/layout/_filter.html">
+
+                    </div>
+                    <div class="row featured__right col-xl-10 col-lg-10 col-md-12 col-12">
+                        <div class="col-lg-3 col-md-4 col-sm-6 mix" th:each="p:${items}">
+                            <div class="featured__item">
+                                <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg">
+                                    <a th:href="@{|/product/detail/${p.id}|}"><img src="../img/product/1.jpg"></a>
+                                    <!--                                <img  alt=""> th:src="@{|/static/img/product/${p.image}|}"-->
+
+                                    <ul class="featured__item__pic__hover">
+
+                                        <li><a class="popup-btn"><i class="fa fa-retweet"></i></a></li>
+                                    </ul>
                                 </div>
-                                <div class="info">
-                                    <h2>[[${p.name}]]</h2>
-                                    <p>[[${p.description}]]</p>
-                                    <span class="price">$ [[${p.price}]]</span>
-                                    <div class="products-size">
-                                        <label for=""><strong>Size</strong></label>
-                                        <div class="size-swap">
-                                            <div class="n-sd size_item" data-value="s">
-                                                <input type="radio" class="size_radio" id="size_s" name="option"
-                                                    value="S"> S
-                                            </div>
-                                            <div class="n-sd size_item" data-value="l">
-                                                <input type="radio" class="size_radio" id="size_l" name="option"
-                                                    value="L"> L
-                                            </div>
-                                            <div class="n-sd size_item" data-value="xl">
-                                                <input type="radio" class="size_radio" id="size_xl" name="option"
-                                                    value="XL"> XL
+                                <div class="featured__item__text">
+                                    <h6><a href="#">[[${p.name}]]</a></h6>
+                                    <h5>$ [[${p.price}]]</h5>
+                                </div>
+                            </div>
+                            <div class="popup-view">
+                                <div class="popup-card">
+                                    <a><i class="fas fa-times close-btn"></i></a>
+                                    <div class="product-featured-image">
+                                        <img th:src="@{|/static/img/product/${p.image}|}" alt="">
+                                    </div>
+                                    <div class="info">
+                                        <h2>[[${p.name}]]</h2>
+                                        <p>[[${p.description}]]</p>
+                                        <span class="price">$ [[${p.price}]]</span>
+                                        <div class="products-size">
+                                            <label for=""><strong>Size</strong></label>
+                                            <div class="size-swap">
+                                                <div class="n-sd size_item" data-value="s">
+                                                    <input type="radio" class="size_radio" id="size_s" name="option"
+                                                        value="S"> S
+                                                </div>
+                                                <div class="n-sd size_item" data-value="l">
+                                                    <input type="radio" class="size_radio" id="size_l" name="option"
+                                                        value="L"> L
+                                                </div>
+                                                <div class="n-sd size_item" data-value="xl">
+                                                    <input type="radio" class="size_radio" id="size_xl" name="option"
+                                                        value="XL"> XL
+                                                </div>
                                             </div>
                                         </div>
+                                        <a href="#" class="add-cart-btn">ADD TO CART</a>
+                                        <a href="#" class="add-wish">ADD TO WISHLIST</a>
                                     </div>
-                                    <a href="#" class="add-cart-btn">ADD TO CART</a>
-                                    <a href="#" class="add-wish">ADD TO WISHLIST</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
     <div class="scrolls">
         <a href="#top"><i class="fas fa-caret-up"></i></a>
@@ -549,7 +498,7 @@
     </footer>
 
 
-	<div th:replace="user/layout/_script.html"></div>
+    <div th:replace="user/layout/_script.html"></div>
 
 </body>
 
