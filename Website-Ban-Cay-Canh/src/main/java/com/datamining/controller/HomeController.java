@@ -31,7 +31,7 @@ public class HomeController {
 	@RequestMapping("/login")
 	public String login()
 	{
-		return "user/security/login";
+		return "user/security/loginQR";
 	}
 	
 	@RequestMapping("/cart/detail")
