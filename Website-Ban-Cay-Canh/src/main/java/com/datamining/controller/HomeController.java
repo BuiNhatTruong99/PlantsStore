@@ -45,7 +45,13 @@ public class HomeController {
 	{
 		return "user/security/my-account";
 	}
-	
+
+	@RequestMapping("/gender")
+	public String genderQr()
+	{
+		return "user/security/genderQr";
+	}
+
 //	@RequestMapping("/product/detail")
 //	public String product_detail()
 //	{

@@ -9,9 +9,6 @@ app.controller('shoppingCart-ctrl', function($scope, $http) {
     };
     $scope.cates();
 
-
-
-
     $scope.cart = {
         items: [],
         add(id) {
