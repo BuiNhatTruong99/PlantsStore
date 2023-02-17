@@ -14,38 +14,30 @@ import com.datamining.entity.Product;
 
 @Controller
 public class HomeController {
-	
-//	@Autowired
-//	CategoryDAO dao;
-	
-//	<div th:each="p:${items}" >
-//	<h2 th:utext="${p.name}"></h2>
-//	
-//</div>
-	
+
 	@RequestMapping({"/", "/home/index"})
 	public String home(Model model) {
 //		List<Category> sp = dao.findAll();
 //		model.addAttribute("items",sp);
-		return "user/layout/index";
+		return "redirect:/product/list";
 	}
 	
 	@RequestMapping("/contact")
 	public String contact()
 	{
-		return "user/layout/contact";
+		return "user/side/contact";
 	}
 	
-	@RequestMapping("/login")
-	public String login()
-	{
-		return "user/security/login";
-	}
+//	@RequestMapping("/login")
+//	public String login()
+//	{
+//		return "user/security/loginQR";
+//	}
 	
 	@RequestMapping("/cart/detail")
 	public String cart_detail()
 	{
-		return "user/layout/cart-detail";
+		return "user/cart/cart-detail";
 	}
 	
 	@RequestMapping("/account/info")
@@ -54,11 +46,11 @@ public class HomeController {
 		return "user/security/my-account";
 	}
 	
-	@RequestMapping("/product/detail")
-	public String product_detail()
-	{
-		return "user/product/product-detail";
-	}
+//	@RequestMapping("/product/detail")
+//	public String product_detail()
+//	{
+//		return "user/product/product-detail";
+//	}
 	
 	@RequestMapping("/product/wish")
 	public String product_wish()

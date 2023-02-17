@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scanner {
+    overflow: hidden;
+    height: 350px;
+    transition: 0.2s;
+}
+
+.scanner h1 {
+    font-size: 21px;
+    margin-bottom: 15px;
+}
+
+.scanner h1 i {
+    font-size: x-large;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.scanner h1 .fa-camera {
+    color: #0283d8;
+}
+
+.scanner h1 .fa-circle-stop {
+    color: crimson;
+    display: none;
+}
+
+.scanner-form {
+    height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px dashed #777;
+}
+
+.scanner-form img {
+    max-width: 180px;
+    display: none;
+}
+
+.scanner-form video {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.scanner-form .content{
+    color: #0283d8;
+}
+
+.scanner-form .content i {
+    font-size: 4rem;
+}
+
+.scanner-form .content p {
+    font-size: 1.2rem;
+    margin-top: 15px;
+}
+
+.scanner-details .btn {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.scanner-details .btn button {
+    height: 50px;
+    width: 100px;
+    background-color: #0283d8;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+
+
+
+.scanner.active .scanner-form {
+    pointer-events: none;
+}
+
+.scanner-form.active-img img {
+    display: block;
+}
+
+.scanner-form.active-img .content,
+.scanner-form.active-img video {
+    display: none;
+}
+
+.scanner-form.active-video video {
+    display: block;
+}
+.scanner-form.active-video .content,
+.scanner-form.active-video img {
+    display: none;
+}
+
+.pointerEvents {
+    pointer-events: none;
+}

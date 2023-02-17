@@ -5,18 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -36,6 +25,7 @@ public class Product implements Serializable {
 	private String image;
 	private String description;
 	private String status;
+	private String url;
 	private Boolean is_delete = false;
 	@Temporal(TemporalType.DATE)
 	private Date create_date = new Date();
@@ -49,8 +39,8 @@ public class Product implements Serializable {
 
 	// material_id
 	@ManyToOne
-	@JoinColumn(name = "material_id")
-	private ProductMaterial material;
+	@JoinColumn(name = "prod_material_id")
+	ProductMaterial material;
 
 	// categories_id
 	@ManyToOne
@@ -58,19 +48,20 @@ public class Product implements Serializable {
 	private Category categories;
 
 	// Wish_List
-	@ManyToMany(mappedBy = "product_like")
+	@ManyToMany(mappedBy = "product_like", fetch = FetchType.LAZY)
 	@JsonBackReference
 	private Set<Account> likes;
 
 	// Order_Detail
-	@OneToMany(mappedBy = "product")
+	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
 	private List<OrderDetail> oderDetails;
 
 	// Product_Rate
-	@OneToMany(mappedBy = "productRate")
+	@OneToMany(mappedBy = "productRate", fetch = FetchType.LAZY)
 	private List<ProductRate> productRates;
 
 	// Product_Size
-	@OneToMany(mappedBy = "product")
+	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
 	private Set<ProductSize> ratings;
+
 }
