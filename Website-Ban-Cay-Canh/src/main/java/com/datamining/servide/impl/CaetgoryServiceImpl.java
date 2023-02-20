@@ -18,4 +18,19 @@ public class CaetgoryServiceImpl implements CategoryService {
         // TODO Auto-generated method stub
         return cdao.findAll();
     }
+
+    @Override
+    //save
+    public Category save(Category category) {
+        // TODO Auto-generated method stub
+        return cdao.save(category);
+    }
+
+    @Override
+    public String findIdByUrlEquals(String url) {
+        // TODO Auto-generated method stub
+        return cdao.findIdByUrlEquals(url);
+    }
+
+
 }

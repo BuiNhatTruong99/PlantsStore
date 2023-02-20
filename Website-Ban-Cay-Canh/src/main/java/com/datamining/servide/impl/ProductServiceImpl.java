@@ -39,4 +39,10 @@ public class ProductServiceImpl implements ProductService {
         // TODO Auto-generated method stub
         return pdao.findByCategoryId(cid);
     }
+
+    @Override
+    public List<Product> findByKeyword(String keyword) {
+        // TODO Auto-generated method stub
+        return pdao.findByKeyword(keyword);
+    }
 }

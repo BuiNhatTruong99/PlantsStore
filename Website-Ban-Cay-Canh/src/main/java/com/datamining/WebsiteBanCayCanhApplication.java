@@ -1,6 +1,7 @@
 package com.datamining;
 
 import com.datamining.entity.Product;
+import com.datamining.service.CategoryService;
 import com.datamining.service.ProductService;
 import com.datamining.utils.StringUtils;
 import lombok.var;
@@ -15,6 +16,7 @@ public class WebsiteBanCayCanhApplication {
     public static void main(String[] args) {
         SpringApplication.run(WebsiteBanCayCanhApplication.class, args);
     }
+
 
 //
 //    @Bean
@@ -38,4 +40,19 @@ public class WebsiteBanCayCanhApplication {
 //        };
 //    }
 
-}
+//    @Bean
+//    CommandLineRunner run(CategoryService categoryService) {
+//        return args -> {
+//            var categories = categoryService.findAll();
+//            categories.forEach(p -> {
+//                String name = p.getName();
+//                String nameEn = StringUtils.removeAccent(name);
+//                nameEn = nameEn.toLowerCase();
+//                String urlSlug = nameEn.replaceAll(" ", "-");
+//                String urlHtml = urlSlug + ".html";
+//                p.setUrl(urlHtml);
+//                categoryService.save(p);
+//            });
+//        };
+//    }}
+};

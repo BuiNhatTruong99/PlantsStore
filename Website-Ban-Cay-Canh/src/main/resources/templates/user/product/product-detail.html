@@ -25,25 +25,22 @@
         </header>
     </div>
     <div class="container">
-        <div class="row m-3" th:each="d:${item}">
+        <div class="row m-3" th:object="${item}">
             <div class="bwp-single-image col-lg-6 col-md-12 col-12 text-center">
                 <div class="left-detail col-md-10 col-lg-12 m-auto p-0">
                     <div class="img-size">
-                        <img th:src="@{|/static/img/product/${d.id}|}" alt="">
+                        <img th:src="@{|/img/product/*{image}|}" alt="">
                     </div>
                 </div>
                 <div class="same-products">
                     <div class="owl-carousel owl-same-products">
-                        <div class="item"><a href=""><img src="/images/products/5.jpg" alt=""></a></div>
-                        <div class="item"><a href=""><img src="/images/products/6.jpg" alt=""></a></div>
-                        <div class="item"><a href=""><img src="/images/products/7.jpg" alt=""></a></div>
-                        <div class="item"><a href=""><img src="/images/products/8.jpg" alt=""></a></div>
+                        <div class="item" th:each="p:*{categories.products}"><a th:href="@{|/product/detail/${p.url}|}"><img th:src="@{|/img/product/${p.image}|}"></a></div>
                     </div>
                 </div>
             </div>
             <div class="bwp-single-infor col-lg-6 col-md-12 col-12">
                 <div class="right-detail">
-                    <h1 itemprop="name" class="product_title entry-title">[[${d.name}]]</h1>
+                    <h1 itemprop="name" class="product_title entry-title">[[*{name}]]</h1>
                     <div class="product_ratting">
                         <ul>
                             <li><a href=""><i class="fas fa-star"></i></a></li>
@@ -54,10 +51,10 @@
                         </ul>
                     </div>
                     <div class="price"><span class="woocommerce-Price-amount amount"><span
-                                class="woocommerce-Price-currencySymbol">$</span>[[${d.price}]]</span></div>
+                                class="woocommerce-Price-currencySymbol">$</span>[[*{price}]]</span></div>
 
                     <div itemprop="description" class="description col-10">
-                        <p>[[${d.description}]]</p>
+                        <p>[[*{description}]]</p>
                     </div>
                     <div class="products-size">
                         <label for=""><strong>Size</strong></label>

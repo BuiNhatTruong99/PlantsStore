@@ -1,6 +1,7 @@
 package com.datamining.controller;
 
 import com.datamining.entity.Product;
+import com.datamining.service.CategoryService;
 import com.datamining.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,10 +18,14 @@ public class ProductController {
     @Autowired
     ProductService pService;
 
+    @Autowired
+    CategoryService cService;
+
     @RequestMapping("/product/list")
-    public String list(Model model,@RequestParam("cid") Optional<String> cid) {
-        if(cid.isPresent()) {
-            List<Product> list = pService.findByCategoryId(cid.get());
+    public String list(Model model,@RequestParam("cate") Optional<String> cate) {
+        if(cate.isPresent()) {
+            String id = cService.findIdByUrlEquals(cate.get());
+            List<Product> list = pService.findByCategoryId(id);
             model.addAttribute("items", list);
         } else {
             List<Product> list = pService.findAll();
@@ -35,5 +40,12 @@ public class ProductController {
         Product item = pService.findByUrlEquals(url);
         model.addAttribute("item", item);
         return "user/product/product-detail";
+    }
+
+    @RequestMapping("/product/list/search")
+    public String search(Model model, @RequestParam("keyword") String keyword) {
+        List<Product> list = pService.findByKeyword(keyword);
+        model.addAttribute("items", list);
+        return "user/layout/index";
     }
 }

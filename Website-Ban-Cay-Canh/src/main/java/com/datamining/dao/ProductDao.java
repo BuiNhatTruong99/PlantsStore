@@ -14,4 +14,7 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
 
 
     Product findByUrlEquals(String url);
+
+    @Query(value="SELECT * FROM Products p WHERE p.name like %?1%", nativeQuery = true)
+    List<Product> findByKeyword(String keyword);
 }

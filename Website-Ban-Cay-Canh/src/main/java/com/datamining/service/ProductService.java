@@ -13,4 +13,6 @@ public interface ProductService {
     Product findByUrlEquals(String url);
 
     List<Product> findByCategoryId(String cid);
+
+    List<Product> findByKeyword(String keyword);
 }

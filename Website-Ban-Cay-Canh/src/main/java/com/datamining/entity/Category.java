@@ -24,6 +24,7 @@ public class Category implements Serializable {
 	private Integer id;
 	private String name;
 	private Boolean status = false;
+	private String url;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "categories")

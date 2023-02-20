@@ -3,9 +3,7 @@
 		<div class="featured__item">
 			<div class="featured__item__pic set-bg"
 				data-setbg="img/featured/feature-1.jpg">
-				<a th:href="@{|/product/detail/${p.url}|}"><img
-					src="../img/product/1.jpg"></a>
-				<!--                                <img  alt=""> th:src="@{|/static/img/product/${p.image}|}"-->
+				<a th:href="@{|/product/detail/${p.url}|}"><img  alt="" th:src="@{|/img/product/${p.image}|}"></a>
 
 				<ul class="featured__item__pic__hover">
 
@@ -23,7 +21,7 @@
 			<div class="popup-card">
 				<a><i class="fas fa-times close-btn"></i></a>
 				<div class="product-featured-image">
-					<img th:src="@{|/static/img/product/${p.image}|}" alt="">
+					<img th:src="@{|/img/product/${p.image}|}" alt="">
 				</div>
 				<div class="info">
 					<h2>[[${p.name}]]</h2>
