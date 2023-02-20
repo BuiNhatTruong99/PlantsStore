@@ -177,6 +177,25 @@ function content() {
     }
 }
 
+function submitForm() {
+    document.getElementById("bwp_form_filter_product").submit();
+}
+
+
+$(document).ready(function(){
+    $('#bwp_form_filter_product').submit(function(e){
+        e.preventDefault();
+        $.ajax({
+            url: "/products_filter",
+            type: "POST",
+            data: $(this).serialize(),
+            success: function(data){
+                $(".featured_load").html(data);
+            }
+        });
+    });
+});
+
 
 
 

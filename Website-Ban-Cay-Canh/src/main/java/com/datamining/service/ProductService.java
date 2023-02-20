@@ -15,4 +15,7 @@ public interface ProductService {
     List<Product> findByCategoryId(String cid);
 
     List<Product> findByKeyword(String keyword);
+
+
+    List<Product> findByPriceBetween(Double price1, Double price2);
 }

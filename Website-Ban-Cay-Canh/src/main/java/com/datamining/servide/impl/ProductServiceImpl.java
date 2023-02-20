@@ -45,4 +45,12 @@ public class ProductServiceImpl implements ProductService {
         // TODO Auto-generated method stub
         return pdao.findByKeyword(keyword);
     }
+
+
+    @Override
+    public List<Product> findByPriceBetween(Double price1, Double price2) {
+        return pdao.findByPriceBetween(price1, price2);
+    }
+
+
 }

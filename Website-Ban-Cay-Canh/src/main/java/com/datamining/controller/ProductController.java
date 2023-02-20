@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -42,9 +43,19 @@ public class ProductController {
         return "user/product/product-detail";
     }
 
-    @RequestMapping("/product/list/search")
+    @RequestMapping("/product/search")
     public String search(Model model, @RequestParam("keyword") String keyword) {
         List<Product> list = pService.findByKeyword(keyword);
+        model.addAttribute("items", list);
+        return "user/layout/index";
+    }
+
+    @PostMapping("/products_filter")
+    public String filter(Model model, @RequestParam("count") String price) {
+        String[] arr = price.split(" ");
+        Double price1 = Double.parseDouble(arr[0]);
+        Double price2 = Double.parseDouble(arr[1]);
+        List<Product> list = pService.findByPriceBetween(price1, price2);
         model.addAttribute("items", list);
         return "user/layout/index";
     }
