@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 					flatten: false,
 					expand: true,
 					production: false,
-					assets: '<%= app.docs.dest %>/assets',
+					../admin/assets: '<%= app.docs.dest %>/../admin/assets',
 					postprocess: require('pretty'),
 
 					// metadata
@@ -85,10 +85,10 @@ module.exports = function(grunt) {
 				docs: {
 					options: {
 						outputStyle: 'compressed',
-						includePaths: [ '<%= app.docs.src %>/assets/scss/', 'node_modules/foundation-sites/scss' ]
+						includePaths: [ '<%= app.docs.src %>/../admin/assets/scss/', 'node_modules/foundation-sites/scss' ]
 					},
 					files: {
-						'<%= app.docs.dest %>/assets/css/docs.theme.min.css': '<%= app.docs.src %>/assets/scss/docs.theme.scss'
+						'<%= app.docs.dest %>/../admin/assets/css/docs.theme.min.css': '<%= app.docs.src %>/../admin/assets/scss/docs.theme.scss'
 					}
 				},
 				dist: {
@@ -96,9 +96,9 @@ module.exports = function(grunt) {
 						outputStyle: 'nested'
 					},
 					files: {
-						'dist/assets/<%= pkg.name %>.css': 'src/scss/<%= pkg.name %>.scss',
-						'dist/assets/owl.theme.default.css': 'src/scss/owl.theme.default.scss',
-						'dist/assets/owl.theme.green.css': 'src/scss/owl.theme.green.scss'
+						'dist/../admin/assets/<%= pkg.name %>.css': 'src/scss/<%= pkg.name %>.scss',
+						'dist/../admin/assets/owl.theme.default.css': 'src/scss/owl.theme.default.scss',
+						'dist/../admin/assets/owl.theme.green.css': 'src/scss/owl.theme.green.scss'
 					}
 				}
 			},
@@ -109,9 +109,9 @@ module.exports = function(grunt) {
 				},
 				dist: {
 					files: {
-						'dist/assets/<%= pkg.name %>.css': 'dist/assets/<%= pkg.name %>.css',
-						'dist/assets/owl.theme.default.css': 'dist/assets/owl.theme.default.css',
-						'dist/assets/owl.theme.green.css': 'dist/assets/owl.theme.green.css'
+						'dist/../admin/assets/<%= pkg.name %>.css': 'dist/../admin/assets/<%= pkg.name %>.css',
+						'dist/../admin/assets/owl.theme.default.css': 'dist/../admin/assets/owl.theme.default.css',
+						'dist/../admin/assets/owl.theme.green.css': 'dist/../admin/assets/owl.theme.green.css'
 					}
 				}
 			},
@@ -127,9 +127,9 @@ module.exports = function(grunt) {
 			cssmin: {
 				dist: {
 					files: {
-						'dist/assets/<%= pkg.name %>.min.css': 'dist/assets/<%= pkg.name %>.css',
-						'dist/assets/owl.theme.default.min.css': 'dist/assets/owl.theme.default.css',
-						'dist/assets/owl.theme.green.min.css': 'dist/assets/owl.theme.green.css'
+						'dist/../admin/assets/<%= pkg.name %>.min.css': 'dist/../admin/assets/<%= pkg.name %>.css',
+						'dist/../admin/assets/owl.theme.default.min.css': 'dist/../admin/assets/owl.theme.default.css',
+						'dist/../admin/assets/owl.theme.green.min.css': 'dist/../admin/assets/owl.theme.green.css'
 					}
 				}
 			},
@@ -170,7 +170,7 @@ module.exports = function(grunt) {
 					files: {
 						src: [
 							'dist/<%= pkg.name %>.js',
-							'dist/assets/*.css'
+							'dist/../admin/assets/*.css'
 						]
 					}
 				}
@@ -194,28 +194,28 @@ module.exports = function(grunt) {
 					flatten: true,
 					cwd: 'src/',
 					src: [ 'img/*.*' ],
-					dest: 'dist/assets'
+					dest: 'dist/../admin/assets'
 				},
 
 				distToDocs: {
 					expand: true,
 					cwd: 'dist/',
 					src: [ '**/*.*' ],
-					dest: '<%= app.docs.dest %>/assets/owlcarousel'
+					dest: '<%= app.docs.dest %>/../admin/assets/owlcarousel'
 				},
 
 				srcToDocs: {
 					expand: true,
 					cwd: 'src/js',
 					src: [ '**/*.js' ],
-					dest: '<%= app.docs.dest %>/assets/owlcarousel/src'
+					dest: '<%= app.docs.dest %>/../admin/assets/owlcarousel/src'
 				},
 
-				docsAssets: {
+				docs../admin/assets: {
 					expand: true,
-					cwd: '<%= app.docs.src %>/assets/',
+					cwd: '<%= app.docs.src %>/../admin/assets/',
 					src: [ 'css/*.css', 'vendors/*.js', 'vendors/*.map', 'img/*.*', 'js/*.*' ],
-					dest: '<%= app.docs.dest %>/assets/'
+					dest: '<%= app.docs.dest %>/../admin/assets/'
 				},
 
 				readme: {
@@ -251,7 +251,7 @@ module.exports = function(grunt) {
 					tasks: [ 'assemble' ]
 				},
 				sassDocs: {
-					files: [ '<%= app.docs.src %>/assets/**/*.scss' ],
+					files: [ '<%= app.docs.src %>/../admin/assets/**/*.scss' ],
 					tasks: [ 'sass:docs' ]
 				},
 				sass: {
@@ -259,8 +259,8 @@ module.exports = function(grunt) {
 					tasks: [ 'sass:dist', 'cssmin:dist', 'usebanner:dist', 'copy:distToDocs' ]
 				},
 				jsDocs: {
-					files: [ '<%= app.docs.src %>/assets/**/*.js' ],
-					tasks: [ 'copy:docsAssets' ]
+					files: [ '<%= app.docs.src %>/../admin/assets/**/*.js' ],
+					tasks: [ 'copy:docs../admin/assets' ]
 				},
 				js: {
 					files: [ 'src/**/*.js' ],
@@ -305,7 +305,7 @@ module.exports = function(grunt) {
 	// tasks
 	grunt.registerTask('dist', [ 'clean:dist', 'sass:dist', 'autoprefixer', 'concat:dist', 'cssmin:dist', 'copy:distImages', 'usebanner:dist', 'uglify:dist', 'copy:readme' ]);
 
-	grunt.registerTask('docs', [ 'dist', 'clean:docs', 'assemble', 'sass:docs', 'copy:docsAssets', 'copy:distToDocs', 'zip' ]);
+	grunt.registerTask('docs', [ 'dist', 'clean:docs', 'assemble', 'sass:docs', 'copy:docs../admin/assets', 'copy:distToDocs', 'zip' ]);
 
 	grunt.registerTask('test', [ 'jshint:dist', 'qunit:dist', 'jscs:dist' ]);
 

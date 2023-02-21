@@ -67,6 +67,6 @@ public class HomeController {
 	@RequestMapping("/admin")
 	public String admin()
 	{
-		return "../admin/index";
+		return "../static/admin/index";
 	}
 }

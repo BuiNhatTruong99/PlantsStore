@@ -180,21 +180,23 @@ function content() {
 function submitForm() {
     document.getElementById("bwp_form_filter_product").submit();
 }
+        //
+        // $("#bwp_form_filter_product").submit(function(e){
+        //     e.preventDefault();
+        //     var action = $(this).attr("action");
+        //     var data = {};
+        //     $(this).serializeArray().map(function(x){data[x.name] = x.value;});
+        //     $.ajax({
+        //         type: "POST",
+        //         url: action,
+        //         data: JSON.stringify(data)
+        //     }).done(function() {
+        //         console.log("ok")
+        //     }).fail(function() {
+        //         alert('An error occurred please try again later.')
+        //     });
+        // });
 
-
-$(document).ready(function(){
-    $('#bwp_form_filter_product').submit(function(e){
-        e.preventDefault();
-        $.ajax({
-            url: "/products_filter",
-            type: "POST",
-            data: $(this).serialize(),
-            success: function(data){
-                $(".featured_load").html(data);
-            }
-        });
-    });
-});
 
 
 
