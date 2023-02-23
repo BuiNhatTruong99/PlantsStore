@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
@@ -53,14 +54,17 @@ public class Product implements Serializable {
 	private Set<Account> likes;
 
 	// Order_Detail
+	@JsonIgnore
 	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
 	private List<OrderDetail> oderDetails;
 
 	// Product_Rate
-	@OneToMany(mappedBy = "productRate", fetch = FetchType.LAZY)
+	@JsonIgnore
+	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
 	private List<ProductRate> productRates;
 
 	// Product_Size
+	@JsonIgnore
 	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
 	private Set<ProductSize> ratings;
 

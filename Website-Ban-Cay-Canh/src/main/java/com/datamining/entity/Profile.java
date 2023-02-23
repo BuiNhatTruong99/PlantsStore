@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -34,11 +36,18 @@ public class Profile implements Serializable {
 	private String address;
 
 	// Account
-	@OneToOne // 1 account chi co 1 profile duy nhat
-	@JoinColumn(name = "user_id")
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL) // 1 account chi co 1 profile duy nhat
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
     private Account account;
+	
+	// Product_Rate
+	@JsonIgnore
+	@OneToMany(mappedBy = "user")
+	private List<ProductRate> feedbacks;
 
 	// Order
+	@JsonIgnore
 	@OneToMany(mappedBy = "profile")
 	List<Order> order;
 }

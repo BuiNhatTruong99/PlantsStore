@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,6 +20,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -45,26 +47,22 @@ public class Account implements Serializable {
 	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
 	private List<Authority> authorities;
 
-	// Product_Rate
-	@OneToMany(mappedBy = "user")
-	private List<ProductRate> feedbacks;
-
 	// Discounts
-	@OneToMany(mappedBy = "staff")
 	@JsonIgnore
+	@OneToMany(mappedBy = "staff")
 	private List<Discount> discounts;
 
 	// Profile
+	@JsonIgnore
 	@OneToOne(mappedBy = "account")
     private Profile profile;
 
 	// Wish_List
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(
 			  name = "Wish_List",
 			  joinColumns = @JoinColumn(name = "user_id"),
 			  inverseJoinColumns = @JoinColumn(name = "product_id"))
 	@JsonManagedReference
-	@JsonIgnore
 	Set<Product> product_like;
 }
