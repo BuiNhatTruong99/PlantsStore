@@ -50,7 +50,6 @@ public class Account implements Serializable{
 	// Discounts
 	@JsonIgnore
 	@OneToMany(mappedBy = "staff")
-	@JsonIgnore
 	private List<Discount> discounts;
 
 	// Profile
