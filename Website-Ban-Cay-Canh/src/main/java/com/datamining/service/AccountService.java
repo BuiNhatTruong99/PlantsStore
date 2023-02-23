@@ -5,12 +5,11 @@ import java.util.List;
 
 public interface AccountService {
 
-	Account findByTk(String username);
-
     List<Account> findAll();
 
     Account findById(Integer id);
-
+    
+    Account findByTk(String username);
 
     Account update(Account account);
 }

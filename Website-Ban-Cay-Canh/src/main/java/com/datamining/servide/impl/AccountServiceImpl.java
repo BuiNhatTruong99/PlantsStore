@@ -15,7 +15,6 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     AccountDAO accountDAO;
 
-
     @Override
     public List<Account> findAll() {
         return accountDAO.findAll();
@@ -25,6 +24,12 @@ public class AccountServiceImpl implements AccountService {
     public Account findById(Integer id) {
         return accountDAO.findById(id).get();
     }
+    
+	@Override
+	public Account findByTk(String username) {
+		// TODO Auto-generated method stub
+		return accountDAO.findByTk(username);
+	}
 
     @Override
     public Account update(Account account) {
