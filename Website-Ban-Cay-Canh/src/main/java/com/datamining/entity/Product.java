@@ -52,7 +52,6 @@ public class Product implements Serializable {
 	private Category categories;
 
 	// Wish_List
-	@JsonIgnore
 	@ManyToMany(mappedBy = "product_like", fetch = FetchType.LAZY)
 	@JsonBackReference
 	private Set<Account> likes;
