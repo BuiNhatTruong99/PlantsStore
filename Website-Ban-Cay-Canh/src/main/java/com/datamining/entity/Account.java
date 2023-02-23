@@ -30,7 +30,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "Accounts")
-public class Account implements Serializable {
+public class Account implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -50,6 +50,7 @@ public class Account implements Serializable {
 	// Discounts
 	@JsonIgnore
 	@OneToMany(mappedBy = "staff")
+	@JsonIgnore
 	private List<Discount> discounts;
 
 	// Profile
@@ -64,5 +65,6 @@ public class Account implements Serializable {
 			  joinColumns = @JoinColumn(name = "user_id"),
 			  inverseJoinColumns = @JoinColumn(name = "product_id"))
 	@JsonManagedReference
+	@JsonIgnore
 	Set<Product> product_like;
 }

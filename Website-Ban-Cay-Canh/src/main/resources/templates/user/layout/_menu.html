@@ -1,5 +1,6 @@
 
-<div class="main-header" xmlns:th="http://www.thymeleaf.org">
+<div class="main-header" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	<div class="header-top">
 		<div class="container-fluid">
 			<div class="row align-items-center">
@@ -24,13 +25,14 @@
 						</div>
 						<div class="header_account_area">
 							<div class="header_account-list top_links">
-								<a href="/login"><svg xmlns="http://www.w3.org/2000/svg"
-										width="25" height="25" fill="currentColor"
-										class="bi bi-people" viewBox="0 0 16 16">
+								<a href="/login/form"><svg
+										xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+										fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
                                                     <path
 											d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
                                                 </svg></a>
 							</div>
+							
 							<div class="header_account-list header_wishlist">
 								<a href="/product/wish"><svg
 										xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -75,14 +77,16 @@
 										<div class="cart_info">
 											<a href="#">{{item.name}}</a>
 											<p>
-												Quantity: <input type="number" min="1" ng-model="item.qty" ng-change="cart.saveToLocalStorage()"><span class="price_item"> {{item.price * item.qty | number:0}} $
-												</span>
+												Quantity: <input type="number" min="1" ng-model="item.qty"
+													ng-change="cart.saveToLocalStorage()"><span
+													class="price_item"> {{item.price * item.qty |
+													number:0}} $ </span>
 											</p>
 										</div>
 										<div class="cart_remove">
-											<a ng-click="cart.remove(item.id)"><svg xmlns="http://www.w3.org/2000/svg"
-													width="20" height="20" fill="currentColor"
-													class="bi bi-trash" viewBox="0 0 16 16">
+											<a ng-click="cart.remove(item.id)"><svg
+													xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+													fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                                 <path
 														d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
                                                                 <path
@@ -95,10 +99,12 @@
 								<div class="mini_cart_table">
 									<div class="cart_table_border">
 										<div class="cart_total">
-											<span>Sub total:</span> <span class="price">{{cart.amount}} $</span>
+											<span>Sub total:</span> <span class="price">{{cart.amount}}
+												$</span>
 										</div>
 										<div class="cart_total mt-10">
-											<span>total:</span> <span class="price">{{cart.amount}} $</span>
+											<span>total:</span> <span class="price">{{cart.amount}}
+												$</span>
 										</div>
 									</div>
 								</div>
@@ -112,8 +118,8 @@
 											class="fa fa-sign-in"></i> Checkout</a>
 									</div>
 									<div class="cart_button mt-3">
-										<a ng-click="cart.clear()"><i
-												class="fa fa-sign-in"></i> Clear Cart</a>
+										<a ng-click="cart.clear()"><i class="fa fa-sign-in"></i>
+											Clear Cart</a>
 									</div>
 								</div>
 							</div>
@@ -148,6 +154,7 @@
                                                 </svg>
 								</button>
 							</div>
+							
 							<nav>
 								<ul class="offcanvas_main_menu">
 									<div class="canvas_close">
@@ -219,6 +226,7 @@
 									<li class="menu-item-has-children"><a href="/contact">
 											Contact Us</a></li>
 								</ul>
+									
 							</nav>
 						</div>
 					</div>
@@ -286,10 +294,15 @@
 				</div>
 				<div class="col-lg-3">
 					<div class="call-support">
+					<!--<div sec:authorize="hasAuthority('1')" > Has Authority ADMIN
+						<a th:href="@{/admin/vlon}">écéc</a>
+					 </div> 
+					 -->
 						<p>
 							Call Support: <a href="tel:0123456789">0123456789</a>
 						</p>
 					</div>
+					
 				</div>
 			</div>
 		</div>

@@ -49,13 +49,13 @@
 					</div>
 				</div>
 
-				<form class="login100-form validate-form">
+				<form action="login" th:action="@{/login}" method="post" class="login100-form validate-form">
 					<h1 class="login100-form-title">
 						Member Login
 					</h1>
-
+					<i class="pull-left text-danger center" th:text="${message}"></i>
 					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-						<input class="input100" id="username" type="text" name="text" placeholder="Username">
+						<input class="input100" id="username" type="text" name="username" placeholder="Username">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -63,7 +63,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<input class="input100" id="password" type="" name="pass" placeholder="Password">
+						<input class="input100" id="password" type="" name="password" placeholder="Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -98,6 +98,11 @@
 
 	<script src="/js/Instascan.min.js"></script>
 	<script src="/js/scanner.js"></script>
+	<script> 
+		var a = document.getElementsByName("username").value;
+		var b = document.getElementsByName("password").value;
+		console.log("user: " + a + " " + "pass: " + b);
+	</script>
 </body>
 
 </html>
