@@ -226,7 +226,11 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 									<li class="menu-item-has-children"><a href="/contact">
 											Contact Us</a></li>
 								</ul>
-									
+								<!-- Show user after login -->
+								<ul th:if="${#request.remoteUser}" class="nav navbar-nav navbar-right">
+					                <li><a href="#">Welcome [[${#request.remoteUser}]]</a></li>
+					            </ul>
+					            <!-- Show user after login -->
 							</nav>
 						</div>
 					</div>
@@ -287,6 +291,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 										<li><a href="/login">login</a></li>
 									</ul></li>
 								<li><a href="/contact"> Contact Us</a></li>
+								<!-- Show user after login -->
+								<li th:if="${#request.remoteUser}"><a href="#">Welcome [[${#request.remoteUser}]]</a></li>
+								<!-- Show user after login -->
 							</ul>
 						</nav>
 					</div>
