@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface ProductService {
     Product save(Product product);
+
     List<Product> findAll();
 
     Product findById(Integer id);
@@ -13,4 +14,9 @@ public interface ProductService {
     Product findByUrlEquals(String url);
 
     List<Product> findByCategoryId(String cid);
+
+    List<Product> findByKeyword(String keyword);
+
+
+    List<Product> findByPriceBetween(Double price1, Double price2);
 }

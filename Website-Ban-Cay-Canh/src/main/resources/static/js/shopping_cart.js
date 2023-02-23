@@ -17,7 +17,7 @@ app.controller('shoppingCart-ctrl', function($scope, $http) {
                 item.qty++;
                 this.saveToLocalStorage()
             } else {
-                $http.get(`/api/products/${id}`).then(resp => {
+                $http.get(`/api/dto/products/${id}`).then(resp => {
                     resp.data.data.qty = 1;
                     this.items.push(resp.data.data);
                     this.saveToLocalStorage()

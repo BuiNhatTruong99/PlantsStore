@@ -2107,6 +2107,7 @@ ul {
 }
 
 .menu-products a {
+    font-weight: bolder;
     text-decoration: none;
     color: black;
     text-transform: uppercase;
