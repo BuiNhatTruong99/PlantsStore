@@ -146,9 +146,9 @@ CREATE TABLE Product_Rate(
     rate FLOAT,
     comment VARCHAR(255),
 	create_date DATETIME NOT NULL,
-    user_id INT,
+    profile_id INT,
     product_id INT,
-    CONSTRAINT fk_ProductRate_Accounts FOREIGN KEY (user_id) REFERENCES Accounts(id),
+    CONSTRAINT fk_ProductRate_Profile FOREIGN KEY (profile_id) REFERENCES Accounts(id),
     CONSTRAINT fk_ProductRate_Products FOREIGN KEY (product_id) REFERENCES Products(id)
 );
 
@@ -820,10 +820,10 @@ INSERT INTO Order_Detail(price , quantity , sale , order_id , product_id ) VALUE
     (200, 1, 0, 40, 69),
     (200, 2, 0, 40, 42);
     
-INSERT INTO Product_Rate(rate, comment, create_date, user_id, product_id) VALUES
+INSERT INTO Product_Rate(rate, comment, create_date, profile_id, product_id) VALUES
 	(5, 'Giao hàng nhanh, hoa đẹp', '2022-1-14', 6, 1),
     (5, 'Giao hàng nhanh, nhân viên nhiệt tình', '2022-1-15', 10, 7),
-    (5, 'Hoa đẹp', '2022-1-15', 10, 33),
+    (4, 'Hoa đẹp', '2022-1-15', 10, 33),
     (5, 'Sản phẩm chất lượng', '2022-5-1', 18, 28),
     (5, 'Hoa đẹp', '2022-5-1', 18, 35),
     
@@ -860,8 +860,8 @@ INSERT INTO Product_Rate(rate, comment, create_date, user_id, product_id) VALUES
     (5, 'Giao hàng nhanh, hoa đẹp', '2022-1-14', 6, 1),
     (5, 'Giao hàng nhanh, nhân viên nhiệt tình', '2022-1-15', 10, 7),
     (5, 'Sản phẩm chất lượng', '2022-1-14', 10, 1),
-    (5, 'Giao hàng nhanh', '2022-1-15', 10, 1),
-    (5, 'Hoa đẹp', '2022-1-14', 6, 1);
+    (4, 'Giao hàng nhanh', '2022-1-15', 10, 1),
+    (4, 'Hoa đẹp', '2022-1-14', 6, 1);
     
    
 
