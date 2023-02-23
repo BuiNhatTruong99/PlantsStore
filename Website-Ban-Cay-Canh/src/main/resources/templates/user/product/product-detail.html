@@ -51,11 +51,9 @@
                             </li>
                         </ul>
                         <ul ng-if="totalRate == 0">
-                            <li><a href=""><i class="fa-regular fa-star"></i></a></li>
-                            <li><a href=""><i class="fa-regular fa-star"></i></a></li>
-                            <li><a href=""><i class="fa-regular fa-star"></i></a></li>
-                            <li><a href=""><i class="fa-regular fa-star"></i></a></li>
-                            <li><a href=""><i class="fa-regular fa-star"></i></a></li>
+                        	<li ng-repeat="rate in generateRange(0, 5, 1)">
+                            	<a href=""><i class="fa-regular fa-star"></i></a>
+                            </li>
                         </ul>
                         <div ng-if="totalRate != 0">
                         	<h3>{{totalRate}}</h3>
@@ -136,7 +134,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel-footer text-center" ng-if="items.length > <5></5>">
+                <div class="panel-footer text-center" ng-if="items.length > 5">
 			        <button class="btn btn-danger" ng-click="pager.first()">
 			            <<
 			        </button>
