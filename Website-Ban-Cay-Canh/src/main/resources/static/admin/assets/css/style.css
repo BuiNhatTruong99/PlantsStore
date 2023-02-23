@@ -1258,3 +1258,53 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
+.quick_view{
+  border: 1px solid #012970;
+  width: 150px;
+  padding: 0 10px;
+  text-align: center;
+  background-color: #012970;
+  border-radius: 5px;
+  margin: 10px auto;
+}
+
+.quick_view .bi{
+  color: #fff;
+}
+
+.quick_view button {
+  color: #fff;
+  background-color: #012970;
+  border: none;
+  transition: all 0.3s;
+  width: 90px;
+}
+
+
+
+.tr_products .td_height {
+  line-height: 50px;
+}
+.btn {
+  background-color: #012970;
+  color: #fff;
+}
+
+.nav-tabs>li {
+  padding: 15px 20px;
+}
+.nav-tabs>li>a {
+  color: #012970;
+  font-weight: bold;
+}
+
+#toats {
+    position: fixed;
+    top: 80px;
+    right: 0;
+    z-index: 9999;
+    width: 400px;
+    float: right;
+
+}

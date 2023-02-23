@@ -59,12 +59,12 @@ public class Account implements Serializable {
     private Profile profile;
 
 	// Wish_List
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(
 			  name = "Wish_List",
 			  joinColumns = @JoinColumn(name = "user_id"),
 			  inverseJoinColumns = @JoinColumn(name = "product_id"))
 	@JsonManagedReference
-	@JsonIgnore
 	Set<Product> product_like;
 }

@@ -523,7 +523,7 @@
         <p>Select year for statistical:</p>
       </div>
       <div class="col-8 p-0">
-        <form action="statistical" method="get" >
+        <form action="statistical" method="get">
           <div class="row">
             <div class="col-8">
               <select class="form-select mb-4 col-6" aria-label="Default select example" name="year">
@@ -658,17 +658,17 @@
                         pointHoverBackgroundColor: '#fff',
                         pointHoverBorderColor: 'rgb(255, 99, 132)'
                       },
-                      //   {
-                      //   label: 'Second Dataset',
-                      //   data: [28, 48, 40, 19, 96, 27, 100],
-                      //   fill: true,
-                      //   backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                      //   borderColor: 'rgb(54, 162, 235)',
-                      //   pointBackgroundColor: 'rgb(54, 162, 235)',
-                      //   pointBorderColor: '#fff',
-                      //   pointHoverBackgroundColor: '#fff',
-                      //   pointHoverBorderColor: 'rgb(54, 162, 235)'
-                      // }
+                        //   {
+                        //   label: 'Second Dataset',
+                        //   data: [28, 48, 40, 19, 96, 27, 100],
+                        //   fill: true,
+                        //   backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        //   borderColor: 'rgb(54, 162, 235)',
+                        //   pointBackgroundColor: 'rgb(54, 162, 235)',
+                        //   pointBorderColor: '#fff',
+                        //   pointHoverBackgroundColor: '#fff',
+                        //   pointHoverBorderColor: 'rgb(54, 162, 235)'
+                        // }
                       ]
                     },
                     options: {
@@ -699,10 +699,10 @@
                   new Chart(document.querySelector('#polarAreaChart'), {
                     type: 'polarArea',
                     data: {
-                      labels: monthChart,
+                      labels: cate_name,
                       datasets: [{
                         label: 'My First Dataset',
-                        data: valueChart,
+                        data: value_cate,
                         backgroundColor: [
                           'rgb(255, 99, 132)',
                           'rgb(75, 192, 192)',

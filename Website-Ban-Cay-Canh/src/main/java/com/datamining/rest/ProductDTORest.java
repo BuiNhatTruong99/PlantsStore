@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 @CrossOrigin("*")
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/products")
-public class ProductRest {
+@RequestMapping("/api/dto/products")
+public class ProductDTORest {
     private final ProductService productService;
 
     @GetMapping()
