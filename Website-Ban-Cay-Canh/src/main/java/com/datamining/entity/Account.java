@@ -58,11 +58,11 @@ public class Account implements Serializable{
     private Profile profile;
 
 	// Wish_List
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(
-			  name = "Wish_List",
-			  joinColumns = @JoinColumn(name = "user_id"),
-			  inverseJoinColumns = @JoinColumn(name = "product_id"))
-	@JsonManagedReference
-	Set<Product> product_like;
+//	@ManyToMany(cascade = CascadeType.ALL)
+//	@JoinTable(
+//			  name = "Wish_List",
+//			  joinColumns = @JoinColumn(name = "user_id"),
+//			  inverseJoinColumns = @JoinColumn(name = "product_id"))
+//	@JsonManagedReference
+//	Set<Product> product_like;
 }
