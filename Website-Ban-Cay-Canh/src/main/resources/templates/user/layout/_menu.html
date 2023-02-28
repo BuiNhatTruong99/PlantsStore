@@ -232,7 +232,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 								</ul>
 								<!-- Show user after login -->
 								<ul th:if="${#request.remoteUser}" class="nav navbar-nav navbar-right">
-					                <li><a href="#">Welcome [[${#request.remoteUser}]]</a></li>
+					                <li><a href="#">Welcome: [[${#request.remoteUser}]]</a></li>
 					            </ul>
 					            <!-- Show user after login -->
 							</nav>

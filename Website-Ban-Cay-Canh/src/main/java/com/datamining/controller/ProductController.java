@@ -22,7 +22,7 @@ public class ProductController {
     @Autowired
     CategoryService cService;
 
-    @RequestMapping("/product/list")
+    @RequestMapping(value="/product/list")
     public String list(Model model,@RequestParam("cate") Optional<String> cate) {
         if(cate.isPresent()) {
             String id = cService.findIdByUrlEquals(cate.get());
@@ -31,6 +31,7 @@ public class ProductController {
         } else {
             List<Product> list = pService.findAll();
             model.addAttribute("items", list);
+            
         }
 
         return "user/layout/index";
