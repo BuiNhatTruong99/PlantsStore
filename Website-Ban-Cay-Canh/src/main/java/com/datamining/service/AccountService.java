@@ -11,4 +11,6 @@ public interface AccountService {
 
 
     Account update(Account account);
+
+    void delete(Integer id);
 }

@@ -1290,6 +1290,10 @@ h6 {
   background-color: #012970;
   color: #fff;
 }
+.tr_products .td_height img {
+  height: 50px;
+  max-width: 100%;
+}
 
 .nav-tabs>li {
   padding: 15px 20px;
@@ -1308,3 +1312,4 @@ h6 {
     float: right;
 
 }
+
