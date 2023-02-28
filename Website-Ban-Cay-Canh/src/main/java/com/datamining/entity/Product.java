@@ -28,7 +28,7 @@ public class Product implements Serializable {
 	private Double quantity;
 	private String image;
 	private String description;
-	private String status;
+	private Boolean status;
 	private String url;
 	private Boolean is_delete = false;
 	@Temporal(TemporalType.DATE)

@@ -19,7 +19,7 @@ public class ProductDTO {
     private Date createdDate;
     private Date updatedDate;
     private Category categories;
-    private String status;
+    private Boolean status;
 
 
     public static ProductDTO convert(Product product) {
