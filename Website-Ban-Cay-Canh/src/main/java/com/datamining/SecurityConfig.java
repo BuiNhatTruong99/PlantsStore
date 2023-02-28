@@ -25,60 +25,60 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
-	@Autowired
-	BCryptPasswordEncoder pe;
+    @Autowired
+    BCryptPasswordEncoder pe;
 
-	@Autowired
-	AccountService accountService;
+    @Autowired
+    AccountService accountService;
 
-	@Bean
-	public static BCryptPasswordEncoder getPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+    @Bean
+    public static BCryptPasswordEncoder getPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
-	@Override
-	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(username -> {
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(username -> {
+//
+//            try {
+//                Account acc = accountService.findByTk(username);
+//                String password = pe.encode(acc.getPassword());
+//                Integer[] roles = acc.getAuthorities().stream()
+//                        .map(rl -> rl.getRole().getId())
+//                        .collect(Collectors.toList()).toArray(new Integer[0])
+//                        ;
+//
+//                return User.withUsername(username).password(password).roles(String.valueOf(roles)).build();
+//            }catch (Exception e)
+//            {
+//                throw new UsernameNotFoundException(username + "not found");
+//            }
+//        });
+    }
 
-				try {
-					Account acc = accountService.findByTk(username);
-					String password = pe.encode(acc.getPassword());
-					Integer[] roles = acc.getAuthorities().stream()
-							.map(rl -> rl.getRole().getId())
-							.collect(Collectors.toList()).toArray(new Integer[0])
-							;
-
-					return User.withUsername(username).password(password).roles(String.valueOf(roles)).build();
-				}catch (Exception e)
-				{
-					throw new UsernameNotFoundException(username + "not found");
-				}
-		});
-	}
-
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers(HttpMethod.OPTIONS,"/**");
-	}
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers(HttpMethod.OPTIONS,"/**");
+    }
 
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable();
-		
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
+
 //		http.authorizeHttpRequests()
 //		.antMatchers("/admin/**").hasAuthority("1")
 //		.antMatchers("/admin/**").hasAnyRole("1")
 //		.anyRequest().permitAll();
 
-		
-		http.formLogin()
-				.loginPage("/login/form")
-				.loginProcessingUrl("/login")
-				.defaultSuccessUrl("/login/success",false)
-				.failureUrl("/login/error");
-		
-		http.exceptionHandling()
-		.accessDeniedPage("/login/unauthoried");
-	}
+
+        http.formLogin()
+                .loginPage("/login/form")
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/login/success",false)
+                .failureUrl("/login/error");
+
+        http.exceptionHandling()
+                .accessDeniedPage("/login/unauthoried");
+    }
 }

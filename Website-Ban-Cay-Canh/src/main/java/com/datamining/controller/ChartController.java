@@ -32,7 +32,7 @@ public class ChartController {
     public String statistical(Model model, @RequestParam("year") Integer year) {
         List<Charts> chart_data = chartsDAO.getValue(year);
         model.addAttribute("chart_data", chart_data);
-        List<ChartRadar> radar = radarDAO.getCategories();
+        List<ChartRadar> radar = radarDAO.getCategories(year);
         model.addAttribute("radar", radar);
         return "../static/admin/charts-chartjs";
     }

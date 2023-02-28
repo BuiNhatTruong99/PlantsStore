@@ -2,6 +2,8 @@ app.controller("accounts-ctrl", function ($scope, $http) {
     $scope.accounts = [];
     $scope.items = [];
     $scope.form = [];
+    $scope.message = "";
+    $scope.status = "";
 
     $scope.initialize = function () {
         $http.get("/api/account").then(resp => {
@@ -25,6 +27,26 @@ app.controller("accounts-ctrl", function ($scope, $http) {
 
     }
 
+    $scope.clear = function () {
+        document.getElementById("confirm").value = "";
+    }
+
+    $scope.delete = function (account) {
+        $http.delete(`/api/account/${account.id}`).then(resp => {
+            var index = $scope.accounts.findIndex(a => a.id == account.id);
+            $scope.accounts.splice(index, 1);
+            $scope.message = "Xóa thành công";
+            $scope.status = "Success";
+            $scope.form = {};
+            $scope.clear();
+        }).catch(error => {
+            $scope.message = "Tài khoản đang liên kết khóa ngoại";
+            $scope.status = "Warning";
+            console.log("Error", error);
+        })
+        $scope.toats();
+    }
+
     $scope.update = function () {
         var item = angular.copy($scope.form);
         $http.put(`/api/account/${item.id}`, item).then(resp => {
@@ -32,13 +54,17 @@ app.controller("accounts-ctrl", function ($scope, $http) {
             let confirm = document.getElementById("confirm").value;
             if (confirm == item.password) {
                 $scope.accounts[index] = item;
-                console.log($scope.accounts[index]);
+                $scope.clear();
+                $scope.message = "Cập nhật thành công";
+                $scope.status = "Success";
             } else {
-                console.log("Mật khẩu không khớp");
+                $scope.message = "Mật khẩu không khớp";
+                $scope.status = "Warning";
                 return;
             }
         }).catch(error => {
-            alert("Lỗi cập nhật");
+            $scope.clear();
+            $scope.message = "Cập nhật thất bại";
             console.log("Error", error);
         })
         $scope.toats();
@@ -48,7 +74,7 @@ app.controller("accounts-ctrl", function ($scope, $http) {
             $('.toast').toast('show');
             setTimeout(function () {
             $('.toast').toast('hide');
-         }, 1000);
+         }, 2000);
 
     }
 

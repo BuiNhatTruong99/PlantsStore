@@ -4,12 +4,12 @@
             <form>
                 <div class="toast" id="toats" data-toggle="tooltip" >
                     <div class="toast-header">
-                        <strong class="mr-auto text-primary">Toast Header</strong>
+                        <strong class="mr-auto text-primary">{{status}}</strong>
                         <small class="text-muted">{{form.update_date | date: 'dd-MM-yyyy hh:mm:ss'}}</small>
                         <button type="button" ng-click="hideToast()" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
                     </div>
                     <div class="toast-body">
-                        Some text inside the toast body
+                        {{message}}
                     </div>
                 </div>
                 <div class="row mb-3 p-3">
@@ -49,10 +49,9 @@
                     <button ng-click="delete(form)" class="btn">
                         <b class="glyphicon glyphicon-trash"></b> Delete
                     </button>
-                    <button ng-click="reset()" class="btn">
+                    <button ng-click="clear()" class="btn">
                         <b class="glyphicon glyphicon-refresh"></b> Reset
                     </button>
-
                 </div>
             </form>
         </div>

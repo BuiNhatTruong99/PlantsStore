@@ -1987,6 +1987,7 @@ ul {
 /* layout products  */
 
 .featured {
+    background: #f2f5f1;
     padding-top: 80px;
     padding-bottom: 40px;
 }
@@ -2309,3 +2310,4 @@ ul {
 .scrolls:hover {
     background-color: #79a206;
 }
+

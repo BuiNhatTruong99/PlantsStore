@@ -12,4 +12,6 @@ public interface AccountService {
     Account findByTk(String username);
 
     Account update(Account account);
+
+    void delete(Integer id);
 }

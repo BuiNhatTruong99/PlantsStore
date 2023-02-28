@@ -43,4 +43,11 @@ public class AccountRest {
         return new ObjectResponse("success", accountDTO, HttpStatus.OK.value());
     }
 
+
+    @DeleteMapping("/{id}")
+    public ObjectResponse delete(@PathVariable("id") Integer id) {
+        accountService.delete(id);
+        return new ObjectResponse("success", null, HttpStatus.OK.value());
+    }
+
 }
