@@ -33,6 +33,12 @@ public class HomeController {
 	{
 		return "user/security/loginQR";
 	}
+
+	@RequestMapping("/register")
+	public String register()
+	{
+		return "user/security/register";
+	}
 	
 	@RequestMapping("/cart/detail")
 	public String cart_detail()

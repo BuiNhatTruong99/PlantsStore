@@ -9,6 +9,7 @@ public interface AccountService {
 
     Account findById(Integer id);
 
+    Account create(Account account);
 
     Account update(Account account);
 
