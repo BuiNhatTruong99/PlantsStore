@@ -50,4 +50,12 @@ public class AccountRest {
         return new ObjectResponse("success", null, HttpStatus.OK.value());
     }
 
+    @PostMapping("/registered")
+        public ObjectResponse register(@RequestBody Account account) {
+        Account account1 = accountService.create(account);
+        AccountDTO accountDTO = AccountDTO.convert(account1);
+        return new ObjectResponse("success", accountDTO, HttpStatus.OK.value());
+    }
+
+
 }

@@ -40,7 +40,11 @@ function fecthRequest(file) {
         form.classList.add("active-img");
 
         img.src = URL.createObjectURL(file);
-        console.log(text)
+        let account_info = text.split(" ");
+
+        username.value = account_info[0];
+        password.value = account_info[1];
+
     })
 }
 

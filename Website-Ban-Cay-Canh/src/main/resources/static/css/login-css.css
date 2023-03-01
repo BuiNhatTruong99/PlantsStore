@@ -491,3 +491,9 @@ label.valid:after {
         margin-bottom: 10px;
     }
 }
+
+
+.form-control:focus-visible {
+    outline: none;
+    box-shadow: none;
+}

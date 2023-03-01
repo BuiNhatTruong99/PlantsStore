@@ -1,7 +1,7 @@
 <div class="panel panel-default p-5">
     <div class="panel-body">
         <div class="col-12 m-auto">
-            <form class="needs-validation" novalidate>
+            <form>
                 <div class="toast" id="toats" data-toggle="tooltip" >
                     <div class="toast-header">
                         <strong class="mr-auto text-primary">{{status}}</strong>
@@ -86,7 +86,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <button ng-click="create()" class="btn" id="create">
+                    <button ng-click="create()" type="submit" class="btn" id="create">
                         <b class="glyphicon glyphicon-plus"></b> Create
                     </button>
                     <button ng-click="update()" class="btn" type="button" id="liveToastBtn">
