@@ -16,4 +16,5 @@ public class Charts implements Serializable {
     @Id
     Integer date;
     Double value;
+    long count;
 }

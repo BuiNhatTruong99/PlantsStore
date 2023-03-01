@@ -16,4 +16,5 @@ public class ChartRadar implements Serializable {
     @Id
     String name_cate;
     Double value_radar;
+    long count_radar;
 }
