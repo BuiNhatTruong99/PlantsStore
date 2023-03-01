@@ -11,12 +11,16 @@
     <link rel="stylesheet" href="../css/cart-detail.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../lib/fontawesome-free-6.1.1/css/all.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
     </style>
 </head>
 
-<body>
+<body ng-app="shoppingCart" ng-controller="shoppingCart-ctrl">
     <div class="wrapper" id="top">
         <header>
             <div th:replace="user/layout/_menu.html"></div>

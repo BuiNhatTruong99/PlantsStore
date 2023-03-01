@@ -23,8 +23,8 @@ $('.owl-loaded').owlCarousel({
     margin: 10,
     dots: false,
     nav: true,
-    autoplay: true,
-    autoplayTimeout: 2000,
+    autoplay: false,
+    autoplayTimeout: 3000,
     responsive: {
         0: {
             items: 1

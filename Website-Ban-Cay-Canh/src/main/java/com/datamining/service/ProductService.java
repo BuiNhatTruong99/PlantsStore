@@ -25,4 +25,6 @@ public interface ProductService {
     Product update(Integer id, Product product);
 
     void delete(Integer id);
+
+    List<Product> findTop5Seller();
 }

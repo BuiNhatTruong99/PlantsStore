@@ -1059,6 +1059,8 @@ img {
     margin-bottom: 22px;
     padding-bottom: 21px;
     border-bottom: 1px solid #e1e1e1;
+    height: 100px;
+    overflow: hidden;
 }
 
 .blog_thumb {
