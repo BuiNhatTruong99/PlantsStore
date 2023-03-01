@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/lib/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="/lib/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
@@ -15,6 +16,11 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/lib/fontawesome-free-6.1.1/css/all.min.css">
+	<style type="text/css">
+	    .bad-word {
+		  color: red;
+		}
+	</style>
     <title>Index</title>
 </head>
 
@@ -112,6 +118,46 @@
                 <div class="rev_title">
                     <h2>{{items.length}} Review For <span class="name_pro_rev">Crab Pool Security</span></h2>
                 </div>
+                <select name="myComboBox" ng-model="selectCommentFilter" ng-change="commentFilter()" ng-init="selectCommentFilter='0'">
+					<option value="0">All comment</option>
+					<option value="1">My comment</option>
+				</select>
+				<div>
+					<input type="radio" ng-model="rateFilter" value="0" name="rate" ng-click="commentFilter()" ng-checked="true">
+                    <label for="rate-5">
+						All stars
+                    </label> |
+					<input type="radio" ng-model="rateFilter" value="1" name="rate" ng-click="commentFilter()">
+                    <label for="rate-5">
+						<a href=""><i class="fas fa-star"></i></a>
+                    </label> |
+                    <input type="radio" ng-model="rateFilter" value="2" name="rate" ng-click="commentFilter()">
+                    <label for="rate-5">
+						<a href=""><i class="fas fa-star"></i></a>
+						<a href=""><i class="fas fa-star"></i></a>
+                    </label> |
+                    <input type="radio" ng-model="rateFilter" value="3" name="rate" ng-click="commentFilter()">
+                    <label for="rate-5">
+						<a href=""><i class="fas fa-star"></i></a>
+						<a href=""><i class="fas fa-star"></i></a>
+						<a href=""><i class="fas fa-star"></i></a>
+                    </label> |
+                    <input type="radio" ng-model="rateFilter" value="4" name="rate" ng-click="commentFilter()">
+                    <label for="rate-5">
+						<a href=""><i class="fas fa-star"></i></a>
+						<a href=""><i class="fas fa-star"></i></a>
+						<a href=""><i class="fas fa-star"></i></a>
+						<a href=""><i class="fas fa-star"></i></a>
+                    </label> |
+                    <input type="radio" ng-model="rateFilter" value="5" name="rate" ng-click="commentFilter()">
+                    <label for="rate-5">
+						<a href=""><i class="fas fa-star"></i></a>
+						<a href=""><i class="fas fa-star"></i></a>
+						<a href=""><i class="fas fa-star"></i></a>
+						<a href=""><i class="fas fa-star"></i></a>
+						<a href=""><i class="fas fa-star"></i></a>
+                    </label>
+				</div>
                 <div class="rev_comment_box" ng-repeat="fb in pager.items">
                     <div class="comment_avt">
                         <img src="/img/avatar/{{fb.user.avatar}}" alt="{{fb.user.avatar}}">
@@ -170,10 +216,10 @@
                     <div class="row">
                         <div class="col-12">
                             <label for="review_comment"><strong>Your review</strong></label>
-                            <textarea name="comment" ng-model="form.comment" id="review_comment"></textarea>
+                            <textarea name="comment" ng-model="form.comment" ng-keyup="checkComment()" id="review_comment"></textarea>
                         </div>
                     </div>
-                    <em>{{message}}</em>
+                    <em ng-bind-html="message"></em>
                     <button ng-click="create(items)">Submit</button>
                 </form>
             </div>
@@ -274,7 +320,7 @@
     <div th:replace="user/layout/_script.html"></div>
     <script th:inline="javascript">
 		/*<![CDATA[*/
-			var idProduct =  /*[(${item.id})]*/'default';
+			var productId =  /*[(${item.id})]*/'default';
 		/*]]>*/
     </script>
     <script src="/js/feedback-ctrl.js"></script>

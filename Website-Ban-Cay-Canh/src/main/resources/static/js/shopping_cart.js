@@ -1,4 +1,4 @@
-const app = angular.module('shoppingCart', []);
+const app = angular.module('shoppingCart', ['ngSanitize']);
 app.controller('shoppingCart-ctrl', function($scope, $http) {
     $scope.products = [];
     $scope.form = {};
