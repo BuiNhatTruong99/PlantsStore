@@ -2313,3 +2313,13 @@ ul {
     background-color: #79a206;
 }
 
+#btn-filter {
+    background-color: #79A206;
+    width: 100px;
+    margin: 20px 0;
+    color: #fff;
+}
+
+#product__items {
+    transition: opacity 0.3s ease-in-out;
+}

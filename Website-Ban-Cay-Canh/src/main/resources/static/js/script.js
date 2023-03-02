@@ -1,4 +1,3 @@
-
 $('.slider').owlCarousel({
     loop: true,
     margin: 0,
@@ -23,8 +22,8 @@ $('.owl-loaded').owlCarousel({
     margin: 10,
     dots: false,
     nav: true,
-    autoplay: false,
-    autoplayTimeout: 3000,
+    autoplay: true,
+    autoplayTimeout: 2500,
     responsive: {
         0: {
             items: 1
@@ -99,7 +98,6 @@ $('.mini_cart_close').click(function () {
 const button = document.querySelector('.cart-alert')
 
 
-
 function myf() {
     setInterval(function () {
         location.reload()
@@ -130,6 +128,7 @@ closeBtns.forEach((closeBtns) => {
 })
 
 window.addEventListener('scroll', reveal);
+
 function reveal() {
     var reveals = document.querySelectorAll('.reveal');
     for (var i = 0; i < reveals.length; i++) {
@@ -146,6 +145,7 @@ function reveal() {
 }
 
 window.addEventListener('scroll', gooey);
+
 function gooey() {
     var gooeys = document.querySelectorAll('.gooey');
     for (var i = 0; i < gooeys.length; i++) {
@@ -162,6 +162,7 @@ function gooey() {
 }
 
 window.addEventListener('scroll', content);
+
 function content() {
     var contents = document.querySelectorAll('.content');
     for (var i = 0; i < contents.length; i++) {
@@ -177,26 +178,45 @@ function content() {
     }
 }
 
-function submitForm() {
-    document.getElementById("bwp_form_filter_product").submit();
-}
-        //
-        // $("#bwp_form_filter_product").submit(function(e){
-        //     e.preventDefault();
-        //     var action = $(this).attr("action");
-        //     var data = {};
-        //     $(this).serializeArray().map(function(x){data[x.name] = x.value;});
-        //     $.ajax({
-        //         type: "POST",
-        //         url: action,
-        //         data: JSON.stringify(data)
-        //     }).done(function() {
-        //         console.log("ok")
-        //     }).fail(function() {
-        //         alert('An error occurred please try again later.')
-        //     });
-        // });
+// function submitForm() {
+//     document.getElementById("bwp_form_filter_product").submit();
+// }
 
+
+$(document).ready(function ($) {
+    $(document).on('click', '.cate_link', function (event) {
+        event.preventDefault();
+        var categoryUrl = $(this).attr('href');
+        // Send an AJAX request to the server to get the updated product items
+        $.ajax({
+            url: categoryUrl,
+            type: 'GET',
+            success: function (data) {
+                // Update the product items container with the new data
+                $('#product__items').html($(data).find('#product__items').html());
+
+            }
+        });
+        //change url without reloading page
+        window.history.pushState("", "", categoryUrl);
+    });
+
+
+    $('#bwp_form_filter_product').submit(function(e) {
+        e.preventDefault(); // Prevents the form from submitting normally
+        var url = $(this).attr('action'); // Gets the URL from the data-url attribute
+        var formData = $(this).serialize(); // Serializes the form data
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            success: function(data) {
+                $('#product__items').html($(data).find('#product__items').html());
+                // Replaces the contents of #product__items with the response data
+            }
+        });
+    });
+});
 
 
 

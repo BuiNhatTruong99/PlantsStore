@@ -22,8 +22,8 @@ public class ProductController {
     @Autowired
     CategoryService cService;
 
-    @RequestMapping("/product/list")
-    public String list(Model model,@RequestParam("cate") Optional<String> cate) {
+    @RequestMapping("/product/{cate}")
+    public String list(Model model,@PathVariable("cate") Optional<String> cate) {
         if(cate.isPresent()) {
             String id = cService.findIdByUrlEquals(cate.get());
             List<Product> list = pService.findByCategoryId(id);
