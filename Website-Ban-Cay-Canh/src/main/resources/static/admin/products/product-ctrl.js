@@ -46,6 +46,23 @@ app.controller('products-ctrl', function($scope, $http) {
         })
     }
 
+    $scope.find = function() {
+        var kw = document.getElementById("key__word").value;
+        //check empty
+        if (kw == "") {
+            $http.get('/api/dto/products').then(resp => {
+                $scope.items = resp.data;
+                $scope.products = $scope.items.data;
+            })
+        } else {
+            kw = kw;
+            $http.get(`/api/dto/products/search/${kw}`).then(resp => {
+                $scope.items = resp.data;
+                $scope.products = $scope.items.data;
+            })
+        }
+    }
+
     $scope.create = function() {
         var item = angular.copy($scope.form);
         $http.post(`/api/dto/products`, item).then(resp => {

@@ -17,7 +17,7 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
 
     @Query(value="SELECT * FROM Products p WHERE p.name like %?1%", nativeQuery = true)
     List<Product> findByKeyword(String keyword);
-    ;
+
 
     //find product bettwen two price
     @Query(value="SELECT * FROM Products p WHERE p.price >= ?1 AND p.price <= ?2", nativeQuery = true)
@@ -26,4 +26,5 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
     // Top 5 seller
     @Query(value="select p.* from Order_Detail d join Products p on p.id = d.product_id  group by p.id order by count(p.id) DESC LIMIT 5", nativeQuery = true)
     List<Product> findTop5Seller();
+
 }

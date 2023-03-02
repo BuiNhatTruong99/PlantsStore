@@ -75,4 +75,17 @@ public class ProductDTORest {
         }
     }
 
+    @GetMapping("/search/{kw}")
+    public ResponseEntity<ObjectResponse> search(@PathVariable("kw") String kw) {
+        try {
+            var products = productService.findByKeyword(kw);
+            var productsDTO = products.stream()
+                    .map(ProductDTO::convert)
+                    .collect(Collectors.toList());
+            return ResponseEntity.status(HttpStatus.OK).body(new ObjectResponse("success", productsDTO, HttpStatus.OK.value()));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ObjectResponse("error", e.getMessage(), HttpStatus.BAD_REQUEST.value()));
+        }
+    }
+
 }

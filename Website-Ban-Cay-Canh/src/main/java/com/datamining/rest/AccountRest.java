@@ -1,11 +1,14 @@
 package com.datamining.rest;
 
 import com.datamining.DTO.AccountDTO;
+import com.datamining.DTO.ProductDTO;
 import com.datamining.entity.Account;
 import com.datamining.service.AccountService;
 import lombok.RequiredArgsConstructor;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -57,5 +60,17 @@ public class AccountRest {
         return new ObjectResponse("success", accountDTO, HttpStatus.OK.value());
     }
 
+    @GetMapping("/search/{username}")
+    public ResponseEntity<ObjectResponse> search(@PathVariable("username") String username) {
+        try {
+            var account = accountService.findByUsername(username);
+            var accountDTO = account.stream()
+                    .map(AccountDTO::convert)
+                    .collect(Collectors.toList());
+            return ResponseEntity.status(HttpStatus.OK).body(new ObjectResponse("success", accountDTO, HttpStatus.OK.value()));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ObjectResponse("error", e.getMessage(), HttpStatus.BAD_REQUEST.value()));
+        }
+    }
 
 }

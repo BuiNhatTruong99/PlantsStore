@@ -14,4 +14,7 @@ public interface AccountService {
     Account update(Account account);
 
     void delete(Integer id);
+
+    List<Account> findByUsername(String username);
+
 }

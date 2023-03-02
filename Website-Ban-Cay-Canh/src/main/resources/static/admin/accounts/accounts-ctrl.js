@@ -27,6 +27,23 @@ app.controller("accounts-ctrl", function ($scope, $http) {
 
     }
 
+    $scope.find = function () {
+        var kw = document.getElementById("key__word").value;
+        //check empty
+        if (kw == "") {
+            $http.get("/api/account").then(resp => {
+                $scope.items = resp.data;
+                $scope.accounts = $scope.items.data;
+            })
+        } else {
+            kw = kw;
+            $http.get(`/api/account/search/${kw}`).then(resp => {
+                $scope.items = resp.data;
+                $scope.accounts = $scope.items.data;
+            })
+        }
+    }
+
     $scope.clear = function () {
         document.getElementById("confirm").value = "";
     }

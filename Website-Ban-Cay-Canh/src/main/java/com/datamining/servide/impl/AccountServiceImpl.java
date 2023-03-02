@@ -41,4 +41,9 @@ public class AccountServiceImpl implements AccountService {
         accountDAO.deleteById(id);
     }
 
+    @Override
+    public List<Account> findByUsername(String username) {
+        return accountDAO.findByUsername(username);
+    }
+
 }
