@@ -10,6 +10,8 @@ public interface AccountService {
     Account findById(Integer id);
     
     Account findByTk(String username);
+    
+	Account create(Account account);
 
     Account update(Account account);
 
