@@ -23,25 +23,16 @@ app.controller('feedback-ctrl', function($scope, $rootScope, $http) {
 	}
 	
 	// lấy thông tin user, lấy id sp
-	$scope.create = function(items) {
-		$scope.form.user = {
-			"id": 6,
-			"fullname": "Đặng Hoàng Thái",
-			"avatar": "cust1.png",
-			"gender": true,
-			"birthday": "1992-03-10T17:00:00.000+00:00",
-			"email": "cust1@gmail.com",
-			"phone": "0984265835",
-			"address": "Lý Thường Kiệt, Phường 6, Quận Tân Bình, Tp Hồ Chí Minh"
-		};
+	$scope.create = function() {
+		$scope.form.user = {'id': 6};
 		$scope.form.product = {'id': productId};
 		var item = angular.copy($scope.form);
 		if(item.rate == 0) return $scope.message = 'Vui lòng chọn mức sao tương ứng với độ hài lòng của bạn!';
-		if(item.comment == '') return $scope.message = 'Vui lòng nhập đánh giá!';
+		if(item.comment == '') return $scope.message = 'Vui lòng nhập đánh giá của bạn về sản phẩm!';
 		if($scope.checkComment()){
 			$http.post('/api/productRates', item).then(resp => {
-				$scope.items.push(resp.data.data);
 				$scope.initialize();
+				alert("Thêm đánh giá sản phẩm thành công")
 			}).catch(error => {
 				console.log("Error", error);
 			})
@@ -49,9 +40,10 @@ app.controller('feedback-ctrl', function($scope, $rootScope, $http) {
 		}
 	}
 	
+	$scope.rateFilter = 0;
+	
 	$scope.commentFilter = function() {
 		const comment = $scope.selectCommentFilter;
-		console.log(comment);
 		const rate = $scope.rateFilter;
 		const userId = (comment == 0)? 0 : 6;
 		if(comment == 0 && rate == 0) {
