@@ -52,7 +52,7 @@ public class HomeController {
 //		return "user/product/product-detail";
 //	}
 	
-	@RequestMapping("/product/wish")
+	@RequestMapping("/wishlist")
 	public String product_wish()
 	{
 		return "user/product/wishlist";

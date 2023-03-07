@@ -1,4 +1,4 @@
-<div class="row featured__right col-xl-10 col-lg-10 col-md-12 col-12">
+<div  ng-controller="wishlist-ctrl" class="row featured__right col-xl-10 col-lg-10 col-md-12 col-12">
 	<div class="col-lg-3 col-md-4 col-sm-6 mix" th:each="p:${items}">
 		<div class="featured__item">
 			<div class="featured__item__pic set-bg"
@@ -43,8 +43,8 @@
 							</div>
 						</div>
 					</div>
-					<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="add-cart-btn">ADD TO CART</a> <a href="#"
-						class="add-wish">ADD TO WISHLIST</a>
+					<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="add-cart-btn">ADD TO CART</a> aa
+					<a th:attr="ng-click=@{|insert(${p.id})|}" class="add-wish">ADD TO WISHLIST</a>
 				</div>
 			</div>
 		</div>

@@ -27,8 +27,12 @@ public class AccountServiceImpl implements AccountService {
     
 	@Override
 	public Account findByTk(String username) {
-		// TODO Auto-generated method stub
 		return accountDAO.findByTk(username);
+	}
+	
+	@Override
+	public Account create(Account account) {
+		return accountDAO.save(account);
 	}
 
     @Override
@@ -40,5 +44,4 @@ public class AccountServiceImpl implements AccountService {
     public void delete(Integer id) {
         accountDAO.deleteById(id);
     }
-
 }
