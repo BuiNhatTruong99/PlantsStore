@@ -187,6 +187,7 @@ $(document).ready(function ($) {
     $(document).on('click', '.cate_link', function (event) {
         event.preventDefault();
         var categoryUrl = $(this).attr('href');
+
         // Send an AJAX request to the server to get the updated product items
         $.ajax({
             url: categoryUrl,
@@ -194,7 +195,6 @@ $(document).ready(function ($) {
             success: function (data) {
                 // Update the product items container with the new data
                 $('#product__items').html($(data).find('#product__items').html());
-
             }
         });
         //change url without reloading page
@@ -215,6 +215,7 @@ $(document).ready(function ($) {
                 // Replaces the contents of #product__items with the response data
             }
         });
+        window.history.pushState("", "", categoryUrl);
     });
 });
 

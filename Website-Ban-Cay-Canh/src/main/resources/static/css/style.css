@@ -954,33 +954,38 @@ img {
     margin: 40px;
     border-radius: 4px;
     box-shadow: 1px 0 20px rgb(0 0 0 / 20%);
-    background: linear-gradient(to right, #339966 0%, #669999 100%);
-    transition: all .25s ease-in-out;
+    /*background: linear-gradient(to right, #fff 0%, #669999 100%);*/
+    background-color: #fff;
+    transition: all .3s ease-in-out;
     cursor: default;
 }
-.home-ingredients__card_right{
-    background: linear-gradient(to left, #339966 0%, #669999 100%);
-}
+/*.home-ingredients__card_right{*/
+/*    background: linear-gradient(to left, #339966 0%, #669999 100%);*/
+/*}*/
 .home-ingredients__card-title {
     font-size: 20px;
     margin-bottom: 8px;
     color: rgba(0,0,0,.84);
     transition: all .12s ease-in-out;
     font-weight: 600;
-    color: #fff;
+    color: black;
 }
 .home-ingredients__card-content {
     font-size: 14px;
     line-height: 1.6;
     color: rgba(0,0,0,.4);
     transition: all .12s ease-in-out;
-    color: #fff;
+    color: rgba(0,0,0,.4);
+
 }
 .home-ingredients__card:hover {
     transform: translateY(-10px);
     box-shadow: 1px 3px 20px rgb(0 0 0 / 30%);
 }
 
+.home-ingredients__card:hover .home-ingredients__card-content{
+    color: black;
+}
 
 .home-analysis__wrapper_left {
     opacity: 0;
@@ -996,11 +1001,11 @@ img {
 .analysis_container .fadein_left {
     position: absolute;
     top: 20%;
-    left: 70px;
+    left: -25px;
 }
 .analysis_container .fadein_right {
     position: absolute;
-    right: 50px;
+    right: -75px;
     top: 20%;
 }
 .analysis_container .fadeIn {
@@ -2320,6 +2325,13 @@ ul {
     color: #fff;
 }
 
+
+/* CSS for the smooth transition effect */
 #product__items {
-    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
 }
+
+
+
+
