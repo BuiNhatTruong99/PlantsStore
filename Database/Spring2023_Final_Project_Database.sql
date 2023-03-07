@@ -148,7 +148,7 @@ CREATE TABLE Product_Rate(
 	create_date DATETIME NOT NULL,
     profile_id INT,
     product_id INT,
-    CONSTRAINT fk_ProductRate_Profile FOREIGN KEY (profile_id) REFERENCES Accounts(id),
+    CONSTRAINT fk_ProductRate_Profile FOREIGN KEY (profile_id) REFERENCES Profile(id),	
     CONSTRAINT fk_ProductRate_Products FOREIGN KEY (product_id) REFERENCES Products(id)
 );
 
