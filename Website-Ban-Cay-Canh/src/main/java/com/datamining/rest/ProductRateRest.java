@@ -52,6 +52,6 @@ public class ProductRateRest {
 	@PostMapping
 	public ObjectResponse create(@RequestBody ProductRate productRate) {
 		var proRate = proRateService.create(productRate);
-		return new ObjectResponse("success", proRate, HttpStatus.OK.value());
+		return new ObjectResponse("success", "Thêm đánh giá thành công", HttpStatus.OK.value());
 	}
 }
