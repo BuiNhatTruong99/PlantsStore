@@ -28,7 +28,7 @@ public class ProductRate implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date create_date = new Date();
 
-	// account_id
+	// profile_id
 	@ManyToOne
 	@JoinColumn(name = "profile_id")
 	private Profile user;

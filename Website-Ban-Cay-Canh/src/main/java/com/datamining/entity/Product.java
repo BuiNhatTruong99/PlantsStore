@@ -9,8 +9,11 @@ import javax.persistence.*;
 
 import com.datamining.DTO.ProductDTO;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Data;
 import lombok.var;
@@ -19,9 +22,10 @@ import lombok.var;
 @Data
 @Entity
 @Table(name = "Products")
+@JsonIgnoreProperties({"likes"})
 public class Product implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private Integer id;
 	private String name;
 	private Double price;
@@ -52,9 +56,8 @@ public class Product implements Serializable {
 	private Category categories;
 
 	// Wish_List
-//	@ManyToMany(mappedBy = "product_like", fetch = FetchType.LAZY)
-//	@JsonBackReference
-//	private Set<Account> likes;
+	@ManyToMany(mappedBy = "likedProducts", fetch = FetchType.LAZY)
+	private List<Account> likes;
 
 	// Order_Detail
 	@JsonIgnore

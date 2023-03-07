@@ -2,6 +2,7 @@ package com.datamining.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -21,8 +22,11 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Data;
 
@@ -30,9 +34,10 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "Accounts")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Account implements Serializable{
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private Integer id;
 	private String username;
 	private String password;
@@ -58,11 +63,10 @@ public class Account implements Serializable{
     private Profile profile;
 
 	// Wish_List
-//	@ManyToMany(cascade = CascadeType.ALL)
-//	@JoinTable(
-//			  name = "Wish_List",
-//			  joinColumns = @JoinColumn(name = "user_id"),
-//			  inverseJoinColumns = @JoinColumn(name = "product_id"))
-//	@JsonManagedReference
-//	Set<Product> product_like;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(
+			  name = "wish_list",
+			  joinColumns = @JoinColumn(name = "user_id"),
+			  inverseJoinColumns = @JoinColumn(name = "product_id"))
+	private List<Product> likedProducts;
 }
