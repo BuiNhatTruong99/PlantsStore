@@ -1,6 +1,7 @@
 package com.datamining.rest;
 
 import com.datamining.DTO.AccountDTO;
+import com.datamining.DTO.ProductDTO;
 import com.datamining.entity.Account;
 import com.datamining.entity.Product;
 import com.datamining.service.AccountService;
@@ -8,8 +9,10 @@ import com.datamining.service.ProductService;
 import com.datamining.service.WishListService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -79,4 +82,25 @@ public class AccountRest {
         wishListService.removeCourseFromStudent(userId, productId);
         return new ObjectResponse("success", "Xóa thành công", HttpStatus.OK.value());
     }
+
+    @PostMapping("/registered")
+        public ObjectResponse register(@RequestBody Account account) {
+        Account account1 = accountService.create(account);
+        AccountDTO accountDTO = AccountDTO.convert(account1);
+        return new ObjectResponse("success", accountDTO, HttpStatus.OK.value());
+    }
+
+    @GetMapping("/search/{username}")
+    public ResponseEntity<ObjectResponse> search(@PathVariable("username") String username) {
+        try {
+            var account = accountService.findByUsername(username);
+            var accountDTO = account.stream()
+                    .map(AccountDTO::convert)
+                    .collect(Collectors.toList());
+            return ResponseEntity.status(HttpStatus.OK).body(new ObjectResponse("success", accountDTO, HttpStatus.OK.value()));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ObjectResponse("error", e.getMessage(), HttpStatus.BAD_REQUEST.value()));
+        }
+    }
+
 }

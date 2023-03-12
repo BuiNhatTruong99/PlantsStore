@@ -2,6 +2,7 @@ package com.datamining.controller;
 
 import java.util.List;
 
+import com.datamining.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,12 +15,17 @@ import com.datamining.entity.Product;
 
 @Controller
 public class HomeController {
-
+	@Autowired
+	ProductService pService;
 	@RequestMapping({"/", "/home/index"})
 	public String home(Model model) {
 //		List<Category> sp = dao.findAll();
 //		model.addAttribute("items",sp);
-		return "redirect:/product/list";
+		List<Product> list = pService.findAll();
+		model.addAttribute("items", list);
+		List<Product> bestSale = pService.findTop5Seller();
+		model.addAttribute("bestSale", bestSale);
+		return "user/layout/index";
 	}
 	
 	@RequestMapping("/contact")
@@ -28,11 +34,17 @@ public class HomeController {
 		return "user/side/contact";
 	}
 	
-//	@RequestMapping("/login")
-//	public String login()
-//	{
-//		return "user/security/loginQR";
-//	}
+	@RequestMapping("/login")
+	public String login()
+	{
+		return "user/security/loginQR";
+	}
+
+	@RequestMapping("/register")
+	public String register()
+	{
+		return "user/security/register";
+	}
 	
 	@RequestMapping("/cart/detail")
 	public String cart_detail()

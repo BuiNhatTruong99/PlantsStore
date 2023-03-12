@@ -24,6 +24,7 @@ app.controller('products-ctrl', function($scope, $http) {
         $scope.form.createdDate = new Date($scope.form.createdDate);
         $scope.form.updatedDate = today;
         $('.nav-tabs a:eq(1)').trigger("click");
+        document.getElementById("create").disabled = true;
     }
 
 
@@ -45,6 +46,23 @@ app.controller('products-ctrl', function($scope, $http) {
         })
     }
 
+    $scope.find = function() {
+        var kw = document.getElementById("key__word").value;
+        //check empty
+        if (kw == "") {
+            $http.get('/api/dto/products').then(resp => {
+                $scope.items = resp.data;
+                $scope.products = $scope.items.data;
+            })
+        } else {
+            kw = kw;
+            $http.get(`/api/dto/products/search/${kw}`).then(resp => {
+                $scope.items = resp.data;
+                $scope.products = $scope.items.data;
+            })
+        }
+    }
+
     $scope.create = function() {
         var item = angular.copy($scope.form);
         $http.post(`/api/dto/products`, item).then(resp => {
@@ -58,6 +76,7 @@ app.controller('products-ctrl', function($scope, $http) {
             console.log("Error", error);
         })
         $scope.toats();
+        document.getElementById("create").disabled = true;
     }
 
     $scope.update = function() {
@@ -97,6 +116,7 @@ app.controller('products-ctrl', function($scope, $http) {
             updatedDate: new Date(),
             status: true
         };
+        document.getElementById("create").disabled = false;
     }
 
     $scope.toats = function () {

@@ -1,5 +1,15 @@
-<div class="pagetitle">
-  <h1 class="fw-bolder">Manager Products</h1>
+<div class="pagetitle row">
+  <div class="col-4">
+    <h1 class="fw-bolder">Manager Products</h1>
+  </div>
+  <div class="search-bar col-8">
+    <div class="search-form d-flex align-items-center" method="POST" action="#">
+      <input type="text" id="key__word" name="query" placeholder="Search" title="Enter search keyword" ng-change="find()" ng-model="myModel"/>
+      <button type="submit" title="Search" ng-click="find()">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </div>
 </div><!-- End Page Title -->
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" data-target="#list" href="">List of Products</a></li>

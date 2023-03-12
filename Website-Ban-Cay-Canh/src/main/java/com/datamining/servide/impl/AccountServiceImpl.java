@@ -27,13 +27,18 @@ public class AccountServiceImpl implements AccountService {
     
 	@Override
 	public Account findByTk(String username) {
-		return accountDAO.findByTk(username);
+		return accountDAO.findByTk(username); // Đã trùng
 	}
 	
 	@Override
 	public Account create(Account account) {
 		return accountDAO.save(account);
 	}
+
+    @Override
+    public Account create(Account account) {
+        return accountDAO.save(account);
+    }
 
     @Override
     public Account update(Account account) {
@@ -44,4 +49,10 @@ public class AccountServiceImpl implements AccountService {
     public void delete(Integer id) {
         accountDAO.deleteById(id);
     }
+
+    @Override
+    public List<Account> findByUsername(String username) {
+        return accountDAO.findByUsername(username);
+    }
+
 }

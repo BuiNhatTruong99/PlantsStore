@@ -67,5 +67,10 @@ public class ProductServiceImpl implements ProductService {
         pdao.deleteById(id);
     }
 
+    @Override
+    public List<Product> findTop5Seller() {
+        return pdao.findTop5Seller();
+    }
+
 
 }
