@@ -2,6 +2,7 @@ package com.datamining.servide.impl;
 
 import com.datamining.dao.AccountDAO;
 import com.datamining.entity.Account;
+import com.datamining.entity.Profile;
 import com.datamining.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,5 +36,11 @@ public class AccountServiceImpl implements AccountService {
     public Account update(Account account) {
         return accountDAO.save(account);
     }
+
+//	@Override
+//	public Account findProfile(String username) {
+//		// TODO Auto-generated method stub
+//		return accountDAO.findProfile(username);
+//	}
 
 }

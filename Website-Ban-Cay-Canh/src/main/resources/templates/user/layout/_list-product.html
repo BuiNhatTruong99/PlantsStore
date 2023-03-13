@@ -15,8 +15,6 @@
 				</h6>
 				<h5>$ [[${p.price}]]</h5>
 
-				<h5 th:if="${p.discount.scale == null}">$ [[${p.price}]]</h5>
-				<h5 th:if="${p.discount.scale != null}">$ [${p.price} * ${p.discount.scale}]]</h5>
 			</div>
 		</div>
 		<div class="popup-view">

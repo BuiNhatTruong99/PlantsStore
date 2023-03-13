@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
@@ -16,8 +16,8 @@
       <p>Input account bellow to generate QR Code</p>
     </div>
     <div class="input-form">
-      <input type="text" class="qr-username" placeholder="Enter url or text">
-      <input type="text" class="qr-password" placeholder="Enter url or text">
+      <input type="text" class="qr-username" th:value="${username}">
+      <input type="text" class="qr-password" th:value="${password}">
 
       <button class="generate-btn">Generate QR Code</button>
     </div>
