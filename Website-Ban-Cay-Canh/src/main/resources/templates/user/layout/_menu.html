@@ -1,5 +1,6 @@
 
-<div class="main-header" xmlns:th="http://www.thymeleaf.org">
+<div class="main-header" xmlns:th="http://www.thymeleaf.org"
+	 xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	<div class="header-top">
 		<div class="container-fluid">
 			<div class="row align-items-center">
@@ -283,6 +284,17 @@
 										<li><a href="/login">login</a></li>
 									</ul></li>
 								<li><a href="/contact"> Contact Us</a></li>
+								<li class="menu-item-has-children"
+									th:if="${#request.remoteUser}" ><a class="blog-btn"
+																	   href="#">Welcome [[${#request.remoteUser}]]<span
+										class="menu-expand"><i class="fa fa-angle-down"></i></span></a>
+									<ul class="sub_menu pages blog-show">
+										<li><a th:href="|/account/info|">My Account</a></li>
+										<li sec:authorize="hasAnyRole('Director','STAFF')"><a
+												th:href="@{/admin}">Admin</a></li>
+										<li><a href="/account/Qrcode">Create QRcode</a></li>
+										<li><a th:href="@{/security/logoff}">Sign out</a></li>
+									</ul></li>
 							</ul>
 						</nav>
 					</div>
