@@ -84,8 +84,17 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/admin")
-	public String admin()
+	public String admin(Model model,HttpServletRequest respon)
 	{
-		return "../static/admin/index";
+		if(respon.getRemoteUser() == null)
+		{
+			return "redirect:/login/form";
+		}else {
+			Account us = dao.findByTk(respon.getRemoteUser());
+			int usId = us.getId();
+			model.addAttribute("user_id", usId);
+			return "../static/admin/index";
+		}
+
 	}
 }
