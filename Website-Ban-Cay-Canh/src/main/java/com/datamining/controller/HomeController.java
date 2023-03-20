@@ -2,6 +2,9 @@ package com.datamining.controller;
 
 
 import com.datamining.service.ProductService;
+
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.datamining.dao.ProfileDAO;
 import com.datamining.entity.Account;
-
+import com.datamining.entity.Product;
 import com.datamining.entity.Profile;
 import com.datamining.service.AccountService;
 
@@ -25,6 +28,9 @@ import com.datamining.service.AccountService;
 public class HomeController {
 	@Autowired
 	ProductService pService;
+	@Autowired
+	AccountService dao;
+	
 	@RequestMapping({"/", "/home/index"})
 	public String home(Model model) {
 //		List<Category> sp = dao.findAll();

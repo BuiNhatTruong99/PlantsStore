@@ -17,7 +17,7 @@ public class SecurityController {
 	@RequestMapping("/login/success")
 	public String loginSuccess(Model model) {
 		model.addAttribute("message", "Đăng nhập thành công!");
-		return "redirect:/product/list";
+		return "redirect:/home/index";
 	}
 
 	@RequestMapping("/login/error")
