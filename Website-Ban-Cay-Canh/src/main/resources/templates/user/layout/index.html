@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -283,33 +284,19 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-5">
-                    <div class="widgets_container widget_app">
-                        <div class="footer_logo">
-                            <a href="index.html"><img src="../images/logo.png" alt=""></a>
-                        </div>
-                        <div class="footer_widgetnav_menu">
-                            <ul>
-                                <li><a href="#">Payment</a></li>
-                                <li><a href="#">Affiliates</a></li>
-                                <li><a href="/contact">Contact</a></li>
-                                <li><a href="#">Internet</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer_social">
-                            <ul>
-                                <li><a href="#"><i class="fa-brands fa-facebook"></i></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-google-plus" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="footer_app">
-                            <ul>
-                                <li><img src="../images/Slide/appstore.png" alt=""></li>
-                                <li><img src="../images/Slide/ggplay.png" alt=""></li>
-                            </ul>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="widgets_container widget_menu">
+                            <h3>My Account</h3>
+                            <div class="footer_menu">
+                                <ul>
+                                   
+                                    <li><a href="/contact">Contact</a></li>
+                                    <li><a href="cart.html">Shopping cart</a></li>
+                                    <li><a href="checkout.html">Checkout</a></li>
+                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="#">Order History</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

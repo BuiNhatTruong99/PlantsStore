@@ -31,6 +31,7 @@ public class ProductController {
         } else {
             List<Product> list = pService.findAll();
             model.addAttribute("items", list);
+            
         }
         List<Product> bestSale = pService.findTop5Seller();
         model.addAttribute("bestSale", bestSale);

@@ -1,6 +1,6 @@
 
 <div class="main-header" xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	<div class="header-top">
 		<div class="container-fluid">
 			<div class="row align-items-center">
@@ -14,12 +14,13 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 						<div class="search_container">
 							<div class="search_box">
 								<form action="/product/search" method="get">
-									<input placeholder="Search product..." type="text" id="keyword" name="keyword">
+									<input placeholder="Search product..." type="text" id="keyword"
+										name="keyword">
 									<button type="submit">
 										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-											 fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+											fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
 											<path
-													d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+												d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
 										</svg>
 									</button>
 								</form>
@@ -33,8 +34,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
                                                     <path
 											d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
                                                 </svg></a>
+
 							</div>
-							
+
 							<div class="header_account-list header_wishlist">
 								<a href="/wishlist"><svg
 										xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -74,7 +76,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 									</div>
 									<div class="cart_item" ng-repeat="item in cart.items">
 										<div class="cart_img">
-											<a href="#"><img src="../img/product/{{item.image}}" alt=""></a>
+											<a href="#"><img src="../img/product/{{item.image}}"
+												alt=""></a>
 										</div>
 										<div class="cart_info">
 											<a href="#">{{item.name}}</a>
@@ -148,17 +151,17 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 						<div class="main_menu_res">
 							<div class="search_box_res">
 								<form action="" method="get">
-									<input placeholder="Search product..." type="text" >
+									<input placeholder="Search product..." type="text">
 									<button type="submit">
 										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-											 fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+											fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
 											<path
-													d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+												d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
 										</svg>
 									</button>
 								</form>
 							</div>
-							
+
 							<nav>
 								<ul class="offcanvas_main_menu">
 									<div class="canvas_close">
@@ -209,14 +212,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 															variable</a></li>
 												</ul></li>
 										</ul></li>
-									<li class="menu-item-has-children"><a class="blog-btn"
-										href="#">blog<span class="menu-expand"><i
-												class="fa fa-angle-down"></i></span></a>
-										<ul class="sub_menu pages blog-show">
-											<li><a href="#">blog details</a></li>
-											<li><a href="#">blog fullwidth</a></li>
-											<li><a href="#">blog sidebar</a></li>
-										</ul></li>
+
 									<li class="menu-item-has-children"><a class="pages-btn"
 										href="#">pages<span class="menu-expand"><i
 												class="fa fa-angle-down"></i></span></a>
@@ -229,12 +225,22 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 										</ul></li>
 									<li class="menu-item-has-children"><a href="/contact">
 											Contact Us</a></li>
+									<!-- Show user after login -->
+									<li class="menu-item-has-children" 
+										th:if="${#request.remoteUser}" ><a class="blog-btn" 
+										href="#">Welcome [[${#request.remoteUser}]]<span
+											class="menu-expand"><i class="fa fa-angle-down"></i></span></a>
+										<ul class="sub_menu pages blog-show">
+											<li><a th:href="|/account/info|">My Account</a></li>
+											<li sec:authorize="hasAnyRole('Director','STAFF')"><a
+												th:href="@{/admin}">Admin</a></li>
+											<li><a href="/account/Qrcode">Create QRcode</a></li>
+											<li><a th:href="@{/security/logoff}">Sign out</a></li>
+										</ul></li>
+									<!-- Show user after login -->
+
 								</ul>
-								<!-- Show user after login -->
-								<ul th:if="${#request.remoteUser}" class="nav navbar-nav navbar-right">
-					                <li><a href="#">Welcome [[${#request.remoteUser}]]</a></li>
-					            </ul>
-					            <!-- Show user after login -->
+
 							</nav>
 						</div>
 					</div>
@@ -280,12 +286,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 												</ul></li>
 										</ul>
 									</div></li>
-								<li><a href="#">blog<i class="fa fa-angle-down"></i></a>
-									<ul class="sub_menu pages">
-										<li><a href="blog-details.html">blog details</a></li>
-										<li><a href="blog-fullwidth.html">blog fullwidth</a></li>
-										<li><a href="blog-sidebar.html">blog sidebar</a></li>
-									</ul></li>
+								
 								<li><a href="#">pages <i class="fa fa-angle-down"></i></a>
 									<ul class="sub_menu pages">
 										<li><a href="about.html">About Us</a></li>
@@ -296,7 +297,15 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 									</ul></li>
 								<li><a href="/contact"> Contact Us</a></li>
 								<!-- Show user after login -->
-								<li th:if="${#request.remoteUser}"><a href="#">Welcome [[${#request.remoteUser}]]</a></li>
+								<li th:if="${#request.remoteUser}"><a href="#">Welcome [[${#request.remoteUser}]]<i class="fa fa-angle-down"></i></a>
+									<ul class="sub_menu pages">
+										<li><a th:href="|/account/info|">My Account</a></li>
+											<li sec:authorize="hasAnyRole('Director','STAFF')"><a
+												th:href="@{/admin}">Admin</a></li>
+											<li><a href="/account/Qrcode">Create QRcode</a></li>
+											<li><a th:href="@{/security/logoff}">Sign out</a></li>
+									</ul></li>
+								
 								<!-- Show user after login -->
 							</ul>
 						</nav>
@@ -305,7 +314,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 				</div>
 				<div class="col-lg-3">
 					<div class="call-support">
-					<!--<div sec:authorize="hasAuthority('1')" > Has Authority ADMIN
+						<!--<div sec:authorize="hasAuthority('1')" > Has Authority ADMIN
 						<a th:href="@{/admin/vlon}">écéc</a>
 					 </div> 
 					 -->
@@ -313,7 +322,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 							Call Support: <a href="tel:0123456789">0123456789</a>
 						</p>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>

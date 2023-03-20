@@ -1,0 +1,48 @@
+<div>
+
+    <h5 class="card-title">Profile Details</h5>
+
+    <div class="row">
+        <div class="col-lg-3 col-md-4 label ">Full Name</div>
+        <div class="col-lg-9 col-md-8" >
+            <span >{{profile.fullname}}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3 col-md-4 label">Gender</div>
+        <div class="col-lg-9 col-md-8">
+            <span ng-if="profile.gender == true">Male</span>
+            <span ng-if="profile.gender != true">Female</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3 col-md-4 label">BirthDay</div>
+        <div class="col-lg-9 col-md-8">
+            <span>{{profile.birthday | date:'dd/MM/yyyy'}}</span>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-3 col-md-4 label">Address</div>
+        <div class="col-lg-9 col-md-8">
+            <span>{{profile.address}}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3 col-md-4 label">Phone</div>
+        <div class="col-lg-9 col-md-8">
+            <span>{{profile.phone}}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3 col-md-4 label">Email</div>
+        <div class="col-lg-9 col-md-8">
+            <span>{{profile.email}}</span>
+        </div>
+    </div>
+</div>

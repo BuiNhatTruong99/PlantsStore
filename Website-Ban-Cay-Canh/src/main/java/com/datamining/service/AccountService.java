@@ -1,6 +1,8 @@
 package com.datamining.service;
 
 import com.datamining.entity.Account;
+import com.datamining.entity.Profile;
+
 import java.util.List;
 
 public interface AccountService {

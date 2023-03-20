@@ -2,6 +2,7 @@ package com.datamining.servide.impl;
 
 import com.datamining.dao.AccountDAO;
 import com.datamining.entity.Account;
+import com.datamining.entity.Profile;
 import com.datamining.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
