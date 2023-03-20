@@ -7,7 +7,7 @@ app.controller("profile-ctrl", function($scope, $http) {
 		$http.get(`/profile/${user_id}`).then(resp => {
 			$scope.profile = resp.data;
 			$scope.profile.birthday = new Date($scope.profile.birthday);
-			console.log($scope.profile)
+			// console.log($scope.profile)
 		})
 
 
@@ -20,7 +20,7 @@ app.controller("profile-ctrl", function($scope, $http) {
 
 	$scope.imageChanged = function(files) {
 		var data = new FormData();
-		console.log(files)
+		// console.log(files)
 		data.append('file', files[0]);
 		$http.post(`/api/upload/avatar`, data, {
 			transformRequest: angular.identity,
@@ -29,7 +29,7 @@ app.controller("profile-ctrl", function($scope, $http) {
 			}
 		}).then(resp => {
 			$scope.form.avatar = resp.data.name;
-			console.log(resp.data.name)
+			// console.log(resp.data.name)
 		}).catch(error => {
 			// console.log(error)
 		})
@@ -38,16 +38,64 @@ app.controller("profile-ctrl", function($scope, $http) {
 	$scope.save = function() {
 
 		var item = angular.copy($scope.form);
-		console.log(item)
+		// console.log(item)
 		$http.put(`/profile/update/${user_id}`, item).then(resp => {
 				// var index = $scope.profile.indexOf(p => p.id === item.id);
 				$scope.profile = item;
-				console.log(item)
+				// console.log(item)
 			alert("Lưu thành công")
 			}).catch(error => {
 			console.log("Error", error);
-			console.log(item)
+			// console.log(item)
 		})
+
+	}
+
+	/////// change password account
+
+	$scope.accounts = [];
+	$scope.items = [];
+	$scope.form_account = {};
+
+	$scope.initialize_account = function () {
+		$http.get(`/api/account/${user_id}`).then(resp => {
+			$scope.items = resp.data;
+			$scope.accounts = $scope.items.data;
+			// console.log($scope.accounts)
+		})
+
+	}
+	$scope.initialize_account();
+	$scope.edit_pass = function() {
+		$scope.form_account = angular.copy($scope.accounts);
+	}
+
+	$scope.update = function () {
+		let oldpass = document.getElementById("currentPassword").value;
+		let newpass = document.getElementById("newPassword").value;
+		let confirm = document.getElementById("renewPassword").value;
+
+		switch (true) {
+			case (oldpass.length === 0 || newpass.length === 0 || confirm.length === 0):
+				alert("Vui lòng nhập đầy đủ ô trống");
+				break;
+			case (newpass !== confirm):
+				alert("Xác nhận mật khẩu không khớp");
+				break;
+			case (oldpass !== $scope.accounts.password):
+				alert("Mật khẩu cũ không khớp");
+				break;
+			default:
+				$scope.form_account.password = newpass;
+				var item_acc = angular.copy($scope.form_account);
+				$http.put(`/api/account/${user_id}`, item_acc).then(resp => {
+					$scope.accounts = item_acc;
+					alert("Đổi thành công");
+				}).catch(error => {
+					alert("Lỗi cập nhật");
+					console.log("Error", error);
+				});
+		}
 
 	}
 })

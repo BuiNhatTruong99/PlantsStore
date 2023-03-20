@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Form Coupon</h5>
+
+    <!-- Horizontal Form -->
+    <form>
+      <div class="row mb-3">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Code</label>
+        <div class="col-sm-10">
+          <input type="text" maxlength="20" minlength="8"  class="form-control" ng-model="form.code">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Value</label>
+        <div class="col-sm-10">
+          <input type="number" min="0" max="100" class="form-control" ng-model="form.value">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Create</label>
+        <div class="col-sm-10">
+          <input type="date" class="form-control" ng-model="form.createDate">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">End</label>
+        <div class="col-sm-10">
+          <input type="date" class="form-control" ng-model="form.endDate">
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button ng-click="create()" type="submit" class="btn btn-primary">Create</button>
+        <button ng-click="update()" type="button" class="btn btn-primary">Update</button>
+        <button ng-click="delete(form)" type="submit" class="btn btn-primary">Delete</button>
+        <button ng-click="clear()" class="btn btn-secondary">Reset</button>
+      </div>
+    </form><!-- End Horizontal Form -->
+
+  </div>
+</div>

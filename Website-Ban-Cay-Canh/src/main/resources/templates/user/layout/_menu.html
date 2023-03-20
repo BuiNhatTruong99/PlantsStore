@@ -28,7 +28,7 @@
 						</div>
 						<div class="header_account_area">
 							<div class="header_account-list top_links">
-								<a href="/login/form"><svg
+								<a th:if="!${#request.remoteUser}" href="/login/form"><svg
 										xmlns="http://www.w3.org/2000/svg" width="25" height="25"
 										fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
                                                     <path
@@ -293,7 +293,7 @@
 										<li><a href="services.html">services</a></li>
 										<li><a href="faq.html">Frequently Questions</a></li>
 										<li><a href="/contact">contact</a></li>
-										<li><a href="/login">login</a></li>
+
 									</ul></li>
 								<li><a href="/contact"> Contact Us</a></li>
 								<!-- Show user after login -->

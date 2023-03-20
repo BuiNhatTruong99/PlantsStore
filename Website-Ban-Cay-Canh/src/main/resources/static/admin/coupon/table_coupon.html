@@ -1,0 +1,47 @@
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Table with stripped rows</h5>
+                    <!-- Table with stripped rows -->
+                    <table class="table table-striped text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">#Id</th>
+                                <th scope="col">Code</th>
+                                <th scope="col">Value</th>
+                                <th scope="col">Create Date</th>
+                                <th scope="col">End Date</th>
+                                <th scope="col">Edit</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tr_products" ng-repeat="coupon in pager.coupons">
+                                <th scope="row" class="td_height">{{coupon.id}}</th>
+                                <td class="td_height">{{coupon.code}}</td>
+                                <td class="td_height">{{coupon.value}}</td>
+                                <td class="td_height">{{coupon.createDate | date: 'dd-MM-yyyy'}}</td>
+                                <td class="td_height">{{coupon.endDate | date: 'dd-MM-yyyy'}}</td>
+                                <td>
+                                    <div class="quick_view"><i class="bi bi-eye"></i><button ng-click="edit(coupon)">Edit</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer text-center">
+        <button ng-click="pager.first()" class="btn"><i class="bi bi-arrow-bar-left"></i></button>
+        <button ng-click="pager.prev()" class="btn"><i class="bi bi-arrow-left-short"></i></button>
+        <button class="btn">{{pager.page +1}} of {{pager.count}}</button>
+        <button ng-click="pager.next()" class="btn"><i class="bi bi-arrow-right-short"></i></button>
+        <button ng-click="pager.last()" class="btn"><i class="bi bi-arrow-bar-right"></i></button>
+    </div>
+</section>

@@ -13,6 +13,10 @@ app.config(function ($routeProvider) {
             templateUrl: "../admin/products/manager-products.html",
             controller: "products-ctrl"
         })
+        .when("/coupon", {
+            templateUrl: "../admin/coupon/manager-coupon.html",
+            controller: "coupon-ctrl"
+        })
         .when("/myprofile",{
             templateUrl: "../admin/profile/manager_profile.html",
             controller: "profile-ctrl"
