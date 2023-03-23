@@ -9,6 +9,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
@@ -21,5 +23,6 @@ public class Size implements Serializable {
 
 	// Product_Size
 	@OneToMany(mappedBy = "size")
-	private Set<ProductSize> ratings;
+	@JsonBackReference
+	private Set<ProductSize> size;
 }
