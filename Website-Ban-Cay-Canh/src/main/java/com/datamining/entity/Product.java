@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import lombok.Data;
 import lombok.var;
@@ -29,7 +30,7 @@ public class Product implements Serializable {
 	private Integer id;
 	private String name;
 	private Double price;
-	private Double quantity;
+	private Integer quantity;
 	private String image;
 	private String description;
 	private Boolean status;
@@ -65,14 +66,14 @@ public class Product implements Serializable {
 	private List<OrderDetail> oderDetails;
 
 	// Product_Rate
-	@JsonIgnore
+	@JsonManagedReference
 	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
 	private List<ProductRate> productRates;
 
 	// Product_Size
-	@JsonIgnore
+	@JsonManagedReference
 	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-	private Set<ProductSize> ratings;
+	private List<ProductSize> productSizes;
 
 
 	public static Product convert(ProductDTO productDTO) {
