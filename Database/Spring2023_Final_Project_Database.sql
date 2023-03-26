@@ -67,7 +67,7 @@ CREATE TABLE Discounts(
 CREATE TABLE Products(
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(255) NOT NULL,
-    quantity INT NOT NULL,
+    quantity INT,
     price DECIMAL(10, 2),
     image VARCHAR(100),
     description LONGTEXT,
@@ -96,10 +96,11 @@ CREATE TABLE Size(
 );
 
 CREATE TABLE Product_Size(
+	id INT AUTO_INCREMENT PRIMARY KEY,
 	product_id INT,
     size_id VARCHAR(10),
     price DECIMAL(10, 2),
-    PRIMARY KEY(product_id, size_id),
+    quantity INT,
     CONSTRAINT fk_productSize_Products FOREIGN KEY (product_id) REFERENCES Products(id),
     CONSTRAINT fk_productSize_Size FOREIGN KEY (size_id) REFERENCES Size(id)
 );
@@ -168,6 +169,14 @@ CREATE TABLE History_Payment(
 	id INT AUTO_INCREMENT PRIMARY KEY,
     total DECIMAL(10, 2),
     create_date DATETIME NOT NULL
+);
+
+CREATE TABLE Coupon(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    code nvarchar(20) not null,
+    value int not null,
+    create_date datetime not null,
+    end_date datetime not null
 );
 -- ========================================= END ==============================================
 
@@ -369,7 +378,6 @@ INSERT INTO Products(name, quantity, price, image, description, status, is_delet
 	('Cây Thiết Mộc Lan', 20, 250, 'cay-thiet-moc-lan.png', 'Đúng như với cái tên Thiết mộc lan đó là loại cây rất đẹp, phát tài phát lộc. Không những làm đẹp cho không gian sống của ngôi nhà mà Thiết mộc lan còn đem đến tài vận tốt cho gia chủ, giúp gia chủ luôn được may mắn, thịnh vượng.', 1, 0, '2020-1-11', '2020-1-11', null, 2, 1),    
 	('Cây Thường Xuân', 20, 150, 'caythuong-xuan.png', 'Cây Thường Xuân hay còn có tên gọi khác như Trường Xuân, cảnh dây Nguyệt Quế, cây Vạn Niên…Từ trước tới giờ cây luôn được mọi người ưa thích vì được ví như một bộ máy lọc không khí trong nhà. Mang ý nghĩa phong thủy xua đuổi tà ma, xóa tan âm khí, vượng dương khí mang đến bình an và may mắn cho gia chủ.', 0, 0, '2020-1-11', '2020-1-11', null, 2, null),    
 	
-    ('Cây Đinh Lăng', 30, 350, 'cay-dinh-lang.png', 'Cây đinh lăng từ lâu đời đã là một dược liệu rất quan trọng trong văn hóa Việt Nam. Không chỉ vậy, cây còn có tác dụng phong thủy rất lớn với ngôi nhà, mang tới tài lộc và may mắn cho gia đình. Đồng thời, ngăn chặn khí xấu đi vào nhà, được coi là “thần giữ hồn, giữ của” cho chủ nhà.', 1, 0, '2020-1-11', '2020-1-11', null, 2, null),
 	('Cây Lộc Vừng', 40, 1000, 'cay-loc-vung.png', 'Cây lộc vừng xuất hiện nhiều trong phong thủy vì có ý nghĩa đem lại may mắn, yên bình và tài lộc, hạnh phúc cho gia đình. Cây ra hoa đẹp, rực rỡ màu đỏ tươi nổi bật cả vùng trời. Cây có màu hoa trắng hoặc đỏ, hoa màu trắng thì sẽ to và ít hoa hơn màu đỏ.', 0, 0, '2020-1-11', '2020-1-11', null, 2, 2),
 	('Cây Trầu Bà', 30, 50, 'cay-trau-ba.png', 'Cây trầu bà mang đến nhiều tài lộc, thịnh vượng, may mắn cho gia chủ, giúp cuộc sống gia đình tránh được nhiều vận xui, điều thị phi trong cuộc sống. Do vậy, chúng được mệnh danh là "cây tiền tài", được nhiều người yêu thích trồng trong nhà.', 0, 0, '2020-1-11', '2020-1-11', null, 2, null),
 	('Cây Vạn Niên', 50, 150, 'cay-van-nien.png', ' Cây Vạn Niên Thanh có ý nghĩa phong thủy tăng tài vận cho gia chủ. Người ta quan niệm, trồng vạn niên thanh trong nhà ngày tết mang đến sự sung túc, trong hôn nhân cầu chúc hòa hợp như ý, trong lễ mừng thọ chúc được sống lâu.', 0, 0, '2020-1-11', '2020-1-11', null, 2, 1),
@@ -533,90 +541,90 @@ INSERT INTO Size(id) VALUES
     ('M'),
     ('L');
 
-INSERT INTO Product_Size(product_id, size_id, price) VALUES
-	(44, 'S', 20),
-    (44, 'M', 25),
-    (44, 'L', 30),
+INSERT INTO Product_Size(product_id, size_id, price, quantity) VALUES
+	(43, 'S', 20, 20),
+    (43, 'M', 25, 15),
+    (43, 'L', 30, 15),
     
-	(45, 'S', 30),
-    (45, 'M', 40),
-    (45, 'L', 50),
+	(44, 'S', 20, 20),
+    (44, 'M', 25, 15),
+    (44, 'L', 30, 15),
     
-    (46, 'S', 23),
-    (46, 'M', 35),
-    (46, 'L', 40),
+	(45, 'S', 30, 20),
+    (45, 'M', 40, 30),
+    (45, 'L', 50, 25),
     
-    (47, 'S', 20),
-    (47, 'M', 25),
-    (47, 'L', 30),
+    (46, 'S', 23, 20),
+    (46, 'M', 35, 25),
+    (46, 'L', 40, 20),
     
-    (48, 'S', 18),
-    (48, 'M', 25),
-    (48, 'L', 30),
+    (47, 'S', 20, 30),
+    (47, 'M', 25, 28),
+    (47, 'L', 30, 25),
     
-    (49, 'S', 30),
-    (49, 'M', 40),
-    (49, 'L', 45),
+    (48, 'S', 18, 18),
+    (48, 'M', 25, 10),
+    (48, 'L', 30, 10),
     
-    (50, 'S', 24),
-    (50, 'M', 30),
-    (50, 'L', 35),
+    (49, 'S', 30, 20),
+    (49, 'M', 40, 15),
+    (49, 'L', 45, 10),
     
-    (51, 'S', 20),
-    (51, 'M', 25),
-    (51, 'L', 30),
+    (50, 'S', 24, 30),
+    (50, 'M', 30, 20),
+    (50, 'L', 35, 30),
     
-    (52, 'S', 35),
-    (52, 'M', 40),
-    (52, 'L', 45),
+    (51, 'S', 20, 25),
+    (51, 'M', 25, 25),
+    (51, 'L', 30, 20),
     
-    (53, 'S', 35),
-    (53, 'M', 40),
-    (53, 'L', 45),
+    (52, 'S', 35, 25),
+    (52, 'M', 40, 25),
+    (52, 'L', 45, 20),
     
-    (54, 'S', 25),
-    (54, 'M', 30),
-    (54, 'L', 35),
+    (53, 'S', 35, 20),
+    (53, 'M', 40, 20),
+    (53, 'L', 45, 20),
     
-    (55, 'S', 35),
-    (55, 'M', 45),
-    (55, 'L', 55),
+    (54, 'S', 25, 20),
+    (54, 'M', 30, 20),
+    (54, 'L', 35, 20),
     
-    (56, 'S', 34),
-    (56, 'M', 45),
-    (56, 'L', 50),
+    (55, 'S', 35, 30),
+    (55, 'M', 45, 25),
+    (55, 'L', 55, 25),
     
-    (57, 'S', 28),
-    (57, 'M', 35),
-    (57, 'L', 46),
+    (56, 'S', 34, 25),
+    (56, 'M', 45, 20),
+    (56, 'L', 50, 20),
     
-    (58, 'S', 22),
-    (58, 'M', 28),
-    (58, 'L', 35),
+    (57, 'S', 28, 15),
+    (57, 'M', 35, 15),
+    (57, 'L', 46, 15),
     
-    (59, 'S', 120),
-    (59, 'M', 130),
-    (59, 'L', 140),
+    (58, 'S', 22, 20),
+    (58, 'M', 28, 15),
+    (58, 'L', 35, 15),
     
-    (60, 'S', 200),
-    (60, 'M', 250),
-    (60, 'L', 300),
+    (59, 'S', 120, 20),
+    (59, 'M', 130, 15),
+    (59, 'L', 140, 10),
     
-    (61, 'S', 350),
-    (61, 'M', 425),
-    (61, 'L', 500),
+    (60, 'S', 200, 15),
+    (60, 'M', 250, 10),
+    (60, 'L', 300, 10),
     
-    (62, 'S', 150),
-    (62, 'M', 200),
-    (62, 'L', 220),
+    (61, 'S', 350, 5),
+    (61, 'M', 425, 5),
+    (61, 'L', 500, 5),
     
-    (63, 'S', 230),
-    (63, 'M', 250),
-    (63, 'L', 300),
+    (62, 'S', 150, 10),
+    (62, 'M', 200, 8),
+    (62, 'L', 220, 8),
     
-    (64, 'S', 280),
-    (64, 'M', 330),
-    (65, 'L', 350);
+    (63, 'S', 230, 8),
+    (63, 'M', 250, 5),
+    (63, 'L', 300, 5);
 
 INSERT INTO Order_Status(name) VALUES
 	('Đơn đã đặt'),
