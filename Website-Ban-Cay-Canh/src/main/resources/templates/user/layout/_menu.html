@@ -80,16 +80,20 @@
 												alt=""></a>
 										</div>
 										<div class="cart_info">
-											<a href="#">{{item.name}}</a>
+											<a href="#">{{item.name}} <span ng-if="item.idSize">({{item.idSize}})</span></a>
 											<p>
 												Quantity: <input type="number" min="1" ng-model="item.qty"
-													ng-change="cart.saveToLocalStorage()"><span
-													class="price_item"> {{item.price * item.qty |
-													number:0}} $ </span>
+													ng-change="cart.saveToLocalStorage()">
+													<span ng-if="item.price" class="price_item"> 
+														{{item.price * item.qty | number:0}} $ 
+													</span>
+													<span ng-if="!item.price" class="price_item"> 
+														{{item.priceSize * item.qty | number:0}} $ 
+													</span>
 											</p>
 										</div>
 										<div class="cart_remove">
-											<a ng-click="cart.remove(item.id)"><svg
+											<a ng-click="cart.remove(item.id, item.idSize)"><svg
 													xmlns="http://www.w3.org/2000/svg" width="20" height="20"
 													fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                                 <path
@@ -238,9 +242,9 @@
 											<li><a th:href="@{/security/logoff}">Sign out</a></li>
 										</ul></li>
 									<!-- Show user after login -->
-
+									
 								</ul>
-
+									<!-- <input id="user_id" type="hidden" th:value="|${user_id}|"></input> -->
 							</nav>
 						</div>
 					</div>

@@ -16,7 +16,6 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/lib/fontawesome-free-6.1.1/css/all.min.css">
-
     <title>Index</title>
 </head>
 
@@ -54,45 +53,41 @@
                             	<a href=""><i class="fa-regular fa-star"></i></a>
                             </li>
                         </ul>
-                        <div ng-if="totalRate != 0">
+                        <span ng-if="totalRate != 0">
                         	<h3>{{totalRate}}</h3>
-                        </div>
+                        </span>
                         <div ng-if="totalRate == 0">
                         	<h3>Chưa có đánh giá</h3>
                         </div>
                     </div>
-                    <div class="price"><span class="woocommerce-Price-amount amount"><span
-                                class="woocommerce-Price-currencySymbol">$</span>[[*{price}]]</span></div>
-
+                    <div class="price">
+                    			<span class="woocommerce-Price-amount amount" th:if="*{productSizes.size==0}">
+                    			<span class="woocommerce-Price-currencySymbol"> $ </span>[[*{price}]]</span>
+                    			<span class="woocommerce-Price-amount amount" th:if="*{productSizes.size>0}" id="price">
+                    			<span class="woocommerce-Price-currencySymbol"> $ </span>[[*{productSizes[0].price}]]</span>
+                    </div>
                     <div itemprop="description" class="description col-10">
                         <p>[[*{description}]]</p>
                     </div>
-                    <div class="products-size">
+                    <div th:if="*{productSizes.size>0}" class="products-size">
                         <label for=""><strong>Size</strong></label>
                         <div class="size-swap">
-                            <div class="n-sd size_item" data-value="s">
-                                <input type="radio" class="size_radio" id="size_s" name="option" value="S" checked>
-                                <label for="size_s"><span id="size_pro">S</span></label>
-                            </div>
-                            <div class="n-sd size_item" data-value="l">
-                                <input type="radio" class="size_radio" id="size_l" name="option" value="L">
-                                <label for="size_l"><span id="size_pro">L</span></label>
-                            </div>
-                            <div class="n-sd size_item" data-value="xl">
-                                <input type="radio" class="size_radio" id="size_xl" name="option" value="XL">
-                                <label for="size_xl"><span id="size_pro">XL</span></label>
-                            </div>
+                            <div th:each="s:*{productSizes}" class="n-sd size_item" data-value="s">
+								<input type="radio" onchange="submitSize()" class="size_radio"
+								name="size" th:value="${s.size.id}+','+${s.price}" th:checked="${s.size.id}==*{productSizes[0].size.id}">
+								<label><span id="size_pro">[[${s.size.id}]]</span></label>
+							</div>
                         </div>
                     </div>
                     <div class="cart">
                         <div class="quantity-button">
                             <span>Quantity</span>
                             <div class="quantity">
-                                <input type="number" id="quantity_6333fa0a4b0d4" class="input-text qty text" step="1"
-                                    min="1" max="" name="quantity" value="1" title="Qty" size="4" placeholder=""
+                                <input type="number" id="quantity" class="input-text qty text" step="1"
+                                    min="1" max="50" name="quantity" value="1" title="Qty" size="4" placeholder=""
                                     inputmode="numeric" autocomplete="off">
                             </div>
-                            <button type="submit" class="single_add_to_cart_button button alt" onclick="searchURL()">Add
+                            <button th:attr="ng-click=@{|cart.add(*{id})|}" class="single_add_to_cart_button button alt">Add
                                 to cart</button>
                         </div>
                         <div class="like-button" ng-controller="wishlist-ctrl">
