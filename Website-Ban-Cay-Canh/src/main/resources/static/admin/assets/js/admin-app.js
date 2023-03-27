@@ -29,7 +29,14 @@ app.config(function ($routeProvider) {
         .when("/profile", {
             templateUrl: "../admin/profiles/index-profile.html",
             controller: "profiles-ctrl"
-
+        })
+        .when("/feedback",{
+            templateUrl: "../admin/feedbacks/manager-feedbacks.html",
+            controller: "feedback-ctrl"
+        })
+        .when("/discount",{
+            templateUrl: "../admin/discounts/manager-discounts.html",
+            controller: "discount-ctrl"
         })
         .otherwise({
             templateUrl: "../admin/dashboard.html"

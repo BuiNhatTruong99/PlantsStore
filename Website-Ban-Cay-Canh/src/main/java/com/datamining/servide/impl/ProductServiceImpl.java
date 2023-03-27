@@ -72,5 +72,10 @@ public class ProductServiceImpl implements ProductService {
         return pdao.findTop5Seller();
     }
 
+	@Override
+	public List<Product> selectAllFeedbacks() {
+		return pdao.selectAllFeedbacks();
+	}
+
 
 }

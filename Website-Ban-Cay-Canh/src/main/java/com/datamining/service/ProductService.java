@@ -27,4 +27,6 @@ public interface ProductService {
     void delete(Integer id);
 
     List<Product> findTop5Seller();
+    
+    List<Product> selectAllFeedbacks();
 }

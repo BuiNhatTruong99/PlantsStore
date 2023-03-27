@@ -1,0 +1,55 @@
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body" >
+                    <h5 class="card-title">Table with stripped rows</h5>
+                    <!-- Table with stripped rows -->
+                    <table class="table table-striped text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">Image</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Total Rating</th>
+                                <th scope="col">Total Reviews</th>
+                                <th scope="col">Comment views</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tr_products" ng-repeat="i in pager.itemRates">
+                                <td class="td_height"><img ng-src="{{'../img/product/' + i.item.image}}" alt=""></td>
+                                <td class="td_height">{{i.item.name}}</td>
+                                <td class="td_height" ng-if="i.totalRate>0">{{i.totalRate}}</td>
+                                <td class="td_height" ng-if="i.totalRate==0">Chưa có đánh giá</td>
+                                <td class="td_height">{{i.item.productRates.length}}</td>
+                                <td>
+                                 	<span class="row">
+                                    <div class="col-lg-6">
+                                    	<a ng-href="/product/detail/{{i.item.url}}" data-c-tooltip="View comments" tooltip-position ="bottom"><div class="quick_view"><i class="bi bi-eye"></i></div>
+                                    	</a>
+                                    </div>
+                                    <div class="col-lg-6">
+                                    	<a ng-href="/product/detail/{{i.item.url}}" data-c-tooltip="View feedback statistics" tooltip-position ="bottom"><div class="quick_view"><i class="bi bi-bar-chart-line"></i></div>
+                                    	</a>
+                                    </div>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+     <div class="panel-footer text-center">
+        <button ng-click="pager.first()" class="btn"><i class="bi bi-arrow-bar-left"></i></button>
+        <button ng-click="pager.prev()" class="btn"><i class="bi bi-arrow-left-short"></i></button>
+        <button class="btn">{{pager.page +1}} of {{pager.count}}</button>
+        <button ng-click="pager.next()" class="btn"><i class="bi bi-arrow-right-short"></i></button>
+        <button ng-click="pager.last()" class="btn"><i class="bi bi-arrow-bar-right"></i></button>
+    </div>
+</section>
