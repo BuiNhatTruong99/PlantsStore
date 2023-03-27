@@ -11,10 +11,10 @@
 			</div>
 			<div class="featured__item__text">
 				<h6>
-					<a href="#">[[${p.name}]]</a>
+					<a th:href="@{|/img/product/${p.image}|}">[[${p.name}]]</a>
 				</h6>
-				<h5>$ [[${p.price}]]</h5>
-
+				<h5 th:if="${p.productSizes.size==0}">$ [[${p.price}]]</h5>
+				<h5 th:if="${p.productSizes.size>0}">$ [[${p.productSizes[0].price}]]</h5>
 			</div>
 		</div>
 		<div class="popup-view">
@@ -26,25 +26,19 @@
 				<div class="info">
 					<h2>[[${p.name}]]</h2>
 					<p>[[${p.description}]]</p>
-					<span class="price">$ [[${p.price}]]</span>
-					<div class="products-size">
+					<span th:if="${p.productSizes.size==0}" class="price">$ [[${p.price}]]</span>
+					<span th:if="${p.productSizes.size>0}" class="price" id="price">$ [[${p.productSizes[0].price}]]</span>
+					<div th:if="${p.productSizes.size>0}" class="products-size">
 						<label for=""><strong>Size</strong></label>
 						<div class="size-swap">
-							<div class="n-sd size_item" data-value="s">
-								<input type="radio" class="size_radio" id="size_s" name="option"
-									value="S"> S
-							</div>
-							<div class="n-sd size_item" data-value="l">
-								<input type="radio" class="size_radio" id="size_l" name="option"
-									value="L"> L
-							</div>
-							<div class="n-sd size_item" data-value="xl">
-								<input type="radio" class="size_radio" id="size_xl"
-									name="option" value="XL"> XL
+							<div th:each="s:${p.productSizes}" class="n-sd size_item" data-value="">
+								<input type="radio" onchange="submitSize()" class="size_radio" 
+								th:name="size" th:value="${s.size.id}+','+${s.price}">
+										[[${s.size.id}]]
 							</div>
 						</div>
 					</div>
-					<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="add-cart-btn">ADD TO CART</a> aa
+					<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="add-cart-btn">ADD TO CART</a>
 					<a th:attr="ng-click=@{|insert(${p.id})|}" class="add-wish">ADD TO WISHLIST</a>
 				</div>
 			</div>

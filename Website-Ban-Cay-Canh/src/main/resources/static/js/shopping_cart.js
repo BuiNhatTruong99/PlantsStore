@@ -8,28 +8,40 @@ app.controller('shoppingCart-ctrl', function($scope, $http) {
         })
     };
     $scope.cates();
-
+    
     $scope.cart = {
         items: [],
         add(id) {
-            let item = this.items.find(item => item.id === id);
+			let quantity = document.querySelector("#quantity");
+			let quantity2 = quantity ? parseInt(quantity.value) : 1;
+			let product_size = document.querySelector('input[name="size"]:checked');
+			let product_size2 = product_size ? product_size.value : '';
+			let arr = product_size2.split(",");
+			let idSize = arr[0] ? arr[0] : '';
+			let priceSize = arr[1] ? arr[1] : '';
+            let item = this.items.find(item => item.id === id && item.idSize === idSize);
             if (item) {
-                item.qty++;
+                item.qty += quantity2;
                 this.saveToLocalStorage()
+                alert("+1 sản phẩm [" + item.name + "] vào giỏ hàng!");
             } else {
                 $http.get(`/api/dto/products/${id}`).then(resp => {
-                    resp.data.data.qty = 1;
+					resp.data.data.idSize = idSize;
+					resp.data.data.priceSize = priceSize;
+                    resp.data.data.qty = quantity2;
                     this.items.push(resp.data.data);
                     this.saveToLocalStorage()
+                    alert("Thêm sản phẩm [" + resp.data.data.name + "] vào giỏ hàng thành công!");
+                    console.log(this.items);
                 });
+                
             }
         },
-        remove(id) {
-            let index = this.items.findIndex(item => item.id === id);
+        remove(id, idSize) {
+            let index = this.items.findIndex(item => item.id === id && item.idSize === idSize);
             if (index !== -1) {
                 this.items.splice(index, 1);
                 this.saveToLocalStorage()
-
             }
         },
 
