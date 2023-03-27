@@ -1,0 +1,70 @@
+
+<div class="pagetitle">
+  <h1>General Tables</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item">Tables</li>
+      <li class="breadcrumb-item active">General</li>
+    </ol>
+  </nav>
+</div>
+<!-- End Page Title -->
+
+<section class="section">
+  <div class="row">
+    <div class="">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Profile</h5>
+          <div>
+            <table class="table">
+              <thead>
+              <tr>
+                <th> ID</th>
+                <th>Fullname</th>
+                <th>Avatar</th>
+                <th>Gender</th>
+                <th>Birthday</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="item in items">
+                <td>{{item.id}}</td>
+                <td>{{item.fullname}}</td>
+                <td>{{item.avatar}}</td>
+                <td>{{item.gender?"Nam":"Nữ"}}</td>
+                <td>{{item.birthday}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.phone}}</td>
+                <td>{{item.address}}</td>
+
+                <td>
+                  <button ng-click="edit(item)" class="btn btn-primary">
+                    <b class="glyphicon glyphicon-plus"></b> E
+                  </button>
+                  <button ng-click="delete(form)" class="btn btn-primary">
+                    <b class="glyphicon glyphicon-plus"></b> D
+                  </button>
+
+
+                </td>
+
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>

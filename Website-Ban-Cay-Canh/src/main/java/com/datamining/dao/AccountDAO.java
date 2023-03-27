@@ -16,6 +16,7 @@ public interface AccountDAO extends JpaRepository<Account, Integer> {
     List<Account> findByUsername(String username);
 
 
-//	@Query(value="select p.* from Accounts u join Profile p on u.id = p.user_id where u.username = :username ",nativeQuery = true)
-//	public Account findProfile(@Param("username")String username);
+
+
+
 }

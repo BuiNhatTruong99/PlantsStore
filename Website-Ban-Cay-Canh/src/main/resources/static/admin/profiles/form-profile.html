@@ -1,0 +1,62 @@
+<div class="panel panel-default" style="background-color: #fff!important;">
+    <div class="panel-heading">PRODUCT EDITION</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-4 text-center">
+                <label for="image">
+                    <img ng-src="{{'/assets/img/'+ form.avatar}}"style="max-width: 100%; height: 200px;">
+
+                </label>
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div>Name</div>
+                        <input ng-model="form.fullname" class="form-control">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div>Gender</div>
+                        <input ng-model="form.gender ?'Nam':'Nữ'"class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div>Image</div>
+                        <input onchange="angular.element(this).scope().imageChanged(this.files)" type="file" class="form-control" id="image">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div>Birthday</div>
+                        <input ng-model="form.birthday" class="form-control">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div>Email</div>
+                        <input ng-model="form.email" class="form-control">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div>Phone</div>
+                        <input ng-model="form.phone" class="form-control">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div>Address</div>
+                        <input ng-model="form.address" class="form-control">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer text-center">
+
+        <button ng-click="update()" class="btn btn-success">
+            <b class="glyphicon glyphicon-save"></b> Update
+        </button>
+
+        <button ng-click="delete(form)" class="btn btn-danger">
+            <b class="glyphicon glyphicon-trash"></b> Delete
+        </button>
+        <button ng-click="reset()" class="btn btn-info">
+            <b class="glyphicon glyphicon-refresh"></b> Reset
+        </button>
+    </div>
+</div>

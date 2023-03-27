@@ -21,6 +21,16 @@ app.config(function ($routeProvider) {
             templateUrl: "../admin/profile/manager_profile.html",
             controller: "profile-ctrl"
         })
+
+        .when("/order", {
+            templateUrl: "../admin/tables-data.html",
+            controller: "order-ctrl"
+        })
+        .when("/profile", {
+            templateUrl: "../admin/profiles/index-profile.html",
+            controller: "profiles-ctrl"
+
+        })
         .otherwise({
             templateUrl: "../admin/dashboard.html"
         })

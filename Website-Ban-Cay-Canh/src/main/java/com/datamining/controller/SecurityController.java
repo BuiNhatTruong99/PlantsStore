@@ -1,5 +1,8 @@
 package com.datamining.controller;
 
+import com.datamining.service.AccountService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,5 +40,11 @@ public class SecurityController {
 		model.addAttribute("message", "Bạn không đủ quyền!");
 		return "redirect:/product/list";
 	}
-
+	@Autowired
+	AccountService accountService;
+	@RequestMapping("/oauth2/login/success")
+	public String success(OAuth2AuthenticationToken oauth2 ){
+		accountService.loginFromOAuth2(oauth2);
+		return "redirect:/product/list";
+	}
 }
