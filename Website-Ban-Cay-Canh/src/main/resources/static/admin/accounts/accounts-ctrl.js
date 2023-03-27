@@ -69,7 +69,7 @@ app.controller("accounts-ctrl", function ($scope, $http) {
         $http.put(`/api/account/${item.id}`, item).then(resp => {
             var index = $scope.accounts.findIndex(a => a.id == item.id);
             let confirm = document.getElementById("confirm").value;
-            if (confirm == item.password) {
+            if (confirm === item.password) {
                 $scope.accounts[index] = item;
                 $scope.clear();
                 $scope.message = "Cập nhật thành công";

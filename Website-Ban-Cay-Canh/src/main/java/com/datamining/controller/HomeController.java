@@ -91,6 +91,12 @@ public class HomeController {
 		return "user/product/wishlist";
 	}
 	
+//	@RequestMapping("/register")
+//	public String register()
+//	{
+//		return "user/security/register";
+//	}
+	
 	@RequestMapping("/admin")
 	public String admin(Model model,HttpServletRequest respon)
 	{

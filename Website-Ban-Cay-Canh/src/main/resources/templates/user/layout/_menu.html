@@ -296,17 +296,17 @@
 
 									</ul></li>
 								<li><a href="/contact"> Contact Us</a></li>
-								<!-- Show user after login -->
-								<li th:if="${#request.remoteUser}"><a href="#">Welcome [[${#request.remoteUser}]]<i class="fa fa-angle-down"></i></a>
-									<ul class="sub_menu pages">
+								<li class="menu-item-has-children"
+									th:if="${#request.remoteUser}" ><a class="blog-btn"
+																	   href="#">Welcome [[${#request.remoteUser}]]<span
+										class="menu-expand"><i class="fa fa-angle-down"></i></span></a>
+									<ul class="sub_menu pages blog-show">
 										<li><a th:href="|/account/info|">My Account</a></li>
-											<li sec:authorize="hasAnyRole('Director','STAFF')"><a
+										<li sec:authorize="hasAnyRole('Director','STAFF')"><a
 												th:href="@{/admin}">Admin</a></li>
-											<li><a href="/account/Qrcode">Create QRcode</a></li>
-											<li><a th:href="@{/security/logoff}">Sign out</a></li>
+										<li><a href="/account/Qrcode">Create QRcode</a></li>
+										<li><a th:href="@{/security/logoff}">Sign out</a></li>
 									</ul></li>
-								
-								<!-- Show user after login -->
 							</ul>
 						</nav>
 					</div>
