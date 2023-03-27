@@ -16,11 +16,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/lib/fontawesome-free-6.1.1/css/all.min.css">
-	<style type="text/css">
-	    .bad-word {
-		  color: red;
-		}
-	</style>
+
     <title>Index</title>
 </head>
 
@@ -118,47 +114,59 @@
                 <div class="rev_title">
                     <h2>{{items.length}} Review For <span class="name_pro_rev">Crab Pool Security</span></h2>
                 </div>
-                <select name="myComboBox" ng-model="selectCommentFilter" ng-change="commentFilter()" ng-init="selectCommentFilter='0'">
+                <select class="form-select" name="myComboBox" ng-model="selectCommentFilter" ng-change="commentFilter()" ng-init="selectCommentFilter='0'" style="width: 10rem;">
 					<option value="0">All comment</option>
 					<option value="1">My comment</option>
 				</select>
-				<div>
-					<input type="radio" ng-model="rateFilter" value="0" name="rate" ng-click="commentFilter()" ng-checked="true">
-                    <label for="rate-5">
-						All stars
-                    </label> |
-					<input type="radio" ng-model="rateFilter" value="1" name="rate" ng-click="commentFilter()">
-                    <label for="rate-5">
-						<a href=""><i class="fas fa-star"></i></a>
-                    </label> |
-                    <input type="radio" ng-model="rateFilter" value="2" name="rate" ng-click="commentFilter()">
-                    <label for="rate-5">
-						<a href=""><i class="fas fa-star"></i></a>
-						<a href=""><i class="fas fa-star"></i></a>
-                    </label> |
-                    <input type="radio" ng-model="rateFilter" value="3" name="rate" ng-click="commentFilter()">
-                    <label for="rate-5">
-						<a href=""><i class="fas fa-star"></i></a>
-						<a href=""><i class="fas fa-star"></i></a>
-						<a href=""><i class="fas fa-star"></i></a>
-                    </label> |
-                    <input type="radio" ng-model="rateFilter" value="4" name="rate" ng-click="commentFilter()">
-                    <label for="rate-5">
-						<a href=""><i class="fas fa-star"></i></a>
-						<a href=""><i class="fas fa-star"></i></a>
-						<a href=""><i class="fas fa-star"></i></a>
-						<a href=""><i class="fas fa-star"></i></a>
-                    </label> |
-                    <input type="radio" ng-model="rateFilter" value="5" name="rate" ng-click="commentFilter()">
-                    <label for="rate-5">
-						<a href=""><i class="fas fa-star"></i></a>
-						<a href=""><i class="fas fa-star"></i></a>
-						<a href=""><i class="fas fa-star"></i></a>
-						<a href=""><i class="fas fa-star"></i></a>
-						<a href=""><i class="fas fa-star"></i></a>
-                    </label>
+				<div class="row mt-3">
+					<div class="col col-md-auto" >
+						<input type="radio" ng-model="rateFilter" value="0" name="rate" ng-click="commentFilter()" ng-checked="true">
+	                    <label for="rate-5">
+							All stars
+	                    </label>
+                    </div>
+                    <div class="col col-md-auto">
+						<input type="radio" ng-model="rateFilter" value="1" name="rate" ng-click="commentFilter()">
+	                    <label for="rate-5">
+							<a class="color-rate" href=""><i class="fas fa-star"></i></a>
+	                    </label> 
+                    </div>
+                    <div class="col col-md-auto">
+	                    <input type="radio" ng-model="rateFilter" value="2" name="rate" ng-click="commentFilter()">
+	                    <label for="rate-5">
+							<a class="color-rate" href=""><i class="fas fa-star"></i></a>
+							<a class="color-rate" href=""><i class="fas fa-star"></i></a>
+	                    </label> 
+	                </div>
+	                <div class="col col-md-auto">
+	                    <input type="radio" ng-model="rateFilter" value="3" name="rate" ng-click="commentFilter()">
+	                    <label for="rate-5">
+							<a class="color-rate" href=""><i class="fas fa-star"></i></a>
+							<a class="color-rate" href=""><i class="fas fa-star"></i></a>
+							<a class="color-rate" href=""><i class="fas fa-star"></i></a>
+	                    </label> 
+                    </div>
+                    <div class="col col-md-auto">
+	                    <input type="radio" ng-model="rateFilter" value="4" name="rate" ng-click="commentFilter()">
+	                    <label for="rate-5">
+							<a class="color-rate" href=""><i class="fas fa-star"></i></a>
+							<a class="color-rate" href=""><i class="fas fa-star"></i></a>
+							<a class="color-rate" href=""><i class="fas fa-star"></i></a>
+							<a class="color-rate" href=""><i class="fas fa-star"></i></a>
+	                    </label>
+                    </div>
+                    <div class="col col-md-auto">
+	                    <input type="radio" ng-model="rateFilter" value="5" name="rate" ng-click="commentFilter()">
+	                    <label for="rate-5">
+							<a class="color-rate" href=""><i class="fas fa-star"></i></a>
+							<a class="color-rate" href=""><i class="fas fa-star"></i></a>
+							<a class="color-rate" href=""><i class="fas fa-star"></i></a>
+							<a class="color-rate" href=""><i class="fas fa-star"></i></a>
+							<a class="color-rate" href=""><i class="fas fa-star"></i></a>
+	                    </label>
+                    </div>
 				</div>
-                <div class="rev_comment_box" ng-repeat="fb in pager.items">
+                <div class="rev_comment_box mt-3" ng-repeat="fb in pager.items">
                     <div class="comment_avt">
                         <img src="/img/avatar/{{fb.user.avatar}}" alt="{{fb.user.avatar}}">
                     </div>
@@ -177,23 +185,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel-footer text-center" ng-if="items.length > 5">
-			        <button class="btn btn-danger" ng-click="pager.first()">
-			            <<
-			        </button>
-			        <button class="btn btn-primary" ng-click="pager.prev()">
-			            <
-			        </button>
-			        <button class="btn btn-success">
-			        		{{pager.page + 1}} of {{pager.count}}
-			        </button>
-			        <button class="btn btn-primary" ng-click="pager.next()">
-			            >
-			        </button>
-			        <button class="btn btn-danger" ng-click="pager.last()">
-			            >>
-			        </button>
-			    </div>
+                <nav ng-if="items.length > 5" class="align-center mt-2" aria-label="Page navigation example ">			<!-- Page product -->
+					<ul class="pagination justify-content-center">
+						<li class="page-item"><a ng-click="pager.first()" class="page-link">First </a></li>
+						<li class="page-item"><a ng-click="pager.prev()" class="page-link">Prev </a></li>
+						<li class="page-item -success"><a class="page-link" style="width: 80px; color: white; background: #79A206; text-align: center;">{{pager.page + 1}} of {{pager.count}}</a></li>
+						<li class="page-item"><a ng-click="pager.next()" class="page-link">Next</a></li>	
+						<li class="page-item"><a ng-click="pager.last()" class="page-link">Last</a></li>
+					</ul>
+				</nav>
                 <div class="rev_product_ratting mb-10">
                     <h3>Your rating</h3>
                     <div class="star_widget">

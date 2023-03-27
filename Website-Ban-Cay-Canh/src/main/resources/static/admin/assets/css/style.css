@@ -1338,3 +1338,7 @@ h6 {
 .pagetitle .search-form button i {
   color: #012970;
 }
+
+.size-img {
+	width: 80px;
+}

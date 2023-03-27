@@ -2332,6 +2332,22 @@ ul {
     transition: opacity 0.5s ease-in-out;
 }
 
+.color-rate {
+	color: #FBB403;
+}
+.color-rate:hover {
+	color: #FBB403;
+}
 
+.bad-word {
+	color: red;
+}
 
+.cmt-filter {
+	width: 100px;
+}
 
+.color-web {
+	color: white;
+	background: #79A206;
+}
