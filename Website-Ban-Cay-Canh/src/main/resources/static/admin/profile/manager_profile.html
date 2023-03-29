@@ -7,7 +7,6 @@
 
                     <img ng-src="{{'../img/avatar/' + profile.avatar}}" alt="Profile" class="rounded-circle">
                     <h2>{{profile.fullname}}</h2>
-                    <h3>ID #{{profile.account.id}}</h3>
 
                 </div>
             </div>
@@ -22,15 +21,15 @@
                     <ul class="nav nav-tabs nav-tabs-bordered">
 
                         <li class="nav-item">
-                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Tổng quát</button>
                         </li>
 
                         <li class="nav-item">
-                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit" ng-click="edit()">Edit Profile</button>
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit" ng-click="edit()">Chỉnh sửa thông tin</button>
                         </li>
 
                         <li class="nav-item">
-                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password" ng-click="edit_pass()">Change Password</button>
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password" ng-click="edit_pass()">Đổi mật khẩu</button>
                         </li>
 
                     </ul>

@@ -9,29 +9,23 @@ app.controller("profile-ctrl", function ($scope, $http) {
             $scope.profile = resp.data;
             $scope.profile.birthday = new Date($scope.profile.birthday);
         })
-
-
     }
     $scope.initialize();
     $scope.edit = function() {
         $scope.form = angular.copy($scope.profile);
-
     }
 
     $scope.save = function() {
-
         var item = angular.copy($scope.form);
         // console.log(item)
         $http.put(`/profile/update/${user_id}`, item).then(resp => {
-
             $scope.profile = item;
             // console.log(item)
-            alert("Lưu thành công")
+            $scope.message = "Cập nhập thành công";
         }).catch(error => {
             console.log("Error", error);
             // console.log(item)
         })
-
     }
 
     $scope.imageChanged = function(files) {
@@ -74,53 +68,25 @@ app.controller("profile-ctrl", function ($scope, $http) {
         let oldpass = document.getElementById("currentPassword").value;
         let newpass = document.getElementById("newPassword").value;
         let confirm = document.getElementById("renewPassword").value;
-        // if(oldpass.length === 0 || newpass.length === 0 || confirm.length === 0)
-        //     {
-        //     alert("Vui lòng nhập đầy đủ ô trống")
-        //     }else
-        //     {
-        //         {
-        //             if(oldpass === $scope.accounts.password)
-        //             {
-        //                 if(newpass === confirm)
-        //                 {
-        //                     $scope.form_account.password = newpass;
-        //                     var item_acc = angular.copy($scope.form_account);
-        //                     $http.put(`/api/account/${user_id}`, item_acc).then(resp => {
-        //                         $scope.accounts = item_acc;
-        //                         alert("Đổi thành công")
-        //                     }).catch(error => {
-        //                         alert("Lỗi cập nhật");
-        //                         console.log("Error", error);
-        //                     })
-        //                 }else{
-        //                     alert("Xác nhận mật khẩu không khớp");
-        //                 }
-        //             } else {
-        //                 alert("Mật khẩu cũ không khớp");
-        //                 return;
-        //             }
-        //         }
-        //
-        //     }
+
         switch (true) {
             case (oldpass.length === 0 || newpass.length === 0 || confirm.length === 0):
-                alert("Vui lòng nhập đầy đủ ô trống");
+                $scope.message = ("Vui lòng nhập đầy đủ ô trống");
                 break;
             case (newpass !== confirm):
-                alert("Xác nhận mật khẩu không khớp");
+                $scope.message = ("Xác nhận mật khẩu không khớp");
                 break;
             case (oldpass !== $scope.accounts.password):
-                alert("Mật khẩu cũ không khớp");
+                $scope.message = ("Mật khẩu cũ không khớp");
                 break;
             default:
                 $scope.form_account.password = newpass;
                 var item_acc = angular.copy($scope.form_account);
                 $http.put(`/api/account/${user_id}`, item_acc).then(resp => {
                     $scope.accounts = item_acc;
-                    alert("Đổi thành công");
+                    $scope.message = "Cập nhập thành công";
                 }).catch(error => {
-                    alert("Lỗi cập nhật");
+                    $scope.message = ("Lỗi cập nhật");
                     console.log("Error", error);
                 });
         }

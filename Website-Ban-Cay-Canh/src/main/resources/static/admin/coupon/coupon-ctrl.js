@@ -1,7 +1,6 @@
 app.controller("coupon-ctrl", function ($scope, $http) {
     $scope.coupons = [];
     $scope.form = {};
-
     $scope.initialize = function () {
         $http.get("/api/coupon").then(resp => {
             $scope.coupons = resp.data;
@@ -11,7 +10,7 @@ app.controller("coupon-ctrl", function ($scope, $http) {
                 coupons.endDate = new Date(coupons.endDate);
             })
         })
-
+        $scope.isDisabled = true;
 
     }
 
@@ -20,6 +19,8 @@ app.controller("coupon-ctrl", function ($scope, $http) {
         let today = new Date();
         $scope.form.endDate = today;
         $(".nav-tabs a:eq(1)").trigger('click');
+        $scope.isDisabled = false;
+        $scope.CrDisabled = true;
     }
 
     $scope.create = function ()
@@ -28,9 +29,11 @@ app.controller("coupon-ctrl", function ($scope, $http) {
         $http.post(`/api/coupon`,item).then(resp =>
         {
             $scope.coupons.push(resp.data);
+            $scope.message = "Tạo thành công";
 
             $scope.clear();
         }).catch(error => {
+            $scope.message = "Tạo thất bại";
             console.log("Error", error);
         })
     }
@@ -40,10 +43,12 @@ app.controller("coupon-ctrl", function ($scope, $http) {
         $http.put(`/api/coupon/${item.id}`, item).then(resp => {
             var index = $scope.coupons.findIndex(p => p.id == item.id);
             $scope.coupons[index] = item;
-
+            $scope.isDisabled = true;
+            $scope.CrDisabled = false;
+            $scope.message = "Cập nhập thành công";
             $scope.clear();
         }).catch(error => {
-
+            $scope.message = "Cập nhập thất bại";
             console.log("Error", error);
         })
 
@@ -53,9 +58,10 @@ app.controller("coupon-ctrl", function ($scope, $http) {
         $http.delete(`/api/coupon/${item.id}`).then(resp => {
             var index = $scope.coupons.findIndex(c => c.id == item.id);
             $scope.coupons.splice(index, 1);
+            $scope.message = "Xoá thành công";
             $scope.clear();
         }).catch(error => {
-
+            $scope.message = "Xoá thất bại";
             console.log("Error", error);
         })
 

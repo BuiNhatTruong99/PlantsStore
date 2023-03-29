@@ -3,29 +3,29 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Table with stripped rows</h5>
+                    <h5 class="card-title">Thông tin mã giảm giá</h5>
                     <!-- Table with stripped rows -->
                     <table class="table table-striped text-center">
                         <thead>
                             <tr>
-                                <th scope="col">#Id</th>
-                                <th scope="col">Code</th>
-                                <th scope="col">Value</th>
-                                <th scope="col">Create Date</th>
-                                <th scope="col">End Date</th>
-                                <th scope="col">Edit</th>
+                                <th scope="col">Mã</th>
+                                <th scope="col">Giá trị mã giảm giá</th>
+                                <th scope="col">Số lượng</th>
+                                <th scope="col">Ngày tạo</th>
+                                <th scope="col">Ngày kết thúc</th>
+                                <th scope="col"></th>
 
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="tr_products" ng-repeat="coupon in pager.coupons">
-                                <th scope="row" class="td_height">{{coupon.id}}</th>
-                                <td class="td_height">{{coupon.code}}</td>
+                                <th scope="row" class="td_height">{{coupon.code}}</th>
                                 <td class="td_height">{{coupon.value}}</td>
+                                <td class="td_height">{{coupon.quantity}}</td>
                                 <td class="td_height">{{coupon.createDate | date: 'dd-MM-yyyy'}}</td>
                                 <td class="td_height">{{coupon.endDate | date: 'dd-MM-yyyy'}}</td>
                                 <td>
-                                    <div class="quick_view"><i class="bi bi-eye"></i><button ng-click="edit(coupon)">Edit</button>
+                                    <div class="quick_view"><i class="bi bi-eye"></i><button ng-click="edit(coupon)">Chỉnh sửa</button>
                                     </div>
                                 </td>
                             </tr>

@@ -20,12 +20,11 @@ public class ProfileRest {
 
 	@Autowired
 	ProfileService pseProfileService;
-	
 	@GetMapping()
-	 public List<Profile> getAllProfile(){
-        return pseProfileService.findAll();
-    }
-	
+	public List<Profile> getAllProfile(){
+		return pseProfileService.findAll();
+	}
+
 	@GetMapping("{id}")
 	public Profile findbyIdUS(@PathVariable("id")Integer id)
 	{
@@ -37,7 +36,7 @@ public class ProfileRest {
 	{
 		return pseProfileService.findbyIdUs(id);
 	}
-	
+
 	@PutMapping("update/{id}")
 	public Profile update(@PathVariable("id")Integer id,@RequestBody Profile p)
 	{

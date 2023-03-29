@@ -15,7 +15,7 @@ public class ProfileServiceImpl implements ProfileService{
 
 	@Autowired
 	ProfileDAO pdao;
-	
+
 	@Override
 	public Profile findProfile(String username) {
 		// TODO Auto-generated method stub

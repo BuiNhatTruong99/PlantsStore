@@ -24,6 +24,9 @@ public class Coupon {
     @Column(name = "value", nullable = false)
     private Integer value;
 
+    @Column(name = "quantity", nullable = false)
+    private Integer quantity;
+
     @Column(name = "create_date", nullable = false)
     private Instant createDate;
 
