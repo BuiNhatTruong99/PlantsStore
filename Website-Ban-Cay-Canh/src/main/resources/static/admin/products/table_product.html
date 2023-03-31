@@ -3,33 +3,33 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Table with stripped rows</h5>
+                    <h5 class="card-title">Danh sách sản phẩm</h5>
                     <!-- Table with stripped rows -->
                     <table class="table table-striped text-center">
                         <thead>
                             <tr>
-                                <th scope="col">#Id</th>
-                                <th scope="col">Image</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Create Date</th>
-                                <th scope="col">Update Date</th>
-                                <th scope="col">Quick View</th>
+<!--                                <th scope="col">#Id</th>-->
+                                <th scope="col">Ảnh</th>
+                                <th scope="col">Tên</th>
+                                <th scope="col">Giá (VNĐ)</th>
+                                <th scope="col">Số lượng</th>
+                                <th scope="col">Ngày tạo</th>
+                                <th scope="col">Ngày cập nhập</th>
+                                <th scope="col">Chi tiết</th>
 
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="tr_products" ng-repeat="item in pager.products">
-                                <th scope="row" class="td_height">{{item.id}}</th>
+<!--                                <th scope="row" class="td_height">{{item.id}}</th>-->
                                 <td class="td_height"><img ng-src="{{'../img/product/' + item.image}}" alt=""></td>
                                 <td class="td_height">{{item.name}}</td>
-                                <td class="td_height">{{item.price}} $</td>
+                                <td class="td_height">{{item.price}}</td>
                                 <td class="td_height">{{item.quantity}}</td>
                                 <td class="td_height">{{item.createdDate | date: 'dd-MM-yyyy'}}</td>
                                 <td class="td_height">{{item.updatedDate | date: 'dd-MM-yyyy'}}</td>
                                 <td>
-                                    <div class="quick_view"><i class="bi bi-eye"></i><button ng-click="edit(item)">View</button>
+                                    <div class="quick_view"><i class="bi bi-eye"></i><button ng-click="edit(item)">Xem</button>
                                     </div>
                                 </td>
                             </tr>

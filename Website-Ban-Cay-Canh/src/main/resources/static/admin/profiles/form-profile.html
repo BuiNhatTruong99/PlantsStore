@@ -1,5 +1,5 @@
 <div class="panel panel-default" style="background-color: #fff!important;">
-    <div class="panel-heading">PRODUCT EDITION</div>
+<!--    <div class="panel-heading"></div>-->
     <div class="panel-body">
         <div class="row">
             <div class="col-sm-4 text-center">
@@ -11,21 +11,21 @@
             <div class="col-sm-8">
                 <div class="row">
                     <div class="form-group col-sm-6">
-                        <div>Name</div>
+                        <div>Họ tên</div>
                         <input ng-model="form.fullname" class="form-control">
                     </div>
                     <div class="form-group col-sm-6">
-                        <div>Gender</div>
+                        <div>Giới tính</div>
                         <input ng-model="form.gender ?'Nam':'Nữ'"class="form-control">
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-6">
-                        <div>Image</div>
+                        <div>Ảnh</div>
                         <input onchange="angular.element(this).scope().imageChanged(this.files)" type="file" class="form-control" id="image">
                     </div>
                     <div class="form-group col-sm-6">
-                        <div>Birthday</div>
+                        <div>Ngày sinh</div>
                         <input ng-model="form.birthday" class="form-control">
                     </div>
                     <div class="form-group col-sm-6">
@@ -33,11 +33,11 @@
                         <input ng-model="form.email" class="form-control">
                     </div>
                     <div class="form-group col-sm-6">
-                        <div>Phone</div>
+                        <div>Số điện thoại</div>
                         <input ng-model="form.phone" class="form-control">
                     </div>
                     <div class="form-group col-sm-6">
-                        <div>Address</div>
+                        <div>Địa chỉ</div>
                         <input ng-model="form.address" class="form-control">
                     </div>
 
@@ -49,11 +49,11 @@
     <div class="panel-footer text-center">
 
         <button ng-click="update()" class="btn btn-success">
-            <b class="glyphicon glyphicon-save"></b> Update
+            <b class="glyphicon glyphicon-save"></b> Lưu
         </button>
 
         <button ng-click="delete(form)" class="btn btn-danger">
-            <b class="glyphicon glyphicon-trash"></b> Delete
+            <b class="glyphicon glyphicon-trash"></b> Xoá
         </button>
         <button ng-click="reset()" class="btn btn-info">
             <b class="glyphicon glyphicon-refresh"></b> Reset

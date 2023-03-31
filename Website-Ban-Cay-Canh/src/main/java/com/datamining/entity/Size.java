@@ -23,6 +23,6 @@ public class Size implements Serializable {
 
 	// Product_Size
 	@OneToMany(mappedBy = "size")
-	@JsonBackReference
+
 	private Set<ProductSize> size;
 }

@@ -22,21 +22,21 @@
                     <div class="col-sm-8">
                         <div class="row">
                             <div class="form-group col-sm-6">
-                                <div class="fw-bold">Name</div>
+                                <div class="fw-bold">Tên</div>
                                 <input ng-model="form.name" class="form-control" type="text" required>
                             </div>
                             <div class="form-group col-sm-6">
-                                <div class="fw-bold">Price</div>
-                                <input ng-model="form.price" class="form-control" type="number" required>
+                                <div class="fw-bold">Giá</div>
+                                <input ng-model="form.price" class="form-control" min="100000" type="number" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-6">
-                                <div class="fw-bold">Image</div>
+                                <div class="fw-bold">Ảnh</div>
                                 <input onchange="angular.element(this).scope().imageChanged(this.files)" ng-model="form.image" type="file" class="form-control" id="image">
                             </div>
                             <div class="form-group col-sm-6">
-                                <div class="fw-bold">Category</div>
+                                <div class="fw-bold">Danh Mục</div>
                                 <select ng-model="form.categories.id" class="form-control">
                                     <option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
                                 </select>
@@ -44,41 +44,41 @@
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-6">
-                                <div class="fw-bold">Create Date</div>
+                                <div class="fw-bold">Ngày tạo</div>
                                 <input ng-model="form.createdDate" type="date" class="form-control">
                             </div>
                             <div class="form-group col-sm-6">
-                                <div class="fw-bold">Upadte Date</div>
+                                <div class="fw-bold">Ngày cập nhập</div>
                                 <input ng-model="form.updatedDate" type="date" class="form-control">
                             </div>
 
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-6">
-                                <div class="fw-bold">Available?</div>
+                                <div class="fw-bold">Trạng thái</div>
                                 <div class="form-control">
                                     <label class="radio-inline mr-4">
-                                        <input ng-model="form.status"  ng-value="true" name="status" type="radio"> Stocking
+                                        <input ng-model="form.status"  ng-value="true" name="status" type="radio"> Còn hàng
                                     </label>
                                     <label class="radio-inline">
-                                        <input ng-model="form.status"  ng-value="false" name="status" type="radio"> Out of Stock
+                                        <input ng-model="form.status"  ng-value="false" name="status" type="radio"> Hết hàng
                                     </label>
                                 </div>
                             </div>
                             <div class="form-group col-sm-6">
-                                <div class="fw-bold">UrlRequest?</div>
+                                <div class="fw-bold">Đường dẫn sản phẩm</div>
                                 <input ng-model="form.url" type="text" class="form-control" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-6">
-                                <div class="fw-bold">Quantity?</div>
+                                <div class="fw-bold">Số lượng</div>
                                 <input ng-model="form.quantity" type="number" class="form-control" min="0" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-12">
-                                <div class="fw-bold">Description?</div>
+                                <div class="fw-bold">Mô tả</div>
                                     <textarea class="form-control font-italic" ng-model="form.description" rows="5" required></textarea>
                             </div>
                         </div>
@@ -87,13 +87,13 @@
                 </div>
                 <div class="text-center">
                     <button ng-click="create()" type="submit" class="btn" id="create">
-                        <b class="glyphicon glyphicon-plus"></b> Create
+                        <b class="glyphicon glyphicon-plus"></b> Tạo
                     </button>
                     <button ng-click="update()" class="btn" type="button" id="liveToastBtn">
-                        <b class="glyphicon glyphicon-save"></b> Update
+                        <b class="glyphicon glyphicon-save"></b> Lưu
                     </button>
                     <button ng-click="delete(form)" class="btn">
-                        <b class="glyphicon glyphicon-trash"></b> Delete
+                        <b class="glyphicon glyphicon-trash"></b> Xoá
                     </button>
                     <button ng-click="clear()" class="btn">
                         <b class="glyphicon glyphicon-refresh"></b> Reset

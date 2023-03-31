@@ -24,12 +24,12 @@ public class ProductSize {
 	private Integer id;
 	
 	@ManyToOne
-	@JsonBackReference
+
 	@JoinColumn(name = "product_id")
     private Product product;
 
 	@ManyToOne
-	@JsonManagedReference
+
 	@JoinColumn(name = "size_id")
     private Size size;
 

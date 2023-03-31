@@ -1,10 +1,10 @@
 <div class="pagetitle row">
   <div class="col-4">
-    <h1 class="fw-bolder">Manager Accounts</h1>
+    <h1 class="fw-bolder">Quản lý tài khoản</h1>
   </div>
   <div class="search-bar col-8">
     <div class="search-form d-flex align-items-center" method="POST" action="#">
-      <input type="text" id="key__word" name="username" placeholder="Search" title="Enter search keyword" ng-model="myModel" ng-change="find()"/>
+      <input type="text" id="key__word" name="username" placeholder="Tìm kiếm ...." title="Nhập từ khoá" ng-model="myModel" ng-change="find()"/>
       <button type="submit" title="Search" ng-click="find()">
         <i class="bi bi-search"></i>
       </button>
@@ -12,8 +12,8 @@
   </div>
 </div><!-- End Page Title -->
 <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" data-target="#list" href="">List of Accounts</a></li>
-  <li><a data-toggle="tab" data-target="#edit" href="">Account Edition</a></li>
+  <li class="active"><a data-toggle="tab" data-target="#list" href="">Danh sách</a></li>
+  <li><a data-toggle="tab" data-target="#edit" href="">Chỉnh sửa</a></li>
 </ul>
 <div class="tab-content">
   <div id="list" class="tab-pane fade in active show">

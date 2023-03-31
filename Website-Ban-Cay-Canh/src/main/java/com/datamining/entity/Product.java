@@ -71,7 +71,7 @@ public class Product implements Serializable {
 	private List<ProductRate> productRates;
 
 	// Product_Size
-	@JsonManagedReference
+
 	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
 	private List<ProductSize> productSizes;
 

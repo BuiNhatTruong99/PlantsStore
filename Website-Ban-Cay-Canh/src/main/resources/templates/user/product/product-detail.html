@@ -16,7 +16,8 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/lib/fontawesome-free-6.1.1/css/all.min.css">
-    <title>Index</title>
+    <title>Cây Cảnh Phan Cường</title>
+    <link rel="icon" type="image/x-icon" href="/images/title_logo.png">
 </head>
 
 <body ng-app="shoppingCart" ng-controller="shoppingCart-ctrl">
@@ -70,7 +71,7 @@
                         <p>[[*{description}]]</p>
                     </div>
                     <div th:if="*{productSizes.size>0}" class="products-size">
-                        <label for=""><strong>Size</strong></label>
+                        <label for=""><strong>Kích cỡ</strong></label>
                         <div class="size-swap">
                             <div th:each="s:*{productSizes}" class="n-sd size_item" data-value="s">
 								<input type="radio" onchange="submitSize()" class="size_radio"
@@ -81,14 +82,13 @@
                     </div>
                     <div class="cart">
                         <div class="quantity-button">
-                            <span>Quantity</span>
+                            <span>Số lượng</span>
                             <div class="quantity">
                                 <input type="number" id="quantity" class="input-text qty text" step="1"
                                     min="1" max="50" name="quantity" value="1" title="Qty" size="4" placeholder=""
                                     inputmode="numeric" autocomplete="off">
                             </div>
-                            <button th:attr="ng-click=@{|cart.add(*{id})|}" class="single_add_to_cart_button button alt">Add
-                                to cart</button>
+                            <button th:attr="ng-click=@{|cart.add(*{id})|}" class="single_add_to_cart_button button alt">Thêm vào giỏ hàng</button>
                         </div>
                         <div class="like-button" ng-controller="wishlist-ctrl">
                             <button th:attr="ng-click=@{|insert([[*{id}]])|}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -107,17 +107,17 @@
         <div class="product_review">
             <div class="review-wrapper">
                 <div class="rev_title">
-                    <h2>{{items.length}} Review For <span class="name_pro_rev">Crab Pool Security</span></h2>
+                    <h2>{{items.length}} Đánh giá cho sản phẩm <span class="name_pro_rev"></span></h2>
                 </div>
                 <select class="form-select" name="myComboBox" ng-model="selectCommentFilter" ng-change="commentFilter()" ng-init="selectCommentFilter='0'" style="width: 10rem;">
-					<option value="0">All comment</option>
-					<option value="1">My comment</option>
+					<option value="0">Tất cả bình luận</option>
+					<option value="1">Bình luận của tôi</option>
 				</select>
 				<div class="row mt-3">
 					<div class="col col-md-auto" >
 						<input type="radio" ng-model="rateFilter" value="0" name="rate" ng-click="commentFilter()" ng-checked="true">
 	                    <label for="rate-5">
-							All stars
+							Tất cả lượt đánh giá
 	                    </label>
                     </div>
                     <div class="col col-md-auto">
@@ -163,7 +163,7 @@
 				</div>
                 <div class="rev_comment_box mt-3" ng-repeat="fb in pager.items">
                     <div class="comment_avt">
-                        <img src="/img/avatar/{{fb.user.avatar}}" alt="{{fb.user.avatar}}">
+                        <img src="/img/avatar/andanh.png" >
                     </div>
                     <div class="comment_text">
                         <div class="review_layout">
@@ -182,15 +182,15 @@
                 </div>
                 <nav ng-if="items.length > 5" class="align-center mt-2" aria-label="Page navigation example ">			<!-- Page product -->
 					<ul class="pagination justify-content-center">
-						<li class="page-item"><a ng-click="pager.first()" class="page-link">First </a></li>
-						<li class="page-item"><a ng-click="pager.prev()" class="page-link">Prev </a></li>
+						<li class="page-item"><a ng-click="pager.first()" class="page-link"> |< </a></li>
+						<li class="page-item"><a ng-click="pager.prev()" class="page-link">< </a></li>
 						<li class="page-item -success"><a class="page-link" style="width: 80px; color: white; background: #79A206; text-align: center;">{{pager.page + 1}} of {{pager.count}}</a></li>
-						<li class="page-item"><a ng-click="pager.next()" class="page-link">Next</a></li>	
-						<li class="page-item"><a ng-click="pager.last()" class="page-link">Last</a></li>
+						<li class="page-item"><a ng-click="pager.next()" class="page-link"> > </a></li>
+						<li class="page-item"><a ng-click="pager.last()" class="page-link"> >| </a></li>
 					</ul>
 				</nav>
                 <div class="rev_product_ratting mb-10">
-                    <h3>Your rating</h3>
+                    <h3>Đánh giá của bạn</h3>
                     <div class="star_widget">
                         <input type="radio" ng-model="form.rate" value="5" name="rate" id="rate-5">
                         <label for="rate-5" class="fas fa-star"></label>
@@ -210,12 +210,12 @@
                 <form name="frmCmt">
                     <div class="row">
                         <div class="col-12">
-                            <label for="review_comment"><strong>Your review</strong></label>
+                            <label for="review_comment"><strong>Bình luận của bạn</strong></label>
                             <textarea name="comment" ng-model="form.comment" ng-keyup="checkComment()" id="review_comment"></textarea>
                         </div>
                     </div>
                     <em ng-bind-html="message"></em>
-                    <button ng-click="create()">Submit</button>
+                    <button ng-click="create()">Đánh giá</button>
                 </form>
             </div>
         </div>
@@ -227,23 +227,23 @@
                 <div class="row">
                     <div class="col-lg-2 col-md-4 col-sm-6">
                         <div class="widgets_container contact_us">
-                            <h3>Opening Time</h3>
-                            <p><span>Mon - Fri:</span> 8AM - 10PM</p>
-                            <p><span>Sat:</span> 9AM-8PM</p>
-                            <p><span>Suns:</span> 14hPM-18hPM</p>
-                            <p><b>We Work All The Holidays</b></p>
+                            <h3>Thời gian mở cửa</h3>
+                            <p><span>Thứ 2 - Thứ 6:</span> 8AM - 10PM</p>
+                            <p><span>Thứ 7:</span> 9AM-8PM</p>
+                            <p><span>Chủ nhật:</span> 14hPM-18hPM</p>
+                            <p><b>Mở cửa các ngày lễ</b></p>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-3 col-sm-6">
                         <div class="widgets_container widget_menu">
-                            <h3>Information</h3>
+                            <h3>Về chúng tôi</h3>
                             <div class="footer_menu">
                                 <ul>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Checkout</a></li>
-                                    <li><a href="/contact">Contact</a></li>
-                                    <li><a href="#">Frequently Questions</a></li>
-                                    <li><a href="#">Wishlist</a></li>
+                                    <li><a href="#">Thông tin</a></li>
+                                    <li><a href="#">Kiểm tra</a></li>
+                                    <li><a href="/contact">Liên Hệ</a></li>
+                                    <li><a href="#">FAQs</a></li>
+                                    <li><a href="#">Sản phẩm yêu thích</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -255,10 +255,10 @@
                             </div>
                             <div class="footer_widgetnav_menu">
                                 <ul>
-                                    <li><a href="#">Payment</a></li>
-                                    <li><a href="#">Affiliates</a></li>
-                                    <li><a href="#">Contact</a></li>
-                                    <li><a href="#">Internet</a></li>
+                                    <li><a href="#">Thanh toán</a></li>
+                                    <li><a href="#">Chi nhánh</a></li>
+                                    <li><a href="#">Liên hệ</a></li>
+                                    <li><a href="#">Dịch vụ</a></li>
                                 </ul>
                             </div>
                             <div class="footer_social">
@@ -279,30 +279,23 @@
                     </div>
                     <div class="col-lg-2 col-md-4 col-sm-6">
                         <div class="widgets_container widget_menu">
-                            <h3>My Account</h3>
+                            <h3>Dịch vụ</h3>
                             <div class="footer_menu">
                                 <ul>
-                                    <li><a href="/account/info">My Account</a></li>
-                                    <li><a href="/contact">Contact</a></li>
-                                    <li><a href="/cart/detail">Shopping cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="#">Order History</a></li>
+                                    <li><a href="/contact">Liên hệ chúng tôi</a></li>
+                                    <li><a href="/cart/detail">Giỏ hàng</a></li>
+                                    <li><a href="#">Hoàn trả hoá đơn</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-4 col-sm-6">
                         <div class="widgets_container widget_menu">
-                            <h3>Customer Service</h3>
+                            <h3>Cửa hàng</h3>
                             <div class="footer_menu">
                                 <ul>
-                                    <li><a href="/contact">Contact Us</a></li>
-                                    <li><a href="#">Terms of use</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="/contact">Site Map</a></li>
-                                    <li><a href="/account/info">My Account</a></li>
-                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="/home/index#featured">Sản phẩm</a></li>
+                                    <li><a href="/home/index#topsale">Sản phẩm bán chạy nhất</a></li>
                                 </ul>
                             </div>
                         </div>

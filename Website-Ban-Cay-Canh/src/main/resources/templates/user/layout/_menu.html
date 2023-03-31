@@ -14,7 +14,7 @@
 						<div class="search_container">
 							<div class="search_box">
 								<form action="/product/search" method="get">
-									<input placeholder="Search product..." type="text" id="keyword"
+									<input placeholder="Tìm kiếm sản phẩm..." type="text" id="keyword"
 										name="keyword">
 									<button type="submit">
 										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -61,7 +61,7 @@
 								<div class="cart_gallery">
 									<div class="cart_close">
 										<div class="cart_text">
-											<h3>cart</h3>
+											<h3>Giỏ hàng</h3>
 										</div>
 										<div class="mini_cart_close" id="mini_cart_close">
 											<a href="#"><svg xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +82,7 @@
 										<div class="cart_info">
 											<a href="#">{{item.name}} <span ng-if="item.idSize">({{item.idSize}})</span></a>
 											<p>
-												Quantity: <input type="number" min="1" ng-model="item.qty"
+												Số lượng: <input type="number" min="1" ng-model="item.qty"
 													ng-change="cart.saveToLocalStorage()">
 													<span ng-if="item.price" class="price_item"> 
 														{{item.price * item.qty | number:0}} $ 
@@ -108,27 +108,27 @@
 								<div class="mini_cart_table">
 									<div class="cart_table_border">
 										<div class="cart_total">
-											<span>Sub total:</span> <span class="price">{{cart.amount}}
-												$</span>
+											<span>Tổng tiền dự đoán:</span> <span class="price">{{cart.amount}}
+												VND</span>
 										</div>
 										<div class="cart_total mt-10">
-											<span>total:</span> <span class="price">{{cart.amount}}
-												$</span>
+											<span>Tổng tiền:</span> <span class="price">{{cart.amount}}
+												VND</span>
 										</div>
 									</div>
 								</div>
 								<div class="mini_cart_footer">
 									<div class="cart_button">
 										<a href="../cart/detail"><i class="fa fa-shopping-cart"></i>
-											View cart</a>
+											Xem giỏ hàng</a>
 									</div>
 									<div class="cart_button">
 										<a class="active" href="checkout.html"><i
-											class="fa fa-sign-in"></i> Checkout</a>
+											class="fa fa-sign-in"></i> Kiểm tra giỏ hàng</a>
 									</div>
 									<div class="cart_button mt-3">
 										<a ng-click="cart.clear()"><i class="fa fa-sign-in"></i>
-											Clear Cart</a>
+											Xoá giỏ hàng</a>
 									</div>
 								</div>
 							</div>
@@ -145,7 +145,7 @@
 					<div class="categories_menu">
 						<div class="categories_title">
 							<i class="fas fa-bars"></i>
-							<h2 class="categori_toggle">Categories</h2>
+							<h2 class="categori_toggle">Danh mục</h2>
 						</div>
 						<!-- <div class="icon-categori_toggle"></div> -->
 						<input type="checkbox" class="nav-input d-none" id="nav-res-input">
@@ -155,7 +155,7 @@
 						<div class="main_menu_res">
 							<div class="search_box_res">
 								<form action="" method="get">
-									<input placeholder="Search product..." type="text">
+									<input placeholder="Tìm kiếm sản phẩm..." type="text">
 									<button type="submit">
 										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 											fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -173,73 +173,59 @@
 											class="fas fa-xmark"></i></label>
 									</div>
 									<li class="menu-item-has-children"><a class="active"
-										href="/home/index">home</a></li>
-									<!-- <input type="checkbox" class="nav-input-sub" id="nav-res-sub"> -->
-									<li for="nav-res-sub" class="menu-item-has-children"><span
-										class="menu-expand"><i class="fa fa-angle-down"></i></span> <a
-										class="shop-btn" href="/home/index#featured">Shop</a>
-										<ul class="sub_menu shop-show">
-											<li class="menu-item-has-children"><span
-												class="menu-expand"><i class="fa fa-angle-down"></i></span>
-												<a class="shop-lay-btn" href="#">Shop Layouts</a>
-												<ul class="sub_sub_menu lay-show">
-													<li><a href="">shop</a></li>
-													<li><a href="shop-fullwidth.html">Full Width</a></li>
-													<li><a href="shop-fullwidth-list.html">Full Width
-															list</a></li>
-													<li><a href="shop-right-sidebar.html">Right
-															Sidebar </a></li>
-													<li><a href="shop-right-sidebar-list.html"> Right
-															Sidebar list</a></li>
-													<li><a href="shop-list.html">List View</a></li>
-												</ul></li>
-											<li class="menu-item-has-children"><span
-												class="menu-expand"><i class="fa fa-angle-down"></i></span>
-												<a class="shop-other-btn" href="#">other Pages</a>
-												<ul class="sub_sub_menu other-show">
-													<li><a href="cart.html">cart</a></li>
-													<li><a href="/product/wish">Wishlist</a></li>
-													<li><a href="checkout.html">Checkout</a></li>
-													<li><a href="/account/info">my account</a></li>
-													<li><a href="404.html">Error 404</a></li>
-												</ul></li>
-											<li class="menu-item-has-children"><span
-												class="menu-expand"><i class="fa fa-angle-down"></i></span>
-												<a class="shop-pro-btn" href="#">Product Types</a>
-												<ul class="sub_sub_menu pro-show">
-													<li><a href="/product/detail">product details</a></li>
-													<li><a href="product-sidebar.html">product sidebar</a>
-													</li>
-													<li><a href="product-grouped.html">product grouped</a>
-													</li>
-													<li><a href="variable-product.html">product
-															variable</a></li>
-												</ul></li>
-										</ul></li>
+										href="/home/index">Trang chủ</a></li>
+									<li class="menu-item-has-children"><a href="/home/index#featured">Cửa hàng</a></li>
+<!--									<li for="nav-res-sub" class="menu-item-has-children"><span-->
+<!--										class="menu-expand"><i class="fa fa-angle-down"></i></span> <a-->
+<!--										class="shop-btn" href="/home/index#featured">Cửa hàng</a>-->
+<!--										<ul class="sub_menu shop-show">-->
+<!--											<li class="menu-item-has-children"><span-->
+<!--												class="menu-expand"><i class="fa fa-angle-down"></i></span>-->
+<!--													<a class="shop-other-btn" href="#">other Pages</a>-->
+<!--												<ul class="sub_sub_menu other-show">-->
+<!--													<li><a href="cart.html">cart</a></li>-->
+<!--													<li><a href="/product/wish">Wishlist</a></li>-->
+<!--													<li><a href="checkout.html">Checkout</a></li>-->
+<!--													<li><a href="/account/info">my account</a></li>-->
+<!--													<li><a href="404.html">Error 404</a></li>-->
+<!--												</ul></li>-->
+<!--											<li class="menu-item-has-children"><span-->
+<!--												class="menu-expand"><i class="fa fa-angle-down"></i></span>-->
+<!--												<a class="shop-pro-btn" href="#">Product Types</a>-->
+<!--												<ul class="sub_sub_menu pro-show">-->
+<!--													<li><a href="/product/detail">product details</a></li>-->
+<!--													<li><a href="product-sidebar.html">product sidebar</a>-->
+<!--													</li>-->
+<!--													<li><a href="product-grouped.html">product grouped</a>-->
+<!--													</li>-->
+<!--													<li><a href="variable-product.html">product-->
+<!--															variable</a></li>-->
+<!--												</ul></li>-->
+<!--										</ul></li>-->
 
-									<li class="menu-item-has-children"><a class="pages-btn"
-										href="#">pages<span class="menu-expand"><i
-												class="fa fa-angle-down"></i></span></a>
-										<ul class="sub_menu pages pages-show">
-											<li><a href="#">About Us</a></li>
-											<li><a href="#">services</a></li>
-											<li><a href="#">Frequently Questions</a></li>
-											<li><a href="/contact">contact</a></li>
-											<li><a href="#">login</a></li>
-										</ul></li>
+<!--										<li class="menu-item-has-children"><a class="pages-btn"-->
+<!--											href="#">pages<span class="menu-expand"><i-->
+<!--													class="fa fa-angle-down"></i></span></a>-->
+<!--											<ul class="sub_menu pages pages-show">-->
+<!--												<li><a href="#">About Us</a></li>-->
+<!--												<li><a href="#">services</a></li>-->
+<!--												<li><a href="#">Frequently Questions</a></li>-->
+<!--												<li><a href="/contact">contact</a></li>-->
+<!--												<li><a href="#">login</a></li>-->
+<!--											</ul></li>-->
 									<li class="menu-item-has-children"><a href="/contact">
-											Contact Us</a></li>
+											Liên hệ</a></li>
 									<!-- Show user after login -->
 									<li class="menu-item-has-children" 
 										th:if="${#request.remoteUser}" ><a class="blog-btn" 
-										href="#">Welcome [[${#request.remoteUser}]]<span
+										href="#">Chào mừng: [[${#request.remoteUser}]]<span
 											class="menu-expand"><i class="fa fa-angle-down"></i></span></a>
 										<ul class="sub_menu pages blog-show">
-											<li><a th:href="|/account/info|">My Account</a></li>
+											<li><a th:href="|/account/info|">Thông tin tài khoản</a></li>
 											<li sec:authorize="hasAnyRole('Director','STAFF')"><a
-												th:href="@{/admin}">Admin</a></li>
-											<li><a href="/account/Qrcode">Create QRcode</a></li>
-											<li><a th:href="@{/security/logoff}">Sign out</a></li>
+												th:href="@{/admin}">Trang quản lý</a></li>
+											<li><a href="/account/Qrcode">Tạo mã QR</a></li>
+											<li><a th:href="@{/security/logoff}">Đăng xuất</a></li>
 										</ul></li>
 									<!-- Show user after login -->
 									
@@ -254,62 +240,51 @@
 					<div class="main_menu menu_position">
 						<nav>
 							<ul>
-								<li><a class="active" href="/home/index">home</a></li>
-								<li class="mega_items"><a href="#featured">shop<i
-										class="fa fa-angle-down"></i></a>
-									<div class="mega_menu">
-										<ul class="mega_menu_inner">
-											<li><a href="#">Shop Layouts</a>
-												<ul>
-													<li><a href="shop-fullwidth.html">Full Width</a></li>
-													<li><a href="shop-fullwidth-list.html">Full Width
-															list</a></li>
-													<li><a href="shop-right-sidebar.html">Right
-															Sidebar </a></li>
-													<li><a href="shop-right-sidebar-list.html"> Right
-															Sidebar list</a></li>
-													<li><a href="shop-list.html">List View</a></li>
-												</ul></li>
-											<li><a href="#">other Pages</a>
-												<ul>
-													<li><a href="cart.html">cart</a></li>
-													<li><a href="/product/wish">Wishlist</a></li>
-													<li><a href="checkout.html">Checkout</a></li>
-													<li><a href="/account/info">my account</a></li>
-												</ul></li>
-											<li><a href="#">Product Types</a>
-												<ul>
-													<li><a href="/product/detail">product details</a></li>
-													<li><a href="product-sidebar.html">product sidebar</a>
-													</li>
-													<li><a href="product-grouped.html">product grouped</a>
-													</li>
-													<li><a href="variable-product.html">product
-															variable</a></li>
+								<li><a class="active" href="/home/index">Trang chủ</a></li>
+								<li class="mega_items"><a href="/home/index#featured">Cửa hàng</a>
+<!--									<div class="mega_menu">-->
+<!--										<ul class="mega_menu_inner">-->
 
-												</ul></li>
-										</ul>
-									</div></li>
+<!--											<li><a href="#">other Pages</a>-->
+<!--												<ul>-->
+<!--													<li><a href="cart.html">cart</a></li>-->
+<!--													<li><a href="/product/wish">Wishlist</a></li>-->
+<!--													<li><a href="checkout.html">Checkout</a></li>-->
+<!--													<li><a href="/account/info">my account</a></li>-->
+<!--												</ul></li>-->
+<!--											<li><a href="#">Product Types</a>-->
+<!--												<ul>-->
+<!--													<li><a href="/product/detail">product details</a></li>-->
+<!--													<li><a href="product-sidebar.html">product sidebar</a>-->
+<!--													</li>-->
+<!--													<li><a href="product-grouped.html">product grouped</a>-->
+<!--													</li>-->
+<!--													<li><a href="variable-product.html">product-->
+<!--															variable</a></li>-->
+
+<!--												</ul></li>-->
+<!--										</ul>-->
+<!--									</div>-->
+								</li>
 								
-								<li><a href="#">pages <i class="fa fa-angle-down"></i></a>
+								<li><a href="#">Về chúng tôi<i class="fa fa-angle-down"></i></a>
 									<ul class="sub_menu pages">
-										<li><a href="about.html">About Us</a></li>
-										<li><a href="services.html">services</a></li>
-										<li><a href="faq.html">Frequently Questions</a></li>
-										<li><a href="/contact">contact</a></li>
+										<li><a href="about.html">Thông tin</a></li>
+										<li><a href="services.html">Dịch vụ</a></li>
+										<li><a href="faq.html">FAQs</a></li>
 
 									</ul></li>
-								<li><a href="/contact"> Contact Us</a></li>
+								<li><a href="/contact">Liên hệ</a></li>
 								<li class="menu-item-has-children"
 									th:if="${#request.remoteUser}" ><a class="blog-btn"
-																	   href="#">Welcome [[${#request.remoteUser}]]<span
+																	   href="#">Chào mừng: [[${#request.remoteUser}]]<span
 										class="menu-expand"><i class="fa fa-angle-down"></i></span></a>
 									<ul class="sub_menu pages blog-show">
-										<li><a th:href="|/account/info|">My Account</a></li>
+										<li><a th:href="|/account/info|">Thông tin tài khoản</a></li>
 										<li sec:authorize="hasAnyRole('Director','STAFF')"><a
-												th:href="@{/admin}">Admin</a></li>
-										<li><a href="/account/Qrcode">Create QRcode</a></li>
-										<li><a th:href="@{/security/logoff}">Sign out</a></li>
+												th:href="@{/admin}">Trang quản lý</a></li>
+										<li><a href="/account/Qrcode">Tạo mã QR</a></li>
+										<li><a th:href="@{/security/logoff}">Đăng xuất</a></li>
 									</ul></li>
 							</ul>
 						</nav>
@@ -318,12 +293,9 @@
 				</div>
 				<div class="col-lg-3">
 					<div class="call-support">
-						<!--<div sec:authorize="hasAuthority('1')" > Has Authority ADMIN
-						<a th:href="@{/admin/vlon}">écéc</a>
-					 </div> 
-					 -->
+
 						<p>
-							Call Support: <a href="tel:0123456789">0123456789</a>
+							Gọi hỗ trợ: <a href="tel:0903876251">0903876251</a>
 						</p>
 					</div>
 

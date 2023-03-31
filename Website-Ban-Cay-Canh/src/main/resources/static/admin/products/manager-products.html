@@ -1,10 +1,10 @@
 <div class="pagetitle row">
   <div class="col-4">
-    <h1 class="fw-bolder">Manager Products</h1>
+    <h1 class="fw-bolder">Quản lý sản phẩm</h1>
   </div>
   <div class="search-bar col-8">
     <div class="search-form d-flex align-items-center" method="POST" action="#">
-      <input type="text" id="key__word" name="query" placeholder="Search" title="Enter search keyword" ng-change="find()" ng-model="myModel"/>
+      <input type="text" id="key__word" name="query" placeholder="Tìm kiếm sản phẩm" title="Nhập từ khoá" ng-change="find()" ng-model="myModel"/>
       <button type="submit" title="Search" ng-click="find()">
         <i class="bi bi-search"></i>
       </button>
@@ -12,8 +12,8 @@
   </div>
 </div><!-- End Page Title -->
 <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" data-target="#list" href="">List of Products</a></li>
-  <li><a data-toggle="tab" data-target="#edit" href="">Product Edition</a></li>
+  <li class="active"><a data-toggle="tab" data-target="#list" href="">Danh sách </a></li>
+  <li><a data-toggle="tab" data-target="#edit" href="">Chỉnh sửa</a></li>
 </ul>
 <div class="tab-content">
   <div id="list" class="tab-pane fade in active show">

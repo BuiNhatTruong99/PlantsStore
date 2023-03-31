@@ -22,7 +22,8 @@
 	href="/lib/fontawesome-free-6.1.1/css/all.min.css">
 <link rel="stylesheet" href="/css/my-account.css">
 <link rel="stylesheet" href="/css/style.css">
-<title>Document</title>
+	<title>Cây Cảnh Phan Cường</title>
+	<link rel="icon" type="image/x-icon" href="/images/title_logo.png">
 </head>
 
 <body ng-app="shoppingCart" ng-controller="shoppingCart-ctrl">
@@ -37,30 +38,30 @@
 				role="tablist" aria-orientation="vertical">
 				<button class="nav-link active" id="v-pills-home-tab"
 					data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button"
-					role="tab" aria-controls="v-pills-home" aria-selected="true">Orders</button>
+					role="tab" aria-controls="v-pills-home" aria-selected="true">Hoá đơn</button>
 				<button class="nav-link" id="v-pills-profile-tab"
 					data-bs-toggle="pill" data-bs-target="#v-pills-profile"
 					type="button" role="tab" aria-controls="v-pills-profile"
-					aria-selected="false" ng-click="edit()">Account Details</button>
+					aria-selected="false" ng-click="edit()">Thông tin tài khoản</button>
 				<button class="nav-link" id="v-pills-pass-tab"
 						data-bs-toggle="pill" data-bs-target="#v-pills-pass"
 						type="button" role="tab" aria-controls="v-pills-pass"
-						aria-selected="false" ng-click="edit_pass()">Change password</button>
+						aria-selected="false" ng-click="edit_pass()">Đổi mật khẩu</button>
 			</div>
 			<div class="tab-content" id="v-pills-tabContent" >
 				<div class="tab-pane fade show active" id="v-pills-home"
 					role="tabpanel" aria-labelledby="v-pills-home-tab">
 					<div class="tab-pane fade active show" id="orders">
-						<h3>Orders</h3>
+						<h3>Hoá đơn</h3>
 						<div class="table-responsive">
 							<table class="table">
 								<thead>
 									<tr>
-										<th>Order</th>
-										<th>Date</th>
-										<th>Status</th>
-										<th>Total</th>
-										<th>Actions</th>
+										<th>Đơn hàng</th>
+										<th>Ngày</th>
+										<th>Trạng thái</th>
+										<th>Tổng tiền</th>
+										<th>Chi tiết</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -87,7 +88,7 @@
 					aria-labelledby="v-pills-profile-tab" >
 					<div class="tab-pane fade active show" id="account-details">
 						<input id="user_id" type="hidden" th:value="|${user_id}|"></input>
-						<h3>Account details</h3>
+						<h3>Thông tin tài khoản</h3>
 						<div class="login">
 							<div class="login_form_container">
 								<div class="account_login_form" >
@@ -98,7 +99,7 @@
 												<div class="preview">
                                                     <img id="img-preview" ng-src="{{'../img/avatar/' + form.avatar}}"
 														 />
-                                                    <label for="file-input">Upload Image</label>
+                                                    <label for="file-input">Thay đổi ảnh</label>
                                                     <input type="file" id="file-input"
 														   onchange="angular.element(this).scope().imageChanged(this.files)"/>
                                                 </div>
@@ -111,23 +112,23 @@
 											<div class="input-radio">
 												<span class="custom-radio" > <input
 													type="radio" value="true" ng-model="form.gender" ng-checked="form.gender == true"
-													name="gender"> Male <input type="radio" ng-model="form.gender"
+													name="gender"> Nam <input type="radio" ng-model="form.gender"
 													value="false" ng-checked="form.gender == false"
-													name="gender"> Female
+													name="gender"> Nữ
 												</span>
 
 											</div>
-											<div class="form-floating" hidden>
-												<input type="text" class="form-control"
-													   id="floatingId"
-													   ng-model="form.id" required disabled >
-												<label for="floatingId" >ID</label>
-											</div>
+<!--											<div class="form-floating" hidden>-->
+<!--												<input type="text" class="form-control"-->
+<!--													   id="floatingId"-->
+<!--													   ng-model="form.id" required disabled >-->
+<!--												<label for="floatingId" >ID</label>-->
+<!--											</div>-->
 											<div class="form-floating">
 												<input type="text" class="form-control"
 													id="floatingFullname" placeholder="Fullname..."
 													 ng-model="form.fullname"  required >
-												<label for="floatingFullname" >Full name</label>
+												<label for="floatingFullname" >Họ tên</label>
 											</div>
 											<div class="form-floating">
 												<input type="text" class="form-control" id="floatingEmail"
@@ -138,23 +139,23 @@
 												<input type="date" class="form-control" id="floatingBirth"
 													placeholder="Birth"  ng-model="form.birthday"
 													name="birthday" required> <label
-													for="floatingBirth">Date of birth</label>
+													for="floatingBirth">Ngày sinh</label>
 											</div>
 											<div class="form-floating">
 												<input type="text" class="form-control" id="floatingPhone"
 													placeholder="Phone"  ng-model="form.phone" name="phone"
 													required oninput="if(this.value.length > 10) this.value = this.value.slice(0, 10); this.value = this.value.replace(/[^0-9.]/g, '')"
-												> <label for="floatingPhone">Phone</label>
+												> <label for="floatingPhone">Số điện thaoị</label>
 											</div>
 											<div class="form-floating">
 												<input type="text" class="form-control" id="floatingAddress"
 													placeholder="Address"  ng-model="form.address"
 													name="address" required> <label
-													for="floatingAddress">Address</label>
+													for="floatingAddress">Địa chỉ</label>
 											</div>
 
 											<div class="save_button primary_btn default_button">
-												<button ng-click="save()" >Save</button>
+												<button ng-click="save()" >Lưu</button>
 											</div>
 										</div>
 									</form>
@@ -167,34 +168,34 @@
 					 aria-labelledby="v-pills-profile-tab" >
 					<div class="tab-pane fade active show" id="account-details">
 						<input id="user_id" type="hidden" th:value="|${user_id}|"></input>
-						<h3>Change password</h3>
+						<h3>Đổi mật khẩu</h3>
 						<div class="login">
 							<div class="login_form_container">
 								<div class="account_login_form" >
 									<form>
 										<div class="row mb-3">
-											<label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+											<label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Mật khẩu hiện tại</label>
 											<div class="col-md-8 col-lg-9">
 												<input name="password" type="password" class="form-control" id="currentPassword" min="1"  >
 											</div>
 										</div>
 
 										<div class="row mb-3">
-											<label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+											<label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Mật khẩu mới</label>
 											<div class="col-md-8 col-lg-9">
 												<input name="newpassword" type="password" class="form-control"  id="newPassword" min="3" >
 											</div>
 										</div>
 
 										<div class="row mb-3">
-											<label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
+											<label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Nhập lại mật khẩu</label>
 											<div class="col-md-8 col-lg-9">
 												<input name="renewpassword" type="password" class="form-control" id="renewPassword" min="3" >
 											</div>
 										</div>
 
 										<div class="text-center">
-											<button type="submit" class="btn btn-primary" ng-click="update()">Change Password</button>
+											<button type="submit" class="btn btn-primary" ng-click="update()">Lưu</button>
 										</div>
 									</form>
 								</div>
