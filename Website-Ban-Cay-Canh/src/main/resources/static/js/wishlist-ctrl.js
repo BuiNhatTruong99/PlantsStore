@@ -1,27 +1,28 @@
-app.controller('wishlist-ctrl', function($scope, $http) {
+app.controller('wishlist-ctrl', function($scope, $http, $location) {
 	$scope.items = [];
-    
+    let user_id = null;
+	
 	// Get all item from rest
 	$scope.initialize = function() {
 		// load wish list
-		const userId = 40;
-		$http.get(`/api/account/${userId}/wishlist`).then(resp => {
+		user_id = getUserId();
+		$http.get(`/api/account/${user_id}/wishlist`).then(resp => {
 			$scope.items = resp.data.data.likedProducts;
-			console.log($scope.items);
 		}).catch(error => {
 			console.log("Error",error);
 		});
 	}
 	
+	if (url.match("/wishlist") || url.match("/home/index")) {
+		$scope.initialize();
+	}
+	
 	$scope.insert = function(productId) {
-		const userId = 40;
-		console.log('id ' +productId);
-		console.log($scope.items);
+		user_id = getUserId();
 		for(var i = 0; i < $scope.items.length; i++){
-			console.log($scope.items[i].id)
 			if(productId == $scope.items[i].id)return alert("Sản phẩm này đã có trong yêu thích của bạn!");
 		}
-		$http.get(`/api/account/${userId}/wishlist/insert?id=${productId}`).then(resp => {
+		$http.get(`/api/account/${user_id}/wishlist/insert?id=${productId}`).then(resp => {
 			$scope.initialize();
 			alert("Bạn vừa thêm một sản phẩm vào yêu thích!")
 		}).catch(error => {
@@ -30,8 +31,7 @@ app.controller('wishlist-ctrl', function($scope, $http) {
 	}
 	
 	$scope.delete = function(productId) {
-		const userId = 40;
-		$http.get(`/api/account/${userId}/wishlist/delete?id=${productId}`).then(resp => {
+		$http.get(`/api/account/${user_id}/wishlist/delete?id=${productId}`).then(resp => {
 			$scope.initialize();
 			alert("Bạn vừa xóa một sản phẩm ra khỏi yêu thích!")
 		}).catch(error => {
@@ -75,6 +75,7 @@ app.controller('wishlist-ctrl', function($scope, $http) {
 			this.page = this.count - 1;
 		}
 	}
-	
-	$scope.initialize();
 });
+function getUserId () {
+	return document.getElementById('user_id').value;
+}

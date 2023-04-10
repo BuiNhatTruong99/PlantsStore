@@ -25,13 +25,14 @@ public class Discount implements Serializable {
 	private Date update_date = new Date();
 
 	// staff_id
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "staff_id")
 	private Account staff;
 
 	// Product
-	@OneToMany(mappedBy = "discount", fetch = FetchType.LAZY)
 	@JsonIgnore
+	@OneToMany(mappedBy = "discount", fetch = FetchType.LAZY)
 	private List<Product> productDiscounts;
 
 }

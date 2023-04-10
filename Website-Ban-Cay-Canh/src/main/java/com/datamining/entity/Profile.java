@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -38,12 +39,13 @@ public class Profile implements Serializable {
 	private String address;
 
 	// Account
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL) // 1 account chi co 1 profile duy nhat
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
     private Account account;
 	
 	// Product_Rate
-	@JsonIgnore
+	@JsonBackReference
 	@OneToMany(mappedBy = "user")
 	private List<ProductRate> feedbacks;
 

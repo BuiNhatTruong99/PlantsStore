@@ -1,6 +1,8 @@
 package com.datamining.controller;
 
+import com.datamining.entity.Account;
 import com.datamining.entity.Product;
+import com.datamining.service.AccountService;
 import com.datamining.service.CategoryService;
 import com.datamining.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +16,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class ProductController {
+	@Autowired
+	AccountService aService;
+	
     @Autowired
     ProductService pService;
 
     @Autowired
     CategoryService cService;
 
-    @RequestMapping("/product/{cate}")
+    @RequestMapping("/{cate}")
     public String list(Model model,@PathVariable("cate") Optional<String> cate) {
         if(cate.isPresent()) {
             String id = cService.findIdByUrlEquals(cate.get());
@@ -38,10 +45,15 @@ public class ProductController {
         return "user/layout/index";
     }
 
-    @RequestMapping("/product/detail/{url}")
-    public String detail(Model model, @PathVariable("url") String url) {
+    @RequestMapping("/product/{url}")
+    public String detail(Model model, @PathVariable("url") String url, HttpServletRequest req) {
         Product item = pService.findByUrlEquals(url);
         model.addAttribute("item", item);
+        if(req.getRemoteUser() != null) {
+			Account us = aService.findByTk(req.getRemoteUser());
+			int usId = us.getId();
+			model.addAttribute("user_id", usId);
+		}
         return "user/product/product-detail";
     }
 

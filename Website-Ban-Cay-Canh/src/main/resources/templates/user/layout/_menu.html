@@ -46,7 +46,7 @@
                                                 </svg></a>
 							</div>
 							<div class="header_account-list  mini_cart_wrapper">
-								<a href="#"><svg xmlns="http://www.w3.org/2000/svg"
+								<a href=""><svg xmlns="http://www.w3.org/2000/svg"
 										width="25" height="25" fill="currentColor"
 										class="bi bi-bag-check" viewBox="0 0 16 16">
                                                     <path
@@ -64,7 +64,7 @@
 											<h3>Giỏ hàng</h3>
 										</div>
 										<div class="mini_cart_close" id="mini_cart_close">
-											<a href="#"><svg xmlns="http://www.w3.org/2000/svg"
+											<a href=""><svg xmlns="http://www.w3.org/2000/svg"
 													width="16" height="16" fill="currentColor"
 													class="bi bi-x-square" viewBox="0 0 16 16">
                                                                 <path
@@ -76,20 +76,28 @@
 									</div>
 									<div class="cart_item" ng-repeat="item in cart.items">
 										<div class="cart_img">
-											<a href="#"><img src="../img/product/{{item.image}}"
+											<a href="/product/{{item.url}}"><img src="../img/product/{{item.image}}"
 												alt=""></a>
 										</div>
 										<div class="cart_info">
-											<a href="#">{{item.name}} <span ng-if="item.idSize">({{item.idSize}})</span></a>
+											<a href="/product/{{item.url}}">{{item.name}}<span ng-if="item.idSize">({{item.idSize}})</span></a>
 											<p>
-												Số lượng: <input type="number" min="1" ng-model="item.qty"
-													ng-change="cart.saveToLocalStorage()">
-													<span ng-if="item.price" class="price_item"> 
-														{{item.price * item.qty | number:0}} $ 
-													</span>
-													<span ng-if="!item.price" class="price_item"> 
-														{{item.priceSize * item.qty | number:0}} $ 
-													</span>
+												Số lượng: 
+												<input type="number" min="1" ng-model="item.qty" ng-change="cart.saveToLocalStorage()"> <br>
+												Giá:
+												<span ng-if="item.price" class="price_item"> 
+													{{item.price | vndFilter}}
+												</span>
+												<span ng-if="!item.price" class="price_item"> 
+													{{item.priceSize | vndFilter}}
+												</span> <br>
+												Tổng: 
+												<span ng-if="item.price" class="price_item"> 
+													{{item.price * item.qty | vndFilter}}
+												</span>
+												<span ng-if="!item.price" class="price_item"> 
+													{{item.priceSize * item.qty | vndFilter}}
+												</span>
 											</p>
 										</div>
 										<div class="cart_remove">
@@ -108,12 +116,10 @@
 								<div class="mini_cart_table">
 									<div class="cart_table_border">
 										<div class="cart_total">
-											<span>Tổng tiền dự đoán:</span> <span class="price">{{cart.amount}}
-												VND</span>
+											<span>Tổng tiền dự đoán:</span> <span class="price">{{cart.amount | vndFilter}}</span>
 										</div>
 										<div class="cart_total mt-10">
-											<span>Tổng tiền:</span> <span class="price">{{cart.amount}}
-												VND</span>
+											<span>Tổng tiền:</span> <span class="price">{{cart.amount | vndFilter}}</span>
 										</div>
 									</div>
 								</div>
@@ -226,7 +232,9 @@
 												th:href="@{/admin}">Trang quản lý</a></li>
 											<li><a href="/account/Qrcode">Tạo mã QR</a></li>
 											<li><a th:href="@{/security/logoff}">Đăng xuất</a></li>
-										</ul></li>
+										</ul>
+										<input id="user_id" type="hidden" th:value="|${user_id}|"></input>
+									</li>
 									<!-- Show user after login -->
 									
 								</ul>
@@ -275,17 +283,18 @@
 
 									</ul></li>
 								<li><a href="/contact">Liên hệ</a></li>
-								<li class="menu-item-has-children"
-									th:if="${#request.remoteUser}" ><a class="blog-btn"
-																	   href="#">Chào mừng: [[${#request.remoteUser}]]<span
-										class="menu-expand"><i class="fa fa-angle-down"></i></span></a>
+								<li class="menu-item-has-children" th:if="${#request.remoteUser}" >
+									<a class="blog-btn" href="#">Chào mừng: [[${#request.remoteUser}]]
+										<span class="menu-expand"><i class="fa fa-angle-down"></i></span>
+									</a>
 									<ul class="sub_menu pages blog-show">
 										<li><a th:href="|/account/info|">Thông tin tài khoản</a></li>
 										<li sec:authorize="hasAnyRole('Director','STAFF')"><a
 												th:href="@{/admin}">Trang quản lý</a></li>
 										<li><a href="/account/Qrcode">Tạo mã QR</a></li>
 										<li><a th:href="@{/security/logoff}">Đăng xuất</a></li>
-									</ul></li>
+									</ul>
+								</li>
 							</ul>
 						</nav>
 					</div>

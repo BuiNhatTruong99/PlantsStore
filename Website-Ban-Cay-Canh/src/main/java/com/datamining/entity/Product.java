@@ -23,7 +23,8 @@ import lombok.var;
 @Data
 @Entity
 @Table(name = "Products")
-@JsonIgnoreProperties({"likes"})
+@JsonIgnoreProperties({"likes", "oderDetails", "productRates"})
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class , property = "id")
 public class Product implements Serializable {
 	@Id
 	@GeneratedValue
@@ -61,17 +62,15 @@ public class Product implements Serializable {
 	private List<Account> likes;
 
 	// Order_Detail
-	@JsonIgnore
 	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
 	private List<OrderDetail> oderDetails;
 
-	// Product_Rate
-	@JsonManagedReference
-	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-	private List<ProductRate> productRates;
+//	// Product_Rate
+//	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+//	private List<ProductRate> productRates;
 
 	// Product_Size
-
+	@JsonManagedReference
 	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
 	private List<ProductSize> productSizes;
 

@@ -27,6 +27,7 @@
         </header>
     </div>
     <div class="cart_detail_area" ng-controller="wishlist-ctrl">
+    <input id="user_id" type="hidden" th:value="|${user_id}|"></input>
         <div class="container">
             <form>
                 <div class="row">
@@ -55,31 +56,25 @@
                                                         </path>
                                                     </svg></a>
                                             </td>
-                                            <td class="product_thumb"><a href="/product/detail/{{item.url}}"><img src="/img/product/{{item.image}}" alt="{{item.image}}"></a></td>
-                                            <td class="product_name"><a href="/product/detail/{{item.url}}">{{item.name}}</a></td>
+                                            <td class="product_thumb"><a href="/product/{{item.url}}"><img src="/img/product/{{item.image}}" alt="{{item.image}}"></a></td>
+                                            <td class="product_name"><a href="/product/{{item.url}}">{{item.name}}</a></td>
                                             <td class="product-status" ng-if="item.status">Còn hàng</td>
                                             <td class="product-status" ng-if="!item.status">Tạm ngừng bán</td>
                                         </tr>
                                     </tbody>
                                     
                                 </table>
-                                <div class="panel-footer text-center" ng-if="items.length > 5">
-							        <button class="btn btn-danger" ng-click="pager.first()">
-							            <<
-							        </button>
-							        <button class="btn btn-primary" ng-click="pager.prev()">
-							            <
-							        </button>
-							        <button class="btn btn-success">
-							        		{{pager.page + 1}} of {{pager.count}}
-							        </button>
-							        <button class="btn btn-primary" ng-click="pager.next()">
-							            >
-							        </button>
-							        <button class="btn btn-danger" ng-click="pager.last()">
-							            >>
-							        </button>
-							    </div>
+                                <nav ng-if="items.length > 5" class="align-center mt-2" aria-label="Page navigation example ">			<!-- Page product -->
+									<ul class="pagination justify-content-center">
+										<li class="page-item"><a ng-click="pager.first()" class="page-link"> |< </a></li>
+										<li class="page-item"><a ng-click="pager.prev()" class="page-link"> < </a></li>
+										<li class="page-item -success"><a class="page-link" style="width: 80px; color: white; background: #79A206; text-align: center;">
+											{{pager.page + 1}} / {{pager.count}}</a>
+										</li>
+										<li class="page-item"><a ng-click="pager.next()" class="page-link"> > </a></li>
+										<li class="page-item"><a ng-click="pager.last()" class="page-link"> >| </a></li>
+									</ul>
+								</nav>
                             </div>
                         </div>
                     </div>
@@ -91,5 +86,4 @@
     
  	<div th:replace="user/layout/_script.html"></div>
 </body>
-
 </html>

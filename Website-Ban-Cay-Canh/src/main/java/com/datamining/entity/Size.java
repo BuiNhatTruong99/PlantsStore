@@ -23,6 +23,5 @@ public class Size implements Serializable {
 
 	// Product_Size
 	@OneToMany(mappedBy = "size")
-
 	private Set<ProductSize> size;
 }

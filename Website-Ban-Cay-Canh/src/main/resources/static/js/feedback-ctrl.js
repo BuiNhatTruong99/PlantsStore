@@ -1,8 +1,7 @@
 app.controller('feedback-ctrl', function($scope, $rootScope, $http) {
 	$scope.items = [];
 	$scope.form = {};
-    //alert(productId);
-    
+	let user_id = null;
 	// Get all item from rest
 	$scope.initialize = function() {
 		// load productRates
@@ -17,15 +16,14 @@ app.controller('feedback-ctrl', function($scope, $rootScope, $http) {
 	
 	$scope.productRate = function(items) {
 		$scope.arrayRate = items.map(i => {return i.rate});
-		console.log($scope.arrayRate);
 		$scope.totalRate = $scope.calculateAverageRate($scope.arrayRate);
-		console.log($scope.totalRate);
 	}
 	
 	// lấy thông tin user, lấy id sp
 	$scope.create = function() {
-		$scope.form.user = {'id': 6};
-		$scope.form.product = {'id': productId};
+		user_id = getUserId();
+		$scope.form.user = {'id': user_id};
+		$scope.form.product_id = productId;
 		var item = angular.copy($scope.form);
 		if(item.rate == 0) return $scope.message = 'Vui lòng chọn mức sao tương ứng với độ hài lòng của bạn!';
 		if(item.comment == '') return $scope.message = 'Vui lòng nhập đánh giá của bạn về sản phẩm!';
@@ -43,9 +41,10 @@ app.controller('feedback-ctrl', function($scope, $rootScope, $http) {
 	$scope.rateFilter = 0;
 	
 	$scope.commentFilter = function() {
+		user_id = getUserId();
 		const comment = $scope.selectCommentFilter;
 		const rate = $scope.rateFilter;
-		const userId = (comment == 0)? 0 : 6;
+		const userId = (comment == 0)? 0 : user_id;
 		if(comment == 0 && rate == 0) {
 			$http.get(`/api/productRates/${productId}`).then(resp => {
 				$scope.items = resp.data.data;
@@ -142,3 +141,6 @@ app.controller('feedback-ctrl', function($scope, $rootScope, $http) {
 	
 	$scope.initialize();
 });
+function getUserId () {
+	return document.getElementById('user_id').value;
+}

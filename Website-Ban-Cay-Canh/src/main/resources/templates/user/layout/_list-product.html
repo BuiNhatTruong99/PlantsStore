@@ -3,7 +3,7 @@
 		<div class="featured__item">
 			<div class="featured__item__pic set-bg"
 				data-setbg="img/featured/feature-1.jpg">
-				<a th:href="@{|/product/detail/${p.url}|}"><img  alt="" th:src="@{|/img/product/${p.image}|}"></a>
+				<a th:href="@{|/product/${p.url}|}"><img  alt="" th:src="@{|/img/product/${p.image}|}"></a>
 
 				<ul class="featured__item__pic__hover">
 					<li><a class="popup-btn"><i class="fa fa-retweet"></i></a></li>
@@ -13,8 +13,12 @@
 				<h6>
 					<a th:href="@{|/img/product/${p.image}|}">[[${p.name}]]</a>
 				</h6>
-				<h5 th:if="${p.productSizes.size==0}">[[${p.price}]] VNĐ</h5>
-				<h5 th:if="${p.productSizes.size>0}">[[${p.productSizes[0].price}]] VNĐ</h5>
+				<h5 th:if="${p.productSizes.size==0}" class="price">
+					[[${#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')} + ' VND']]
+				</h5>
+				<h5 th:if="${p.productSizes.size>0}" class="price">
+					[[${#numbers.formatDecimal(p.productSizes[0].price, 0, 'COMMA', 0, 'POINT')} + ' VND']]
+				</h5>
 			</div>
 		</div>
 		<div class="popup-view">
@@ -22,25 +26,47 @@
 				<a><i class="fas fa-times close-btn"></i></a>
 				<div class="product-featured-image">
 					<img th:src="@{|/img/product/${p.image}|}" alt="">
+					<div class="like-button-1">
+                            <button th:attr="ng-click=@{|insert(${p.id})|}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-heart" viewBox="0 0 16 16">
+                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                            </svg>
+                            </button>
+                    </div>
 				</div>
 				<div class="info">
 					<h2>[[${p.name}]]</h2>
-					<p>[[${p.description}]]</p>
-					<span th:if="${p.productSizes.size==0}" class="price">[[${p.price}]]  VNĐ</span>
-					<span th:if="${p.productSizes.size>0}" class="price" id="price">[[${p.productSizes[0].price}]]  VNĐ</span>
+					<span>Mô tả: </span><p class="mt-n1">[[${p.description}]]</p>
+					<span>Giá: </span>
+					<span th:if="${p.productSizes.size==0}" class="price mt-n1">
+						[[${#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')} + ' VND']]
+					</span>
+					
+					<span th:if="${p.productSizes.size>0}" class="price mt-n1" id="price">
+						[[${#numbers.formatDecimal(p.productSizes[0].price, 0, 'COMMA', 0, 'POINT')} + ' VND']]
+					</span>
 					<div th:if="${p.productSizes.size>0}" class="products-size">
-						<label for=""><strong>Kích cỡ</strong></label>
+						<span>Kích cỡ: </span>
 						<div class="size-swap">
 							<div th:each="s:${p.productSizes}" class="n-sd size_item" data-value="">
 								<input type="radio" onchange="submitSize()" class="size_radio" 
 								th:name="size" th:value="${s.size.id}+','+${s.price}">
-										[[${s.size.id}]]
+									[[${s.size.id}]]
 							</div>
 						</div>
 					</div>
-					<a th:attr="ng-click=@{|cart.add(${p.id})|}" class="add-cart-btn">Thêm vào giỏ hàng</a>
-					<a th:attr="ng-click=@{|insert(${p.id})|}" class="add-wish">Thêm vào yêu thích</a>
-				</div>
+					<div class="quantity-button">
+                        <span>Số lượng: </span>
+                        <div class="quantity-1">
+                             <input type="number" id="quantity" class="input-text qty text" step="1"
+                                    min="1" max="50" name="quantity" value="1" title="Số lượng sản phẩm muốn chọn" size="4" placeholder=""
+                                    inputmode="numeric" autocomplete="off">
+                        </div>
+                        <button th:attr="ng-click=@{|cart.add(${p.id})|}" class="single_add_to_cart_button button alt">Thêm vào giỏ hàng</button>
+                    </div>
+                    <a th:href="@{|/product/${p.url}|}" class="view-detail">Xem chi tiết sản phẩm</a>
+				</div>				
 			</div>
 		</div>
 	</div>

@@ -3,7 +3,10 @@ package com.datamining.controller;
 
 import com.datamining.service.ProductService;
 
+import java.text.NumberFormat;
+import java.util.Currency;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,18 +30,25 @@ import com.datamining.service.AccountService;
 @Controller
 public class HomeController {
 	@Autowired
-	ProductService pService;
+	AccountService aService;
+	
 	@Autowired
-	AccountService dao;
+	ProductService pService;
+
 	
 	@RequestMapping({"/", "/home/index"})
-	public String home(Model model) {
+	public String home(Model model, HttpServletRequest req) {
 //		List<Category> sp = dao.findAll();
 //		model.addAttribute("items",sp);
 		List<Product> list = pService.findAll();
 		model.addAttribute("items", list);
 		List<Product> bestSale = pService.findTop5Seller();
 		model.addAttribute("bestSale", bestSale);
+		if(req.getRemoteUser() != null) {
+			Account us = aService.findByTk(req.getRemoteUser());
+			int usId = us.getId();
+			model.addAttribute("user_id", usId);
+		}
 		return "user/layout/index";
 	}
 	
@@ -49,14 +59,13 @@ public class HomeController {
 	}
 	
 	@GetMapping("/account/info")
-	public String account_info(Model model,HttpServletRequest respon)
+	public String account_info(Model model,HttpServletRequest req)
 	{
-		if(respon.getRemoteUser() == null)
+		if(req.getRemoteUser() == null)
 		{
 			return "redirect:/login/form";
 		}else {
-			Account us = dao.findByTk(respon.getRemoteUser());
-//			System.out.println(us.getId());
+			Account us = aService.findByTk(req.getRemoteUser());
 			int usId = us.getId();
 			model.addAttribute("user_id", usId);
 			return "user/security/my-account";
@@ -72,11 +81,11 @@ public class HomeController {
 
 	
 	@RequestMapping("/account/Qrcode")
-	public String account_qrCode(Model model,HttpServletRequest respon)
+	public String account_qrCode(Model model,HttpServletRequest req)
 	{
 
-		String username = respon.getRemoteUser();
-		Account us = dao.findByTk(username);
+		String username = req.getRemoteUser();
+		Account us = aService.findByTk(username);
 		String tk = us.getUsername();
 		String pass = us.getPassword();
 		model.addAttribute("username",tk);
@@ -86,9 +95,17 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/wishlist")
-	public String product_wish()
+	public String product_wish(Model model, HttpServletRequest req)
 	{
-		return "user/product/wishlist";
+		if(req.getRemoteUser() == null)
+		{
+			return "redirect:/login/form";
+		}else {
+			Account us = aService.findByTk(req.getRemoteUser());
+			int usId = us.getId();
+			model.addAttribute("user_id", usId);
+			return "user/product/wishlist";
+		}
 	}
 	
 //	@RequestMapping("/register")
@@ -104,7 +121,7 @@ public class HomeController {
 		{
 			return "redirect:/login/form";
 		}else {
-			Account us = dao.findByTk(respon.getRemoteUser());
+			Account us = aService.findByTk(respon.getRemoteUser());
 			int usId = us.getId();
 			model.addAttribute("user_id", usId);
 			return "../static/admin/index";

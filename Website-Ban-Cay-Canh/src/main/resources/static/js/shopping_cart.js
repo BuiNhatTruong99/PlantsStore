@@ -18,23 +18,24 @@ app.controller('shoppingCart-ctrl', function($scope, $http) {
 			let product_size2 = product_size ? product_size.value : '';
 			let arr = product_size2.split(",");
 			let idSize = arr[0] ? arr[0] : '';
-			let priceSize = arr[1] ? arr[1] : '';
+			let priceSize = arr[1] ? arr[1] : 0;
             let item = this.items.find(item => item.id === id && item.idSize === idSize);
+			if (quantity.value.length == 0) {
+				return alert("Mời bạn vui lòng nhập số lượng!");
+			}
             if (item) {
                 item.qty += quantity2;
                 this.saveToLocalStorage()
-                alert("+1 sản phẩm [" + item.name + "] vào giỏ hàng!");
+                alert("+"+ quantity2 +" sản phẩm [" + item.name + "] vào giỏ hàng!");
             } else {
                 $http.get(`/api/dto/products/${id}`).then(resp => {
 					resp.data.data.idSize = idSize;
-					resp.data.data.priceSize = priceSize;
+					resp.data.data.priceSize = Math.floor(priceSize);
                     resp.data.data.qty = quantity2;
                     this.items.push(resp.data.data);
                     this.saveToLocalStorage()
-                    alert("Thêm sản phẩm [" + resp.data.data.name + "] vào giỏ hàng thành công!");
-                    console.log(this.items);
+                    alert("Thêm "+ quantity2 +" sản phẩm [" + resp.data.data.name + "] vào giỏ hàng thành công!");
                 });
-                
             }
         },
         remove(id, idSize) {
@@ -56,8 +57,9 @@ app.controller('shoppingCart-ctrl', function($scope, $http) {
                 .reduce((total, qty) => total += qty, 0);
         },
 
-        get amount() {
-            return this.items.map(item => item.qty * item.price).reduce((total, qty) => total += qty, 0);
+		get amount() {
+            return this.items.map(item => item.qty * item.price + item.qty * item.priceSize)
+            				 .reduce((total, qty) => total += qty, 0);
         },
 
         // save cart to localstorage
@@ -75,5 +77,18 @@ app.controller('shoppingCart-ctrl', function($scope, $http) {
 
     }
     $scope.cart.loadFromLocalStorage();
+});
 
+function getCurrentURL () {
+  return window.location.pathname;
+}
+
+const url = getCurrentURL();
+console.log(url);
+
+app.filter('vndFilter', function () { 
+	return function (x) {
+				x = x.toLocaleString('it-IT', {style : 'currency', currency : 'VND'});
+				return x.toString().split('.').join(','); 
+		   }; 
 });

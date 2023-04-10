@@ -21,7 +21,7 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
 
     //find product bettwen two price
     @Query(value="select * from Products p left join Product_Size ps on p.id = ps.product_id where (p.price >= ?1 and p.price <= ?2) "
-    		+ "or (ps.price >= ?1 and ps.price <= ?2)", nativeQuery = true)
+    		+ "or (ps.price >= ?1 and ps.price <= ?2) order by p.price asc", nativeQuery = true)
     List<Product> findByPriceBetween(Double price1, Double price2);
 
     // Top 5 seller

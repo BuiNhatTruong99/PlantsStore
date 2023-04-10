@@ -6,7 +6,7 @@
 		<div class="featured__controls">
 			<ul class="category">
 				<li class="menu-products" ng-repeat="cate in cates"><a
-					th:href="@{|/product/{{cate.url}}|}" class="cate_link"><span>{{cate.name}}</span></a></li>
+					th:href="@{|/{{cate.url}}|}" class="cate_link"><span>{{cate.name}}</span></a></li>
 			</ul>
 		</div>
 	</div>

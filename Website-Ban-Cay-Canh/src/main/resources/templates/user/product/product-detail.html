@@ -26,6 +26,8 @@
             <div th:replace="user/layout/_menu.html"></div>
         </header>
     </div>
+    <span ng-controller="feedback-ctrl">
+    <input id="user_id" type="hidden" th:value="|${user_id}|"></input>
     <div class="container">
         <div class="row m-3" th:object="${item}">
             <div class="bwp-single-image col-lg-6 col-md-12 col-12 text-center">
@@ -36,39 +38,43 @@
                 </div>
                 <div class="same-products">
                     <div class="owl-carousel owl-same-products">
-                        <div class="item" th:each="p:*{categories.products}"><a th:href="@{|/product/detail/${p.url}|}"><img th:src="@{|/img/product/${p.image}|}"></a></div>
+                        <div class="item" th:each="p:*{categories.products}"><a th:href="@{|/product/${p.url}|}"><img th:src="@{|/img/product/${p.image}|}"></a></div>
                     </div>
                 </div>
             </div>
             <div class="bwp-single-infor col-lg-6 col-md-12 col-12">
                 <div class="right-detail">
                     <h1 itemprop="name" class="product_title entry-title">[[*{name}]]</h1>
-                    <div class="product_ratting" ng-controller="feedback-ctrl">
-                        <ul ng-if="totalRate != 0">
+                    <div class="product_ratting d-flex flex-row" >
+                        <ul ng-if="totalRate != 0" class="align-middle">
                             <li ng-repeat="rate in generateRange(0, totalRate | number:0, 1)">
                             	<a href=""><i class="fas fa-star"></i></a>
                             </li>
                         </ul>
-                        <ul ng-if="totalRate == 0">
+                        <ul ng-if="totalRate == 0" class="align-middle">
                         	<li ng-repeat="rate in generateRange(0, 5, 1)">
                             	<a href=""><i class="fa-regular fa-star"></i></a>
                             </li>
                         </ul>
-                        <span ng-if="totalRate != 0">
-                        	<h3>{{totalRate}}</h3>
+                        <span ng-if="totalRate != 0" class="ms-2">
+                        	<h5>{{totalRate}}</h5>
                         </span>
-                        <div ng-if="totalRate == 0">
-                        	<h3>Chưa có đánh giá</h3>
-                        </div>
-                    </div>
-                    <div class="price">
-                    			<span class="woocommerce-Price-amount amount" th:if="*{productSizes.size==0}">
-                    			<span class="woocommerce-Price-currencySymbol"> $ </span>[[*{price}]]</span>
-                    			<span class="woocommerce-Price-amount amount" th:if="*{productSizes.size>0}" id="price">
-                    			<span class="woocommerce-Price-currencySymbol"> $ </span>[[*{productSizes[0].price}]]</span>
+                        <span ng-if="totalRate == 0" class="ms-2">
+                        	<h5>Chưa có đánh giá</h5>
+                        </span>
                     </div>
                     <div itemprop="description" class="description col-10">
                         <p>[[*{description}]]</p>
+                    </div>
+                    <div class="price">
+                    	<span class="woocommerce-Price-amount amount" th:if="*{productSizes.size==0}">
+                    	<span class="woocommerce-Price-currencySymbol"> </span>
+                    		[[*{#numbers.formatDecimal(price, 0, 'COMMA', 0, 'POINT')} + ' VND']]
+                    	</span>
+                    	<span class="woocommerce-Price-amount amount" th:if="*{productSizes.size>0}" id="price">
+                    	<span class="woocommerce-Price-currencySymbol"> </span>
+                    		[[*{#numbers.formatDecimal(productSizes[0].price, 0, 'COMMA', 0, 'POINT')} + ' VND']]
+                    	</span>
                     </div>
                     <div th:if="*{productSizes.size>0}" class="products-size">
                         <label for=""><strong>Kích cỡ</strong></label>
@@ -91,11 +97,12 @@
                             <button th:attr="ng-click=@{|cart.add(*{id})|}" class="single_add_to_cart_button button alt">Thêm vào giỏ hàng</button>
                         </div>
                         <div class="like-button" ng-controller="wishlist-ctrl">
-                            <button th:attr="ng-click=@{|insert([[*{id}]])|}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            <button th:attr="ng-click=@{|insert([[*{id}]])|}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-heart" viewBox="0 0 16 16">
-                                    <path
-                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                                </svg></button>
+                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                            </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -103,15 +110,15 @@
 
         </div>
     </div>
-    <div class="container"  ng-controller="feedback-ctrl">
+    <div class="container">
         <div class="product_review">
             <div class="review-wrapper">
                 <div class="rev_title">
                     <h2>{{items.length}} Đánh giá cho sản phẩm <span class="name_pro_rev"></span></h2>
                 </div>
-                <select class="form-select" name="myComboBox" ng-model="selectCommentFilter" ng-change="commentFilter()" ng-init="selectCommentFilter='0'" style="width: 10rem;">
+                <select class="form-select" name="myComboBox" ng-model="selectCommentFilter" ng-change="commentFilter()" ng-init="selectCommentFilter='0'" style="width: 11rem;">
 					<option value="0">Tất cả bình luận</option>
-					<option value="1">Bình luận của tôi</option>
+					<option value="1" th:if="${#request.remoteUser}">Bình luận của tôi</option>
 				</select>
 				<div class="row mt-3">
 					<div class="col col-md-auto" >
@@ -183,8 +190,10 @@
                 <nav ng-if="items.length > 5" class="align-center mt-2" aria-label="Page navigation example ">			<!-- Page product -->
 					<ul class="pagination justify-content-center">
 						<li class="page-item"><a ng-click="pager.first()" class="page-link"> |< </a></li>
-						<li class="page-item"><a ng-click="pager.prev()" class="page-link">< </a></li>
-						<li class="page-item -success"><a class="page-link" style="width: 80px; color: white; background: #79A206; text-align: center;">{{pager.page + 1}} of {{pager.count}}</a></li>
+						<li class="page-item"><a ng-click="pager.prev()" class="page-link"> < </a></li>
+						<li class="page-item -success"><a class="page-link" style="width: 80px; color: white; background: #79A206; text-align: center;">
+							{{pager.page + 1}} / {{pager.count}}</a>
+						</li>
 						<li class="page-item"><a ng-click="pager.next()" class="page-link"> > </a></li>
 						<li class="page-item"><a ng-click="pager.last()" class="page-link"> >| </a></li>
 					</ul>
@@ -215,11 +224,13 @@
                         </div>
                     </div>
                     <em ng-bind-html="message"></em>
+                    <span th:if="!${#request.remoteUser}">(Vui lòng <a href="/login/form">đăng nhập</a> để bình luận)</span>
                     <button ng-click="create()">Đánh giá</button>
                 </form>
             </div>
         </div>
     </div>
+    </span>
 
     <footer class="footer_widgets">
         <div class="footer_top">
@@ -308,11 +319,10 @@
     <div th:replace="user/layout/_script.html"></div>
     <script th:inline="javascript">
 		/*<![CDATA[*/
-			var productId =  /*[(${item.id})]*/'default';
+			var productId =  /*[(${item.id})]*/'default';	
 		/*]]>*/
     </script>
     <script src="/js/feedback-ctrl.js"></script>
     <script src="/js/wishlist-ctrl.js"></script>
 </body>
-
 </html>

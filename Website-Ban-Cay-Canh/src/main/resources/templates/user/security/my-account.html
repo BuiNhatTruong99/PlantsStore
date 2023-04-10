@@ -87,7 +87,7 @@
 				<div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
 					aria-labelledby="v-pills-profile-tab" >
 					<div class="tab-pane fade active show" id="account-details">
-						<input id="user_id" type="hidden" th:value="|${user_id}|"></input>
+						<!-- <input id="user_id" type="hidden" th:value="|${user_id}|"></input> -->
 						<h3>Thông tin tài khoản</h3>
 						<div class="login">
 							<div class="login_form_container">
@@ -145,7 +145,7 @@
 												<input type="text" class="form-control" id="floatingPhone"
 													placeholder="Phone"  ng-model="form.phone" name="phone"
 													required oninput="if(this.value.length > 10) this.value = this.value.slice(0, 10); this.value = this.value.replace(/[^0-9.]/g, '')"
-												> <label for="floatingPhone">Số điện thaoị</label>
+												> <label for="floatingPhone">Số điện thoại</label>
 											</div>
 											<div class="form-floating">
 												<input type="text" class="form-control" id="floatingAddress"
@@ -209,5 +209,4 @@
 	<script src="/js/account-scrpit.js"></script>
 	<div th:replace="user/layout/_script.html"></div>
 </body>
-
 </html>
