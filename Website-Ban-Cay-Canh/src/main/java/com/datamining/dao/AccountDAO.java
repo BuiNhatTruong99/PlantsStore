@@ -15,6 +15,8 @@ public interface AccountDAO extends JpaRepository<Account, Integer> {
     @Query("SELECT a FROM Account a WHERE a.username LIKE %?1%")
     List<Account> findByUsername(String username);
 
+    @Query("select u from Account u where u.username = :username ")
+    public Account findByTk(@Param("username") String username);
 
 
 
