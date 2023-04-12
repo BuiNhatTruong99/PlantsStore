@@ -102,11 +102,11 @@ public class HomeController {
 		}
 	}
 	
-//	@RequestMapping("/register")
-//	public String register()
-//	{
-//		return "user/security/register";
-//	}
+	@RequestMapping("/register")
+	public String register()
+	{
+		return "user/security/register";
+	}
 	
 	@RequestMapping("/admin")
 	public String admin(Model model,HttpServletRequest respon)
