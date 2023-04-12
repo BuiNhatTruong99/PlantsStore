@@ -3,16 +3,11 @@ package com.datamining.controller;
 
 import com.datamining.service.ProductService;
 
-import java.text.NumberFormat;
-import java.util.Currency;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 
-import com.datamining.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,10 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
-import com.datamining.dao.ProfileDAO;
 import com.datamining.entity.Account;
 import com.datamining.entity.Product;
-import com.datamining.entity.Profile;
 import com.datamining.service.AccountService;
 
 
@@ -44,6 +37,7 @@ public class HomeController {
 		model.addAttribute("items", list);
 		List<Product> bestSale = pService.findTop5Seller();
 		model.addAttribute("bestSale", bestSale);
+
 		if(req.getRemoteUser() != null) {
 			Account us = aService.findByTk(req.getRemoteUser());
 			int usId = us.getId();

@@ -14,6 +14,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
@@ -36,16 +37,16 @@
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th class="product_remove">Delete</th>
-                                            <th class="product_thumb">Image</th>
-                                            <th class="product_name">Product</th>
-                                            <th class="product-price">Price</th>
-                                            <th class="product_quantity">Quantity</th>
-                                            <th class="product_total">Total</th>
+                                            <th class="product_remove">#</th>
+                                            <th class="product_thumb">Ảnh</th>
+                                            <th class="product_name">Tên sản phẩm</th>
+                                            <th class="product-price">Giá</th>
+                                            <th class="product_quantity">Số lượng</th>
+                                            <th class="product_total">Tổng tiền</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr ng-repeat="item in cart.items">
                                             <td class="product_remove"><a href="#"><svg
                                                         xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                         fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -57,33 +58,18 @@
                                                         </path>
                                                     </svg></a>
                                             </td>
-                                            <td class="product_thumb"><a href="#"><img src="../images/products/12.jpg"
-                                                        alt=""></a></td>
-                                            <td class="product_name"><a href="#">Handbag fringilla</a></td>
-                                            <td class="product-price">$65.00</td>
-                                            <td class="product_quantity"><label>Quantity</label> <input min="1"
-                                                    max="100" value="1" type="number"></td>
-                                            <td class="product_total">$130.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product_remove"><a href="#"><svg
-                                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                        fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z">
-                                                        </path>
-                                                        <path fill-rule="evenodd"
-                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z">
-                                                        </path>
-                                                    </svg></a>
-                                            </td>
-                                            <td class="product_thumb"><a href="#"><img src="../images/products/10.jpg"
-                                                        alt=""></a></td>
-                                            <td class="product_name"><a href="#">Handbag fringilla</a></td>
-                                            <td class="product-price">$65.00</td>
-                                            <td class="product_quantity"><label>Quantity</label> <input min="1"
-                                                    max="100" value="1" type="number"></td>
-                                            <td class="product_total">$130.00</td>
+                                            <td class="product_thumb"><a href="/product/{{item.url}}"><img src="../img/product/{{item.image}}" alt=""></a></td>
+                                            <td class="product_name"><a href="/product/{{item.url}}">{{item.name}}</a></td>
+                                            <td class="product-price"><span ng-if="item.price">
+													{{item.price | vndFilter}}
+												</span></td>
+                                            <td class="product_quantity"><label>Số lượng</label> <input type="number" min="1" ng-model="item.qty" ng-change="cart.saveToLocalStorage()"></td>
+                                            <td class="product_total"><span ng-if="item.price" class="price_item">
+													{{item.price * item.qty | vndFilter}}
+												</span>
+                                                <span ng-if="!item.price" class="price_item">
+													{{item.priceSize * item.qty | vndFilter}}
+												</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -100,12 +86,14 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="coupon_code">
-                            <h3>COUPON</h3>
-                            <div class="coupon_inner">
-                                <p>Enter your coupon code here.</p>
-                                <input type="text" placeholder="Coupon code">
-                                <button type="submit">APPLY</button>
-                            </div>
+                            <form action="/coupon">
+                                <h3>COUPON</h3>
+                                <div class="coupon_inner">
+                                    <p>Enter your coupon code here.</p>
+                                    <input type="text" name="code" placeholder="Coupon code">
+                                    <button type="submit" >APPLY</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
@@ -113,16 +101,17 @@
                             <h3>CART TOTAL</h3>
                             <div class="coupon_inner">
                                 <div class="cart_subtotal">
-                                    <p>Subtotal</p>
-                                    <p class="cart_amount">$215.00</p>
+                                    <p>Tổng tiền dự tính</p>
+                                    <p class="cart_amount">{{cart.amount |
+                                        vndFilter}}</p>
                                 </div>
                                 <div class="cart_subtotal">
-                                    <p>Promotion</p>
+                                    <p>Giảm giá</p>
                                     <p class="cart_amount">$10.00</p>
                                 </div>
                                 <hr>
                                 <div class="cart_subtotal">
-                                    <p>Total</p>
+                                    <p>Tổng tiền cần phải trả</p>
                                     <p class="cart_amount">$205.00</p>
                                 </div>
                                 <div class="checkout_btn">

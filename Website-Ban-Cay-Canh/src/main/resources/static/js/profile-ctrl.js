@@ -43,7 +43,7 @@ app.controller("profile-ctrl", function($scope, $http) {
 				// var index = $scope.profile.indexOf(p => p.id === item.id);
 				$scope.profile = item;
 				// console.log(item)
-			alert("Lưu thành công")
+			$scope.message = "Cập nhập thành công";
 			}).catch(error => {
 			console.log("Error", error);
 			// console.log(item)
@@ -77,22 +77,23 @@ app.controller("profile-ctrl", function($scope, $http) {
 
 		switch (true) {
 			case (oldpass.length === 0 || newpass.length === 0 || confirm.length === 0):
-				alert("Vui lòng nhập đầy đủ ô trống");
+				$scope.message = "Vui lòng nhập đầy đủ ô trống";
+
 				break;
 			case (newpass !== confirm):
-				alert("Xác nhận mật khẩu không khớp");
+				$scope.message = "Xác nhận mật khẩu không khớp";
 				break;
 			case (oldpass !== $scope.accounts.password):
-				alert("Mật khẩu cũ không khớp");
+				$scope.message = "Mật khẩu cũ không khớp";
 				break;
 			default:
 				$scope.form_account.password = newpass;
 				var item_acc = angular.copy($scope.form_account);
 				$http.put(`/api/account/${user_id}`, item_acc).then(resp => {
 					$scope.accounts = item_acc;
-					alert("Đổi thành công");
+					$scope.message = "Đổi thành công";
 				}).catch(error => {
-					alert("Lỗi cập nhật");
+					$scope.message = "Lỗi cập nhật";
 					console.log("Error", error);
 				});
 		}

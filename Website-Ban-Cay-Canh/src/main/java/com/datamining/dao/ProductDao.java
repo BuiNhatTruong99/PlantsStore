@@ -1,5 +1,6 @@
 package com.datamining.dao;
 
+import com.datamining.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.datamining.entity.Product;
