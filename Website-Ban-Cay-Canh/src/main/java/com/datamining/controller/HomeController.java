@@ -67,8 +67,9 @@ public class HomeController {
 	}
 
 	@RequestMapping("/cart/detail")
-	public String cart_detail()
+	public String cart_detail(Model model)
 	{
+		model.addAttribute("sale",0);
 		return "user/cart/cart-detail";
 	}
 	

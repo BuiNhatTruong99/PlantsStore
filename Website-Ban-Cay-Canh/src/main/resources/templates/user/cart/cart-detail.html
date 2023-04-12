@@ -47,16 +47,14 @@
                                     </thead>
                                     <tbody>
                                         <tr ng-repeat="item in cart.items">
-                                            <td class="product_remove"><a href="#"><svg
-                                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                        fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z">
-                                                        </path>
-                                                        <path fill-rule="evenodd"
-                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z">
-                                                        </path>
-                                                    </svg></a>
+                                            <td class="product_remove"><a ng-click="cart.remove(item.id, item.idSize)"><svg
+                                                    xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                <path
+                                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                <path fill-rule="evenodd"
+                                                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                            </svg></a>
                                             </td>
                                             <td class="product_thumb"><a href="/product/{{item.url}}"><img src="../img/product/{{item.image}}" alt=""></a></td>
                                             <td class="product_name"><a href="/product/{{item.url}}">{{item.name}}</a></td>
@@ -74,9 +72,9 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="cart_submit">
-                                <button type="submit">UPDATE CART</button>
-                            </div>
+<!--                            <div class="cart_submit">-->
+<!--                                <button type="button">Cập nhập giỏ hàng</button>-->
+<!--                            </div>-->
                         </div>
 
                     </div>
@@ -89,33 +87,36 @@
                             <form action="/coupon">
                                 <h3>COUPON</h3>
                                 <div class="coupon_inner">
-                                    <p>Enter your coupon code here.</p>
+                                    <p>Nhập mã giảm giá tại đây</p>
                                     <input type="text" name="code" placeholder="Coupon code">
                                     <button type="submit" >APPLY</button>
+                                    <br>
+                                    <span>[[${message}]]</span>
                                 </div>
                             </form>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="coupon_code">
-                            <h3>CART TOTAL</h3>
+                            <h3>Tổng tiền giỏ hàng</h3>
                             <div class="coupon_inner">
                                 <div class="cart_subtotal">
                                     <p>Tổng tiền dự tính</p>
-                                    <p class="cart_amount">{{cart.amount |
+                                    <p class="cart_amount" >{{cart.amount |
                                         vndFilter}}</p>
                                 </div>
                                 <div class="cart_subtotal">
                                     <p>Giảm giá</p>
-                                    <p class="cart_amount">$10.00</p>
+                                    <p class="cart_amount" id="saleP">[[${sale}]]%</p>
                                 </div>
                                 <hr>
                                 <div class="cart_subtotal">
                                     <p>Tổng tiền cần phải trả</p>
-                                    <p class="cart_amount">$205.00</p>
+                                    <p class="cart_amount">{{cart.amount -( cart.amount* (CouponSale/100)) |
+                                        vndFilter}}</p>
                                 </div>
                                 <div class="checkout_btn">
-                                    <a href="">CHECK OUT</a>
+                                    <a href="">Thanh toán</a>
                                 </div>
                             </div>
                         </div>
