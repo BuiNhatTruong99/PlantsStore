@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @SuppressWarnings("serial")
@@ -19,6 +21,7 @@ public class OrderPayment implements Serializable {
 	private Integer id;
 	private String name;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "payment")
 	private List<Order> orders;
 }
