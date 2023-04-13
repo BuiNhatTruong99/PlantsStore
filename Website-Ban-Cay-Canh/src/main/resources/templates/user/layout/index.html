@@ -24,8 +24,8 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
     <link rel="icon" type="image/x-icon" href="/images/title_logo.png">
 </head>
 
-<body ng-app="shoppingCart" ng-controller="shoppingCart-ctrl">
-<div class="wrapper" id="top">
+<body ng-app="shoppingCart" ng-controller="shoppingCart-ctrl" id="top">
+<div class="wrapper">
     <!-- Menu -->
     <header>
         <div th:replace="user/layout/_menu.html"></div>
@@ -259,7 +259,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
     </div>
 </section>
 <div class="scrolls">
-    <a href="#top"><i class="fas fa-caret-up"></i></a>
+    <a id="scrolls-top"><i class="fas fa-caret-up"></i></a>
 </div>
     <footer class="footer_widgets">
         <div class="footer_top">

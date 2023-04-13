@@ -1,14 +1,7 @@
 package com.datamining;
 
-import com.datamining.entity.Product;
-import com.datamining.service.CategoryService;
-import com.datamining.service.ProductService;
-import com.datamining.utils.StringUtils;
-import lombok.var;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class WebsiteBanCayCanhApplication {
@@ -16,7 +9,6 @@ public class WebsiteBanCayCanhApplication {
     public static void main(String[] args) {
         SpringApplication.run(WebsiteBanCayCanhApplication.class, args);
     }
-
 
 
 //    @Bean
