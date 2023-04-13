@@ -1,6 +1,8 @@
 package com.datamining.service;
 
 import com.datamining.entity.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -29,4 +31,8 @@ public interface ProductService {
     List<Product> findTop5Seller();
     
     List<Product> selectAllFeedbacks();
+
+    // page
+
+    Page<Product> findAllByPage(Pageable page);
 }

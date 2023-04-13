@@ -4,6 +4,8 @@ import com.datamining.dao.ProductDao;
 import com.datamining.entity.Product;
 import com.datamining.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -76,6 +78,11 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> selectAllFeedbacks() {
 		return pdao.selectAllFeedbacks();
 	}
+
+    @Override
+    public Page<Product> findAllByPage(Pageable page) {
+        return pdao.findAll(page);
+    }
 
 
 }
