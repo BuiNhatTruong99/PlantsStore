@@ -60,23 +60,6 @@ public class CouponController {
             model.addAttribute("sale",0);
         }
 
-    /*
-
-            Integer value = cp.getValue
-            Double couponPrice = total*value
-            model.seta... ("couponprice", couponPrice)
-
-
-            Double lastTotal = total - couponPrice
-            model.seta... ("lastTotal", lastTotal)
-     */
-
-//    try {
-//
-//    }catch (Exception) {
-//        thông báo
-//    }
-
         return "user/cart/cart-detail";
     }
 }

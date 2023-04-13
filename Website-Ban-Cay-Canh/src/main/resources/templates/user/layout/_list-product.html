@@ -70,4 +70,14 @@
 			</div>
 		</div>
 	</div>
+	<th:block >
+		<ul class="pagination ">
+			<li class="page-item"><a class="page-link" th:href="@{/home/index?page=0}">First </a></li>
+			<li class="page-item"><a class="page-link" th:if="${items.number > 0}"
+									 th:href="@{|/home/index?page=${items.number -1} |}" >Previous </a></li>
+			<li class="page-item"><a class="page-link" th:if="${items.number < 8}"
+									 th:href="@{|/home/index?page=${items.number + 1} |}" >Next</a></li>
+			<li class="page-item"><a class="page-link" th:href="@{|/home/index?page=${items.totalPages - 1} |}">Last</a></li>
+		</ul>
+	</th:block>
 </div>

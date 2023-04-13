@@ -4,11 +4,15 @@ package com.datamining.controller;
 import com.datamining.service.ProductService;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -30,10 +34,12 @@ public class HomeController {
 
 	
 	@RequestMapping({"/", "/home/index"})
-	public String home(Model model, HttpServletRequest req) {
-//		List<Category> sp = dao.findAll();
-//		model.addAttribute("items",sp);
-		List<Product> list = pService.findAll();
+	public String home(Model model, HttpServletRequest req,
+					   @RequestParam("page") Optional<Integer> page) {
+		Pageable pageable = PageRequest.of(page.orElse(0), 6); // 6 product/1 page
+
+		Page<Product> list = pService.findAllByPage(pageable);
+//		List<Product> list = pService.findAll();
 		model.addAttribute("items", list);
 		List<Product> bestSale = pService.findTop5Seller();
 		model.addAttribute("bestSale", bestSale);
@@ -43,6 +49,7 @@ public class HomeController {
 			int usId = us.getId();
 			model.addAttribute("user_id", usId);
 		}
+
 		return "user/layout/index";
 	}
 	
@@ -67,9 +74,8 @@ public class HomeController {
 	}
 
 	@RequestMapping("/cart/detail")
-	public String cart_detail(Model model)
+	public String cart_detail()
 	{
-		model.addAttribute("sale",0);
 		return "user/cart/cart-detail";
 	}
 	

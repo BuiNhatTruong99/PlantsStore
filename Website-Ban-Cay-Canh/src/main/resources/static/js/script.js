@@ -238,6 +238,21 @@ $(document).ready(function ($) {
         });
         window.history.pushState("", "", categoryUrl);
     });
+
+    $(document).on('click', '.page-link', function (event) {
+        event.preventDefault();
+        var url = $(this).attr('href')
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function (data) {
+                $('#product__items').html($(data).find('#product__items').html());
+            }
+
+        })
+        window.history.pushState("", "", url);
+    });
 });
 
 
