@@ -2,17 +2,13 @@ const app = angular.module('shoppingCart', ['ngSanitize']);
 app.controller('shoppingCart-ctrl', function($scope, $http) {
     $scope.products = [];
     $scope.form = {};
-    var salePd = document.getElementById("saleP");
-    var paragraphValue = parseFloat(salePd.textContent);
-
-    $scope.CouponSale = paragraphValue;
     $scope.cates = function (){
         $http.get('/api/category').then(resp => {
             $scope.cates = resp.data;
         })
     };
     $scope.cates();
-    
+
     $scope.cart = {
         items: [],
         add(id) {
@@ -81,6 +77,15 @@ app.controller('shoppingCart-ctrl', function($scope, $http) {
 
     }
     $scope.cart.loadFromLocalStorage();
+
+    var salePd = document.getElementById("saleP");
+    if (salePd == null)
+    {
+        salePd = 0;
+    }else {
+        var paragraphValue = parseFloat(salePd.textContent);
+        $scope.CouponSale = paragraphValue;
+    }
 });
 
 function getCurrentURL () {
@@ -90,9 +95,9 @@ function getCurrentURL () {
 const url = getCurrentURL();
 console.log(url);
 
-app.filter('vndFilter', function () { 
+app.filter('vndFilter', function () {
 	return function (x) {
 				x = x.toLocaleString('it-IT', {style : 'currency', currency : 'VND'});
-				return x.toString().split('.').join(','); 
-		   }; 
+				return x.toString().split('.').join(',');
+		   };
 });
