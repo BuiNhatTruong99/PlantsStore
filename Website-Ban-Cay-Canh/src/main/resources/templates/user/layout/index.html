@@ -220,7 +220,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
                                         <figcaption class="blog_content">
                                             <h4 class="post_title"><a href="@{|/product/${item.url}|}">[[${item.name}]]</a></h4>
                                             <div>
-                                            	<p class="blog_qty_purchased float-start">Số lượt mua</p>
+                                            	<p class="blog_qty_purchased float-start" style="color: #79a206; font-weight: 700">Giá</p>
                                             	<p class="blog_price">[[${#numbers.formatDecimal(item.price, 0, 'COMMA', 0, 'POINT')} + ' VND']]</p>
                                             </div>                                           
                                             <!-- <p class="blog_price">[[${#strings.replace( #numbers.formatDecimal(item.price, 0, 'COMMA', 2, 'POINT'), '.', '' )}]] VNĐ</p> -->

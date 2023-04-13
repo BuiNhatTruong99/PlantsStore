@@ -71,6 +71,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 			.antMatchers("/admin").hasAnyRole("STAFF","Director")
 			.antMatchers("/admin/**").hasAnyRole("STAFF","Director")
+			.antMatchers("/api/**").permitAll()
 			.anyRequest().permitAll();
 
 		

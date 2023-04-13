@@ -108,9 +108,8 @@ function myf() {
 var popViews = document.querySelectorAll('.popup-view');
 var popupBtns = document.querySelectorAll('.popup-btn');
 var closeBtns = document.querySelectorAll('.close-btn');
-
-var popup = function (popClick) {
-    popViews[popClick].classList.add('active');
+var popup = function (click) {
+    popViews[click].classList.add('active');
 }
 
 popupBtns.forEach((popupBtns, i) => {
@@ -126,6 +125,7 @@ closeBtns.forEach((closeBtns) => {
         })
     })
 })
+
 
 window.addEventListener('scroll', reveal);
 
@@ -195,6 +195,27 @@ $(document).ready(function ($) {
             success: function (data) {
                 // Update the product items container with the new data
                 $('#product__items').html($(data).find('#product__items').html());
+
+                var popViews = document.querySelectorAll('.popup-view');
+                var popupBtns = document.querySelectorAll('.popup-btn');
+                var closeBtns = document.querySelectorAll('.close-btn');
+                var popup = function (click) {
+                    popViews[click].classList.add('active');
+                }
+
+                popupBtns.forEach((popupBtns, i) => {
+                    popupBtns.addEventListener("click", () => {
+                        popup(i);
+                    })
+                })
+
+                closeBtns.forEach((closeBtns) => {
+                    closeBtns.addEventListener("click", () => {
+                        popViews.forEach((popViews) => {
+                            popViews.classList.remove('active');
+                        })
+                    })
+                })
             }
         });
         //change url without reloading page

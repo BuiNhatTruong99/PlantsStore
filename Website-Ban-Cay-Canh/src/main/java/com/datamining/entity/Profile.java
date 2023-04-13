@@ -39,7 +39,6 @@ public class Profile implements Serializable {
 	private String address;
 
 	// Account
-	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL) // 1 account chi co 1 profile duy nhat
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
     private Account account;

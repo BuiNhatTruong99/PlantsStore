@@ -6,20 +6,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/gender.css">
-  <title>Document</title>
+  <title>Cây Cảnh Phan Cường</title>
+  <link rel="icon" type="image/x-icon" href="/images/title_logo.png">
 </head>
 
 <body>
   <div class="container">
     <div class="header">
-      <h1>QR Code Generator</h1>
-      <p>Input account bellow to generate QR Code</p>
+      <h1>QR Code</h1>
+      <p>Nhập thông tin tài khoản để tạo QR Code</p>
     </div>
     <div class="input-form">
       <input type="text" class="qr-username" th:value="${username}">
-      <input type="text" class="qr-password" th:value="${password}">
+      <input type="password" class="qr-password" th:value="${password}">
 
-      <button class="generate-btn">Generate QR Code</button>
+      <button class="generate-btn">Nhấn để tạo</button>
     </div>
     <div class="qr-code">
       <img src="images/qrcode.png" class="qr-image">

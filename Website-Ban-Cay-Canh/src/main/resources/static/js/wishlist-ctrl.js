@@ -13,7 +13,7 @@ app.controller('wishlist-ctrl', function($scope, $http, $location) {
 		});
 	}
 	
-	if (url.match("/wishlist") || url.match("/home/index")) {
+	if (url.match("/wishlist") || url.match("/home/index") && getUserId()!=null) {
 		$scope.initialize();
 	}
 	
@@ -77,5 +77,9 @@ app.controller('wishlist-ctrl', function($scope, $http, $location) {
 	}
 });
 function getUserId () {
-	return document.getElementById('user_id').value;
+	try {
+		return document.getElementById('user_id').value;
+	}catch {
+		return null;
+	}
 }
